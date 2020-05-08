@@ -1,0 +1,36 @@
+{
+    "name": "setemares/walletpass-php",
+    "description": "PHP client for WalletPass.jp",
+    "keywords": [
+        "openapi",
+        "php",
+        "sdk",
+        "api",
+        "walletpasss"
+    ],
+    "homepage": "https://walletpass.jp",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "tectiv3",
+            "homepage": "https://github.com/tectiv3"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "WalletPassJP\\Client\\": "lib/"
+        }
+    }
+}
