@@ -15,32 +15,22 @@ Method | HTTP request | Description
 [**updateTemplate**](TemplatesApi.md#updatetemplate) | **PATCH** /templates/{template} | Update template
 
 # **copyTemplate**
-> \WalletPassJP\Client\Model\InlineResponse2012 copyTemplate($template, $body)
-
-Copy template
+> \WalletPassJP\Client\Model\ResourceResponse copyTemplate($template, $body)
 
 Create a copy of a specified Template record.
 
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
-$body = new \stdClass; // object | 
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = '';
 
 try {
-    $result = $apiInstance->copyTemplate($template, $body);
+    $result = $apiInstance->copyTemplate($template_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->copyTemplate: ', $e->getMessage(), PHP_EOL;
@@ -52,12 +42,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
- **body** | [**object**](../Model/object.md)|  | [optional]
+ **template** | string | Template ID 
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2012**](../Model/InlineResponse2012.md)
+[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -73,27 +62,18 @@ Name | Type | Description  | Notes
 # **createPass**
 > \WalletPassJP\Client\Model\ResourceResponse createPass($template, $body)
 
-Create pass
-
 Create Pass record for the specified Template.
 
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
-$body = new \WalletPassJP\Client\Model\PassRequest(); // \WalletPassJP\Client\Model\PassRequest | 
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
+$body = new \WalletPassJP\Client\Model\PassRequest(); // \WalletPassJP\Client\Model\PassRequest |
 
 try {
     $result = $apiInstance->createPass($template, $body);
@@ -108,7 +88,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
  **body** | [**\WalletPassJP\Client\Model\PassRequest**](../Model/PassRequest.md)|  | [optional]
 
 ### Return type
@@ -127,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createTemplate**
-> \WalletPassJP\Client\Model\InlineResponse2012 createTemplate($body)
+> \WalletPassJP\Client\Model\ResourceResponse createTemplate($body)
 
 Create template
 
@@ -136,22 +116,15 @@ Create new Template.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest | 
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest |
 
 try {
-    $result = $apiInstance->createTemplate($body);
+    $result = $apiInstance->create($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->createTemplate: ', $e->getMessage(), PHP_EOL;
@@ -167,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2012**](../Model/InlineResponse2012.md)
+[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -190,22 +163,15 @@ Delete Template record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
 
 try {
-    $apiInstance->deleteTemplate($template);
+    $apiInstance->delete($template_id);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
 }
@@ -216,7 +182,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
 
 ### Return type
 
@@ -234,7 +200,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTemplateByID**
-> \WalletPassJP\Client\Model\InlineResponse2012 getTemplateByID($template)
+> \WalletPassJP\Client\Model\ResourceResponse getTemplateByID($template)
 
 Get template
 
@@ -243,22 +209,15 @@ Get Template record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
 
 try {
-    $result = $apiInstance->getTemplateByID($template);
+    $result = $apiInstance->show($template);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->getTemplateByID: ', $e->getMessage(), PHP_EOL;
@@ -270,11 +229,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2012**](../Model/InlineResponse2012.md)
+[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -297,19 +256,12 @@ Get all fields for the specified Template.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
 
 try {
     $result = $apiInstance->getTemplateFields($template);
@@ -324,7 +276,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
 
 ### Return type
 
@@ -351,19 +303,12 @@ Get all Passes for the specified Template.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
@@ -371,7 +316,9 @@ try {
     $result = $apiInstance->listTemplatePasses($template, $limit, $page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TemplatesApi->listTemplatePasses: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TemplatesApi->listTemplatePasses: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -380,7 +327,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
  **limit** | **int**| Records imit | [optional] [default to 15]
  **page** | **int**| Page number | [optional] [default to 1]
 
@@ -409,24 +356,17 @@ Get all Templates records.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
-$tags = array("tags_example"); // string[] | Filter by tags
+$tags = ['tags_example']; // string[] | Filter by tags
 
 try {
-    $result = $apiInstance->listTemplates($limit, $page, $tags);
+    $result = $apiInstance->list($limit, $page, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->listTemplates: ', $e->getMessage(), PHP_EOL;
@@ -440,7 +380,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Records imit | [optional] [default to 15]
  **page** | **int**| Page number | [optional] [default to 1]
- **tags** | [**string[]**](../Model/string.md)| Filter by tags | [optional]
+ **tags** | **string[]** | Filter by tags | [optional]
 
 ### Return type
 
@@ -467,23 +407,16 @@ Update Template record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$template = new \WalletPassJP\Client\Model\Template(); // \WalletPassJP\Client\Model\Template | Template ID
-$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest | 
+$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$template_id = ''; // Template ID
+$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest |
 
 try {
-    $apiInstance->updateTemplate($template, $body);
+    $apiInstance->update($template, $body);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
 }
@@ -494,7 +427,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **template** | [**\WalletPassJP\Client\Model\Template**](../Model/.md)| Template ID |
+ **template** | string | Template ID 
  **body** | [**\WalletPassJP\Client\Model\TemplateRequest**](../Model/TemplateRequest.md)|  | [optional]
 
 ### Return type

@@ -72,7 +72,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $key = 'YOUR_ACCESS_TOKEN';
 
 $apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
-$project = 'project_example'; // string | Project id
+$project_id = 'project_example'; // string | Project id
 
 try {
     $apiInstance->delete($project_id);
@@ -86,7 +86,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project** | **string**| Project |
+ **project** | **string**| Project id |
 
 ### Return type
 
@@ -116,10 +116,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 $key = 'YOUR_ACCESS_TOKEN';
 
 $apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
-$project = 'project_example'; // string | Project id
+$project_id = 'project_example'; // string | Project id
 
 try {
-    $result = $apiInstance->show($project);
+    $result = $apiInstance->show($project_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->getProjectByID: ', $e->getMessage(), PHP_EOL;
@@ -171,7 +171,7 @@ try {
     $result = $apiInstance->list($limit, $page, $tags);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProjectsApi->listProjects: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->list: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Records imit | [optional] [default to 15]
  **page** | **int**| Page number | [optional] [default to 1]
- **tags** | [**string[]**](../Model/string.md)| Filter by tags | [optional]
+ **tags** | **string[]** | Filter by tags | [optional]
 
 ### Return type
 
@@ -214,11 +214,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 $key = 'YOUR_ACCESS_TOKEN';
 
 $apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
-$project = 'project_example'; // string | Project id
+$project_id = 'project_example'; // string | Project id
 $body = new \WalletPassJP\Client\Model\ProjectRequest(); // \WalletPassJP\Client\Model\ProjectRequest |
 
 try {
-    $apiInstance->update($project, $body);
+    $apiInstance->update($project_id, $body);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->updateProject: ', $e->getMessage(), PHP_EOL;
 }

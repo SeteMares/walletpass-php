@@ -17,22 +17,15 @@ Schedule custom notification sending
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\MessagesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \WalletPassJP\Client\Model\Body4(); // \WalletPassJP\Client\Model\Body4 | 
+$apiInstance = new WalletPassJP\Client\Api\MessagesApi($key);
+$body = new \WalletPassJP\Client\Model\Body4(); // \WalletPassJP\Client\Model\Body4 |
 
 try {
-    $result = $apiInstance->createMessage($body);
+    $result = $apiInstance->create($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->createMessage: ', $e->getMessage(), PHP_EOL;
@@ -71,23 +64,16 @@ Get all Message records.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\MessagesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\MessagesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->listMessages($limit, $page);
+    $result = $apiInstance->list($limit, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->listMessages: ', $e->getMessage(), PHP_EOL;

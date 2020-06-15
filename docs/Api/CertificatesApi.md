@@ -22,24 +22,19 @@ Delete a certificate.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$certificate = new \WalletPassJP\Client\Model\Certificate(); // \WalletPassJP\Client\Model\Certificate | Certificate ID
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$certificate_id = '';
 
 try {
-    $apiInstance->deleteCertificate($certificate);
+    $apiInstance->delete($certificate_id);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->deleteCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->deleteCertificate: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -48,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificate** | [**\WalletPassJP\Client\Model\Certificate**](../Model/.md)| Certificate ID |
+ **certificate** | **string**| Certificate ID |
 
 ### Return type
 
@@ -68,20 +63,14 @@ void (empty response body)
 # **getCSR**
 > object getCSR()
 
-Get CSR
-
 Get Certificate Signing Request
 
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi();
 
 try {
     $result = $apiInstance->getCSR();
@@ -120,25 +109,20 @@ Get Certificate record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$certificate = new \WalletPassJP\Client\Model\Certificate(); // \WalletPassJP\Client\Model\Certificate | Certificate ID
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$certificate_id = 'certificate_example'; // Certificate ID
 
 try {
-    $result = $apiInstance->getCertificateByID($certificate);
+    $result = $apiInstance->show($certificate_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->getCertificateByID: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->getCertificateByID: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -147,7 +131,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificate** | [**\WalletPassJP\Client\Model\Certificate**](../Model/.md)| Certificate ID |
+ **certificate** | **string**| Certificate ID |
 
 ### Return type
 
@@ -174,26 +158,21 @@ Get all Certificates records.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->listCertificates($limit, $page);
+    $result = $apiInstance->list($limit, $page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->listCertificates: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->listCertificates: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -230,20 +209,22 @@ Set this certificate as a new default
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
 
 $apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$certificate = new \WalletPassJP\Client\Model\Certificate(); // \WalletPassJP\Client\Model\Certificate | Certificate ID
-$body = new \WalletPassJP\Client\Model\Body2(); // \WalletPassJP\Client\Model\Body2 | 
+$certificate_id = 'certificate_example'; // Certificate ID
+$body = new \WalletPassJP\Client\Model\Body2(); // \WalletPassJP\Client\Model\Body2 |
 
 try {
-    $apiInstance->updateCertificate($certificate, $body);
+    $apiInstance->update($certificate, $body);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->updateCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->updateCertificate: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -252,7 +233,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificate** | [**\WalletPassJP\Client\Model\Certificate**](../Model/.md)| Certificate ID |
+ **certificate** | **string**| Certificate ID |
  **body** | [**\WalletPassJP\Client\Model\Body2**](../Model/Body2.md)|  | [optional]
 
 ### Return type
@@ -280,25 +261,20 @@ Upload apple pass type certificate in .cer format
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$file = "file_example"; // string | 
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$file = 'file_example'; // string |
 
 try {
-    $result = $apiInstance->uploadCertificate($file);
+    $result = $apiInstance->upload($file);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->uploadCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->uploadCertificate: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```
@@ -334,25 +310,20 @@ When adding a certificate, you must paste the contents of your p12 certificate i
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \WalletPassJP\Client\Model\CertificateRequest(); // \WalletPassJP\Client\Model\CertificateRequest | 
+$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$body = new \WalletPassJP\Client\Model\CertificateRequest(); // \WalletPassJP\Client\Model\CertificateRequest |
 
 try {
     $result = $apiInstance->uploadP12Certificate($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CertificatesApi->uploadP12Certificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CertificatesApi->uploadP12Certificate: ',
+        $e->getMessage(),
+        PHP_EOL;
 }
 ?>
 ```

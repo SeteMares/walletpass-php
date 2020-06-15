@@ -18,22 +18,15 @@ Delete Tag record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$tag = "tag_example"; // string | Tag name
+$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
+$tag = 'tag_example'; // string | Tag name
 
 try {
-    $apiInstance->deleteTag($tag);
+    $apiInstance->delete($tag);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->deleteTag: ', $e->getMessage(), PHP_EOL;
 }
@@ -71,19 +64,12 @@ Get everything associated with this tag
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$tag = "tag_example"; // string | Tag name
+$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
+$tag = 'tag_example'; // string | Tag name
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
@@ -129,21 +115,14 @@ Get all tags.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
 
 try {
-    $result = $apiInstance->listTags();
+    $result = $apiInstance->list();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->listTags: ', $e->getMessage(), PHP_EOL;

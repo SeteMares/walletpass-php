@@ -20,22 +20,15 @@ Delete an asset.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$asset = new \WalletPassJP\Client\Model\Asset(); // \WalletPassJP\Client\Model\Asset | Asset ID
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$asset_id = 'asset_example'; // Asset ID
 
 try {
-    $apiInstance->deleteAsset($asset);
+    $apiInstance->delete($asset_id);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->deleteAsset: ', $e->getMessage(), PHP_EOL;
 }
@@ -46,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | [**\WalletPassJP\Client\Model\Asset**](../Model/.md)| Asset ID |
+ **asset** | **string** | Asset ID |
 
 ### Return type
 
@@ -73,22 +66,15 @@ Get Asset record.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$asset = new \WalletPassJP\Client\Model\Asset(); // \WalletPassJP\Client\Model\Asset | Asset ID
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$asset_id = 'asset_example'; // Asset ID
 
 try {
-    $result = $apiInstance->getAssetByID($asset);
+    $result = $apiInstance->show($asset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->getAssetByID: ', $e->getMessage(), PHP_EOL;
@@ -100,7 +86,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | [**\WalletPassJP\Client\Model\Asset**](../Model/.md)| Asset ID |
+ **asset** | **string** | Asset ID |
 
 ### Return type
 
@@ -127,24 +113,17 @@ Get all Assets records.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
-$tags = array("tags_example"); // string[] | Filter by tags
+$tags = ['tags_example']; // string[] | Filter by tags
 
 try {
-    $result = $apiInstance->listAssets($limit, $page, $tags);
+    $result = $apiInstance->list($limit, $page, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->listAssets: ', $e->getMessage(), PHP_EOL;
@@ -158,7 +137,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Records imit | [optional] [default to 15]
  **page** | **int**| Page number | [optional] [default to 1]
- **tags** | [**string[]**](../Model/string.md)| Filter by tags | [optional]
+ **tags** | **string[]** | Filter by tags | [optional]
 
 ### Return type
 
@@ -185,23 +164,16 @@ Use to attach tags to an Asset.
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$asset = new \WalletPassJP\Client\Model\Asset(); // \WalletPassJP\Client\Model\Asset | Asset ID
-$body = new \WalletPassJP\Client\Model\Body1(); // \WalletPassJP\Client\Model\Body1 | 
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$asset_id = 'asset_example'; // Asset ID
+$body = new \WalletPassJP\Client\Model\Body1(); // \WalletPassJP\Client\Model\Body1 |
 
 try {
-    $apiInstance->updateAsset($asset, $body);
+    $apiInstance->update($asset, $body);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->updateAsset: ', $e->getMessage(), PHP_EOL;
 }
@@ -212,7 +184,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | [**\WalletPassJP\Client\Model\Asset**](../Model/.md)| Asset ID |
+ **asset** | **string** | Asset ID |
  **body** | [**\WalletPassJP\Client\Model\Body1**](../Model/Body1.md)|  | [optional]
 
 ### Return type
@@ -240,25 +212,18 @@ Upload an asset
 ### Example
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
-    // Configure HTTP bearer authorization: Bearer
-    $config = WalletPassJP\Client\Configuration::getDefaultConfiguration()
-    ->setAccessToken('YOUR_ACCESS_TOKEN');
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
 
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$file = "file_example"; // string | 
-$type = "type_example"; // string | 
-$name = "name_example"; // string | 
-$tags = array("tags_example"); // string[] | 
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$file = 'file_example'; // string |
+$type = 'type_example'; // string |
+$name = 'name_example'; // string |
+$tags = ['tags_example']; // string[] |
 
 try {
-    $result = $apiInstance->uploadAsset($file, $type, $name, $tags);
+    $result = $apiInstance->upload($file, $type, $name, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->uploadAsset: ', $e->getMessage(), PHP_EOL;
@@ -270,10 +235,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **string****string**|  | [optional]
+ **file** | **string**|  | [optional]
  **type** | **string**|  | [optional]
  **name** | **string**|  | [optional]
- **tags** | [**string[]**](../Model/string.md)|  | [optional]
+ **tags** | **string[]**|  | [optional]
 
 ### Return type
 
