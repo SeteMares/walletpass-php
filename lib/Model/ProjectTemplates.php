@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignTemplates
+ * ProjectTemplates
  *
  * PHP version 7
  *
@@ -25,14 +25,14 @@ use \ArrayAccess;
 use \WalletPassJP\Client\ObjectSerializer;
 
 /**
- * CampaignTemplates Class Doc Comment
+ * ProjectTemplates Class Doc Comment
  *
  * @category Class
  * @description Template ID that will be switched to after pass redemption.
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class CampaignTemplates implements ModelInterface, ArrayAccess
+class ProjectTemplates implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -41,7 +41,7 @@ class CampaignTemplates implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Campaign_templates';
+    protected static $swaggerModelName = 'Project_templates';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

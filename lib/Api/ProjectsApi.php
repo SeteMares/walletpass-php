@@ -9,46 +9,46 @@ use WalletPassJP\Client\ObjectSerializer;
 use WalletPassJP\Client\Api\Api as BaseAPI;
 
 /**
- * Campaigns Api
+ * Projects Api
  *
  * @category Class
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class CampaignsApi extends BaseAPI
+class ProjectsApi extends BaseAPI
 {
     /**
-     * Operation createCampaign
+     * Operation createProject
      *
-     * Create new Campaign
+     * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body body (optional)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body body (optional)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse2014
+     * @return \WalletPassJP\Client\Model\ResourceResponse
      */
     public function create($body = null)
     {
-        list($response) = $this->createCampaignWithHttpInfo($body);
+        list($response) = $this->createProjectWithHttpInfo($body);
         return $response;
     }
 
     /**
-     * Operation createCampaignWithHttpInfo
+     * Operation createProjectWithHttpInfo
      *
-     * Create new Campaign
+     * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse2014, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCampaignWithHttpInfo($body = null)
+    public function createProjectWithHttpInfo($body = null)
     {
         $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
-        $request = $this->createCampaignRequest($body);
+        $request = $this->createProjectRequest($body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -94,7 +94,7 @@ class CampaignsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Campaign'
+                    '\WalletPassJP\Client\Model\Project'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -106,7 +106,7 @@ class CampaignsApi extends BaseAPI
                         $e->getResponseBody(),
                         '\WalletPassJP\Client\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Campaign'
+                        '\WalletPassJP\Client\Model\Project'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -148,36 +148,36 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation createCampaignAsync
+     * Operation createProjectAsync
      *
-     * Create new Campaign
+     * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCampaignAsync($body = null)
+    public function createProjectAsync($body = null)
     {
-        return $this->createCampaignAsyncWithHttpInfo($body)->then(function ($response) {
+        return $this->createProjectAsyncWithHttpInfo($body)->then(function ($response) {
             return $response[0];
         });
     }
 
     /**
-     * Operation createCampaignAsyncWithHttpInfo
+     * Operation createProjectAsyncWithHttpInfo
      *
-     * Create new Campaign
+     * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCampaignAsyncWithHttpInfo($body = null)
+    public function createProjectAsyncWithHttpInfo($body = null)
     {
         $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
-        $request = $this->createCampaignRequest($body);
+        $request = $this->createProjectRequest($body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -196,7 +196,7 @@ class CampaignsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Campaign'
+                        '\WalletPassJP\Client\Model\Project'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -220,16 +220,16 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Create request for operation 'createCampaign'
+     * Create request for operation 'createProject'
      *
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createCampaignRequest($body = null)
+    protected function createProjectRequest($body = null)
     {
-        $resourcePath = '/campaigns';
+        $resourcePath = '/projects';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -303,36 +303,36 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation deleteCampaign
+     * Operation deleteProject
      *
-     * Delete Campaign
+     * Delete Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function delete($campaign)
+    public function delete($project)
     {
-        $this->deleteCampaignWithHttpInfo($campaign);
+        $this->deleteProjectWithHttpInfo($project);
     }
 
     /**
-     * Operation deleteCampaignWithHttpInfo
+     * Operation deleteProjectWithHttpInfo
      *
-     * Delete Campaign
+     * Delete Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCampaignWithHttpInfo($campaign)
+    public function deleteProjectWithHttpInfo($project)
     {
         $returnType = '';
-        $request = $this->deleteCampaignRequest($campaign);
+        $request = $this->deleteProjectRequest($project);
 
         try {
             $options = $this->createHttpClientOption();
@@ -408,36 +408,36 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation deleteCampaignAsync
+     * Operation deleteProjectAsync
      *
-     * Delete Campaign
+     * Delete Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCampaignAsync($campaign)
+    public function deleteProjectAsync($project)
     {
-        return $this->deleteCampaignAsyncWithHttpInfo($campaign)->then(function ($response) {
+        return $this->deleteProjectAsyncWithHttpInfo($project)->then(function ($response) {
             return $response[0];
         });
     }
 
     /**
-     * Operation deleteCampaignAsyncWithHttpInfo
+     * Operation deleteProjectAsyncWithHttpInfo
      *
-     * Delete Campaign
+     * Delete Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCampaignAsyncWithHttpInfo($campaign)
+    public function deleteProjectAsyncWithHttpInfo($project)
     {
         $returnType = '';
-        $request = $this->deleteCampaignRequest($campaign);
+        $request = $this->deleteProjectRequest($project);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -461,23 +461,23 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Create request for operation 'deleteCampaign'
+     * Create request for operation 'deleteProject'
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteCampaignRequest($campaign)
+    protected function deleteProjectRequest($project)
     {
-        // verify the required parameter 'campaign' is set
-        if ($campaign === null || (is_array($campaign) && count($campaign) === 0)) {
+        // verify the required parameter 'project' is set
+        if ($project === null || (is_array($project) && count($project) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign when calling deleteCampaign'
+                'Missing the required parameter $project when calling deleteProject'
             );
         }
 
-        $resourcePath = '/campaigns/{campaign}';
+        $resourcePath = '/projects/{project}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -485,8 +485,8 @@ class CampaignsApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($campaign !== null) {
-            $resourcePath = str_replace('{campaign}', $campaign, $resourcePath);
+        if ($project !== null) {
+            $resourcePath = str_replace('{project}', $project, $resourcePath);
         }
 
         // body params
@@ -546,37 +546,37 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation getCampaignByID
+     * Operation getProjectByID
      *
-     * Get Campaign
+     * Get Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse2014
+     * @return \WalletPassJP\Client\Model\ResourceResponse
      */
-    public function show($campaign)
+    public function show($project)
     {
-        list($response) = $this->getCampaignByIDWithHttpInfo($campaign);
+        list($response) = $this->getProjectByIDWithHttpInfo($project);
         return $response;
     }
 
     /**
-     * Operation getCampaignByIDWithHttpInfo
+     * Operation getProjectByIDWithHttpInfo
      *
-     * Get Campaign
+     * Get Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse2014, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCampaignByIDWithHttpInfo($campaign)
+    public function getProjectByIDWithHttpInfo($project)
     {
         $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
-        $request = $this->getCampaignByIDRequest($campaign);
+        $request = $this->getProjectByIDRequest($project);
 
         try {
             $options = $this->createHttpClientOption();
@@ -626,7 +626,7 @@ class CampaignsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Campaign'
+                    '\WalletPassJP\Client\Model\Project'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -638,7 +638,7 @@ class CampaignsApi extends BaseAPI
                         $e->getResponseBody(),
                         '\WalletPassJP\Client\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Campaign'
+                        '\WalletPassJP\Client\Model\Project'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -680,36 +680,36 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation getCampaignByIDAsync
+     * Operation getProjectByIDAsync
      *
-     * Get Campaign
+     * Get Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignByIDAsync($campaign)
+    public function getProjectByIDAsync($project)
     {
-        return $this->getCampaignByIDAsyncWithHttpInfo($campaign)->then(function ($response) {
+        return $this->getProjectByIDAsyncWithHttpInfo($project)->then(function ($response) {
             return $response[0];
         });
     }
 
     /**
-     * Operation getCampaignByIDAsyncWithHttpInfo
+     * Operation getProjectByIDAsyncWithHttpInfo
      *
-     * Get Campaign
+     * Get Project
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignByIDAsyncWithHttpInfo($campaign)
+    public function getProjectByIDAsyncWithHttpInfo($project)
     {
         $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
-        $request = $this->getCampaignByIDRequest($campaign);
+        $request = $this->getProjectByIDRequest($project);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -728,7 +728,7 @@ class CampaignsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Campaign'
+                        '\WalletPassJP\Client\Model\Project'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -752,23 +752,23 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Create request for operation 'getCampaignByID'
+     * Create request for operation 'getProjectByID'
      *
-     * @param  string $campaign Campaign (required)
+     * @param  string $project Project (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCampaignByIDRequest($campaign)
+    protected function getProjectByIDRequest($project)
     {
-        // verify the required parameter 'campaign' is set
-        if ($campaign === null || (is_array($campaign) && count($campaign) === 0)) {
+        // verify the required parameter 'project' is set
+        if ($project === null || (is_array($project) && count($project) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign when calling getCampaignByID'
+                'Missing the required parameter $project when calling getProjectByID'
             );
         }
 
-        $resourcePath = '/campaigns/{campaign}';
+        $resourcePath = '/projects/{project}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -776,8 +776,8 @@ class CampaignsApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($campaign !== null) {
-            $resourcePath = str_replace('{campaign}', $campaign, $resourcePath);
+        if ($project !== null) {
+            $resourcePath = str_replace('{project}', $project, $resourcePath);
         }
 
         // body params
@@ -841,9 +841,9 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation listCampaigns
+     * Operation listProjects
      *
-     * Get a list of created Campaigns
+     * Get a list of created Projects
      *
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
@@ -855,14 +855,14 @@ class CampaignsApi extends BaseAPI
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
-        list($response) = $this->listCampaignsWithHttpInfo($limit, $page, $tags);
+        list($response) = $this->listProjectsWithHttpInfo($limit, $page, $tags);
         return $response;
     }
 
     /**
-     * Operation listCampaignsWithHttpInfo
+     * Operation listProjectsWithHttpInfo
      *
-     * Get a list of created Campaigns
+     * Get a list of created Projects
      *
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
@@ -872,10 +872,10 @@ class CampaignsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCampaignsWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    public function listProjectsWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
-        $request = $this->listCampaignsRequest($limit, $page, $tags);
+        $request = $this->listProjectsRequest($limit, $page, $tags);
 
         try {
             $options = $this->createHttpClientOption();
@@ -925,7 +925,7 @@ class CampaignsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Campaign[]'
+                    '\WalletPassJP\Client\Model\Project[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -937,7 +937,7 @@ class CampaignsApi extends BaseAPI
                         $e->getResponseBody(),
                         '\WalletPassJP\Client\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Campaign[]'
+                        '\WalletPassJP\Client\Model\Project[]'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -979,9 +979,9 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation listCampaignsAsync
+     * Operation listProjectsAsync
      *
-     * Get a list of created Campaigns
+     * Get a list of created Projects
      *
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
@@ -990,9 +990,9 @@ class CampaignsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCampaignsAsync($limit = '15', $page = '1', $tags = null)
+    public function listProjectsAsync($limit = '15', $page = '1', $tags = null)
     {
-        return $this->listCampaignsAsyncWithHttpInfo($limit, $page, $tags)->then(function (
+        return $this->listProjectsAsyncWithHttpInfo($limit, $page, $tags)->then(function (
             $response
         ) {
             return $response[0];
@@ -1000,9 +1000,9 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation listCampaignsAsyncWithHttpInfo
+     * Operation listProjectsAsyncWithHttpInfo
      *
-     * Get a list of created Campaigns
+     * Get a list of created Projects
      *
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
@@ -1011,10 +1011,10 @@ class CampaignsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCampaignsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    public function listProjectsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
-        $request = $this->listCampaignsRequest($limit, $page, $tags);
+        $request = $this->listProjectsRequest($limit, $page, $tags);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -1033,7 +1033,7 @@ class CampaignsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Campaign[]'
+                        '\WalletPassJP\Client\Model\Project[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1057,7 +1057,7 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Create request for operation 'listCampaigns'
+     * Create request for operation 'listProjects'
      *
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
@@ -1066,9 +1066,9 @@ class CampaignsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCampaignsRequest($limit = '15', $page = '1', $tags = null)
+    protected function listProjectsRequest($limit = '15', $page = '1', $tags = null)
     {
-        $resourcePath = '/campaigns';
+        $resourcePath = '/projects';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1152,38 +1152,38 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation updateCampaign
+     * Operation updateProject
      *
-     * Update Campaign
+     * Update Project
      *
-     * @param  string $campaign Campaign (required)
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body body (optional)
+     * @param  string $project Project (required)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body body (optional)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function update($campaign, $body = null)
+    public function update($project, $body = null)
     {
-        $this->updateCampaignWithHttpInfo($campaign, $body);
+        $this->updateProjectWithHttpInfo($project, $body);
     }
 
     /**
-     * Operation updateCampaignWithHttpInfo
+     * Operation updateProjectWithHttpInfo
      *
-     * Update Campaign
+     * Update Project
      *
-     * @param  string $campaign Campaign (required)
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  string $project Project (required)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCampaignWithHttpInfo($campaign, $body = null)
+    public function updateProjectWithHttpInfo($project, $body = null)
     {
         $returnType = '';
-        $request = $this->updateCampaignRequest($campaign, $body);
+        $request = $this->updateProjectRequest($project, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1259,19 +1259,19 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation updateCampaignAsync
+     * Operation updateProjectAsync
      *
-     * Update Campaign
+     * Update Project
      *
-     * @param  string $campaign Campaign (required)
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  string $project Project (required)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCampaignAsync($campaign, $body = null)
+    public function updateProjectAsync($project, $body = null)
     {
-        return $this->updateCampaignAsyncWithHttpInfo($campaign, $body)->then(function (
+        return $this->updateProjectAsyncWithHttpInfo($project, $body)->then(function (
             $response
         ) {
             return $response[0];
@@ -1279,20 +1279,20 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Operation updateCampaignAsyncWithHttpInfo
+     * Operation updateProjectAsyncWithHttpInfo
      *
-     * Update Campaign
+     * Update Project
      *
-     * @param  string $campaign Campaign (required)
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  string $project Project (required)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCampaignAsyncWithHttpInfo($campaign, $body = null)
+    public function updateProjectAsyncWithHttpInfo($project, $body = null)
     {
         $returnType = '';
-        $request = $this->updateCampaignRequest($campaign, $body);
+        $request = $this->updateProjectRequest($project, $body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -1316,24 +1316,24 @@ class CampaignsApi extends BaseAPI
     }
 
     /**
-     * Create request for operation 'updateCampaign'
+     * Create request for operation 'updateProject'
      *
-     * @param  string $campaign Campaign (required)
-     * @param  \WalletPassJP\Client\Model\CampaignRequest $body (optional)
+     * @param  string $project Project (required)
+     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCampaignRequest($campaign, $body = null)
+    protected function updateProjectRequest($project, $body = null)
     {
-        // verify the required parameter 'campaign' is set
-        if ($campaign === null || (is_array($campaign) && count($campaign) === 0)) {
+        // verify the required parameter 'project' is set
+        if ($project === null || (is_array($project) && count($project) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign when calling updateCampaign'
+                'Missing the required parameter $project when calling updateProject'
             );
         }
 
-        $resourcePath = '/campaigns/{campaign}';
+        $resourcePath = '/projects/{project}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1341,8 +1341,8 @@ class CampaignsApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($campaign !== null) {
-            $resourcePath = str_replace('{campaign}', $campaign, $resourcePath);
+        if ($project !== null) {
+            $resourcePath = str_replace('{project}', $project, $resourcePath);
         }
 
         // body params

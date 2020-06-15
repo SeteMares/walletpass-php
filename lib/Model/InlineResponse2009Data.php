@@ -49,7 +49,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'assets' => '\WalletPassJP\Client\Model\Asset[]',
-'campaigns' => '\WalletPassJP\Client\Model\Campaign[]',
+'projects' => '\WalletPassJP\Client\Model\Project[]',
 'templates' => '\WalletPassJP\Client\Model\Template[]'    ];
 
     /**
@@ -59,7 +59,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'assets' => null,
-'campaigns' => null,
+'projects' => null,
 'templates' => null    ];
 
     /**
@@ -90,7 +90,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'assets' => 'assets',
-'campaigns' => 'campaigns',
+'projects' => 'projects',
 'templates' => 'templates'    ];
 
     /**
@@ -100,7 +100,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'assets' => 'setAssets',
-'campaigns' => 'setCampaigns',
+'projects' => 'setProjects',
 'templates' => 'setTemplates'    ];
 
     /**
@@ -110,7 +110,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'assets' => 'getAssets',
-'campaigns' => 'getCampaigns',
+'projects' => 'getProjects',
 'templates' => 'getTemplates'    ];
 
     /**
@@ -172,7 +172,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
-        $this->container['campaigns'] = isset($data['campaigns']) ? $data['campaigns'] : null;
+        $this->container['projects'] = isset($data['projects']) ? $data['projects'] : null;
         $this->container['templates'] = isset($data['templates']) ? $data['templates'] : null;
     }
 
@@ -225,25 +225,25 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets campaigns
+     * Gets projects
      *
-     * @return \WalletPassJP\Client\Model\Campaign[]
+     * @return \WalletPassJP\Client\Model\Project[]
      */
-    public function getCampaigns()
+    public function getProjects()
     {
-        return $this->container['campaigns'];
+        return $this->container['projects'];
     }
 
     /**
-     * Sets campaigns
+     * Sets projects
      *
-     * @param \WalletPassJP\Client\Model\Campaign[] $campaigns campaigns
+     * @param \WalletPassJP\Client\Model\Project[] $projects projects
      *
      * @return $this
      */
-    public function setCampaigns($campaigns)
+    public function setProjects($projects)
     {
-        $this->container['campaigns'] = $campaigns;
+        $this->container['projects'] = $projects;
 
         return $this;
     }

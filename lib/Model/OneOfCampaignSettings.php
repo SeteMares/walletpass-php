@@ -1,6 +1,6 @@
 <?php
 /**
- * OneOfCampaignSettings
+ * OneOfProjectSettings
  *
  * PHP version 7
  *
@@ -25,13 +25,13 @@ use \ArrayAccess;
 use \WalletPassJP\Client\ObjectSerializer;
 
 /**
- * OneOfCampaignSettings Class Doc Comment
+ * OneOfProjectSettings Class Doc Comment
  *
  * @category Class
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class OneOfCampaignSettings implements ModelInterface, ArrayAccess
+class OneOfProjectSettings implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -40,7 +40,7 @@ class OneOfCampaignSettings implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'OneOfCampaignSettings';
+    protected static $swaggerModelName = 'OneOfProjectSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

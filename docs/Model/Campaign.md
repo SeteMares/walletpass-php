@@ -1,4 +1,4 @@
-# Campaign
+# Project
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] 
 **external_id** | **string** |  | [optional] 
 **type** | **string** |  | [optional] 
-**title** | **string** | Used to identify this Campaign. Not shown to the customer. | [optional] 
-**settings** | [**OneOfCampaignSettings**](OneOfCampaignSettings.md) |  | [optional] 
-**is_enabled** | **bool** | Is it allowed to issue new passes for this Campaign. | [optional] 
-**templates** | [**\WalletPassJP\Client\Model\CampaignTemplates**](CampaignTemplates.md) |  | [optional] 
+**title** | **string** | Used to identify this Project. Not shown to the customer. | [optional] 
+**settings** | [**OneOfProjectSettings**](OneOfProjectSettings.md) |  | [optional] 
+**is_enabled** | **bool** | Is it allowed to issue new passes for this Project. | [optional] 
+**templates** | [**\WalletPassJP\Client\Model\ProjectTemplates**](ProjectTemplates.md) |  | [optional] 
 **created_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **updated_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **tags** | **string[]** | List of attached tags | [optional] 

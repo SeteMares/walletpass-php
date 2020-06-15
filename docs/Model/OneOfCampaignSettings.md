@@ -1,4 +1,4 @@
-# OneOfCampaignSettings
+# OneOfProjectSettings
 
 ## Properties
 Name | Type | Description | Notes

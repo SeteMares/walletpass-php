@@ -125,11 +125,11 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**listAssets**](docs/Api/AssetsApi.md#listassets) | **GET** /assets | Get all assets
 *AssetsApi* | [**updateAsset**](docs/Api/AssetsApi.md#updateasset) | **PATCH** /assets/{asset} | Update Asset
 *AssetsApi* | [**uploadAsset**](docs/Api/AssetsApi.md#uploadasset) | **POST** /assets | Upload an asset
-*CampaignsApi* | [**createCampaign**](docs/Api/CampaignsApi.md#createcampaign) | **POST** /campaigns | Create new Campaign
-*CampaignsApi* | [**deleteCampaign**](docs/Api/CampaignsApi.md#deletecampaign) | **DELETE** /campaigns/{campaign} | Delete Campaign
-*CampaignsApi* | [**getCampaignByID**](docs/Api/CampaignsApi.md#getcampaignbyid) | **GET** /campaigns/{campaign} | Get Campaign
-*CampaignsApi* | [**listCampaigns**](docs/Api/CampaignsApi.md#listcampaigns) | **GET** /campaigns | Get a list of created Campaigns
-*CampaignsApi* | [**updateCampaign**](docs/Api/CampaignsApi.md#updatecampaign) | **PATCH** /campaigns/{campaign} | Update Campaign
+*ProjectsApi* | [**createProject**](docs/Api/ProjectsApi.md#createproject) | **POST** /projects | Create new Project
+*ProjectsApi* | [**deleteProject**](docs/Api/ProjectsApi.md#deleteproject) | **DELETE** /projects/{project} | Delete Project
+*ProjectsApi* | [**getProjectByID**](docs/Api/ProjectsApi.md#getprojectbyid) | **GET** /projects/{project} | Get Project
+*ProjectsApi* | [**listProjects**](docs/Api/ProjectsApi.md#listprojects) | **GET** /projects | Get a list of created Projects
+*ProjectsApi* | [**updateProject**](docs/Api/ProjectsApi.md#updateproject) | **PATCH** /projects/{project} | Update Project
 *CertificatesApi* | [**deleteCertificate**](docs/Api/CertificatesApi.md#deletecertificate) | **DELETE** /certificates/{certificate} | Delete certificate
 *CertificatesApi* | [**getCSR**](docs/Api/CertificatesApi.md#getcsr) | **GET** /certificates/csr | Get CSR
 *CertificatesApi* | [**getCertificateByID**](docs/Api/CertificatesApi.md#getcertificatebyid) | **GET** /certificates/{certificate} | Get certificate by ID
@@ -166,9 +166,9 @@ Class | Method | HTTP request | Description
  - [Asset](docs/Model/Asset.md)
  - [BarcodeSettings](docs/Model/BarcodeSettings.md)
  - [Beacon](docs/Model/Beacon.md)
- - [Campaign](docs/Model/Campaign.md)
- - [CampaignRequest](docs/Model/CampaignRequest.md)
- - [CampaignTemplates](docs/Model/CampaignTemplates.md)
+ - [Project](docs/Model/Project.md)
+ - [ProjectRequest](docs/Model/ProjectRequest.md)
+ - [ProjectTemplates](docs/Model/ProjectTemplates.md)
  - [Certificate](docs/Model/Certificate.md)
  - [CertificateRequest](docs/Model/CertificateRequest.md)
  - [Colors](docs/Model/Colors.md)
@@ -178,8 +178,8 @@ Class | Method | HTTP request | Description
  - [Message](docs/Model/Message.md)
  - [MessagesLocalizedBody](docs/Model/MessagesLocalizedBody.md)
  - [MessagesLocalizedHeader](docs/Model/MessagesLocalizedHeader.md)
- - [OneOfCampaignRequestSettings](docs/Model/OneOfCampaignRequestSettings.md)
- - [OneOfCampaignSettings](docs/Model/OneOfCampaignSettings.md)
+ - [OneOfProjectRequestSettings](docs/Model/OneOfProjectRequestSettings.md)
+ - [OneOfProjectSettings](docs/Model/OneOfProjectSettings.md)
  - [PaginationMeta](docs/Model/PaginationMeta.md)
  - [Pass](docs/Model/Pass.md)
  - [PassField](docs/Model/PassField.md)

@@ -1,4 +1,4 @@
-# CampaignTemplates
+# ProjectTemplates
 
 ## Properties
 Name | Type | Description | Notes

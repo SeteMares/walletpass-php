@@ -1,6 +1,6 @@
 <?php
 /**
- * Campaign
+ * ProjectRequest
  *
  * PHP version 7
  *
@@ -25,13 +25,13 @@ use \ArrayAccess;
 use \WalletPassJP\Client\ObjectSerializer;
 
 /**
- * Campaign Class Doc Comment
+ * ProjectRequest Class Doc Comment
  *
  * @category Class
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class Campaign implements ModelInterface, ArrayAccess
+class ProjectRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -40,7 +40,7 @@ class Campaign implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Campaign';
+    protected static $swaggerModelName = 'ProjectRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -48,15 +48,21 @@ class Campaign implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
+        'type' => 'string',
 'external_id' => 'string',
-'type' => 'string',
+'template_id' => 'string',
+'redeemed_template_id' => 'string',
 'title' => 'string',
-'settings' => 'OneOfCampaignSettings',
 'is_enabled' => 'bool',
-'templates' => '\WalletPassJP\Client\Model\CampaignTemplates',
-'created_at' => '\DateTime',
-'updated_at' => '\DateTime',
+'background_color' => 'string',
+'text_color' => 'string',
+'label_color' => 'string',
+'settings' => 'OneOfProjectRequestSettings',
+'images' => 'string[]',
+'organization_name' => 'string',
+'links' => '\WalletPassJP\Client\Model\Link[]',
+'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
+'locations' => '\WalletPassJP\Client\Model\Location[]',
 'tags' => 'string[]'    ];
 
     /**
@@ -65,15 +71,21 @@ class Campaign implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'uuid',
+        'type' => null,
 'external_id' => null,
-'type' => null,
+'template_id' => 'uuid',
+'redeemed_template_id' => 'uuid',
 'title' => null,
-'settings' => null,
 'is_enabled' => null,
-'templates' => null,
-'created_at' => 'date-time',
-'updated_at' => 'date-time',
+'background_color' => null,
+'text_color' => null,
+'label_color' => null,
+'settings' => null,
+'images' => null,
+'organization_name' => null,
+'links' => null,
+'beacons' => null,
+'locations' => null,
 'tags' => null    ];
 
     /**
@@ -103,15 +115,21 @@ class Campaign implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'type' => 'type',
 'external_id' => 'external_id',
-'type' => 'type',
+'template_id' => 'template_id',
+'redeemed_template_id' => 'redeemed_template_id',
 'title' => 'title',
-'settings' => 'settings',
 'is_enabled' => 'is_enabled',
-'templates' => 'templates',
-'created_at' => 'created_at',
-'updated_at' => 'updated_at',
+'background_color' => 'background_color',
+'text_color' => 'text_color',
+'label_color' => 'label_color',
+'settings' => 'settings',
+'images' => 'images',
+'organization_name' => 'organization_name',
+'links' => 'links',
+'beacons' => 'beacons',
+'locations' => 'locations',
 'tags' => 'tags'    ];
 
     /**
@@ -120,15 +138,21 @@ class Campaign implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'type' => 'setType',
 'external_id' => 'setExternalId',
-'type' => 'setType',
+'template_id' => 'setTemplateId',
+'redeemed_template_id' => 'setRedeemedTemplateId',
 'title' => 'setTitle',
-'settings' => 'setSettings',
 'is_enabled' => 'setIsEnabled',
-'templates' => 'setTemplates',
-'created_at' => 'setCreatedAt',
-'updated_at' => 'setUpdatedAt',
+'background_color' => 'setBackgroundColor',
+'text_color' => 'setTextColor',
+'label_color' => 'setLabelColor',
+'settings' => 'setSettings',
+'images' => 'setImages',
+'organization_name' => 'setOrganizationName',
+'links' => 'setLinks',
+'beacons' => 'setBeacons',
+'locations' => 'setLocations',
 'tags' => 'setTags'    ];
 
     /**
@@ -137,15 +161,21 @@ class Campaign implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'type' => 'getType',
 'external_id' => 'getExternalId',
-'type' => 'getType',
+'template_id' => 'getTemplateId',
+'redeemed_template_id' => 'getRedeemedTemplateId',
 'title' => 'getTitle',
-'settings' => 'getSettings',
 'is_enabled' => 'getIsEnabled',
-'templates' => 'getTemplates',
-'created_at' => 'getCreatedAt',
-'updated_at' => 'getUpdatedAt',
+'background_color' => 'getBackgroundColor',
+'text_color' => 'getTextColor',
+'label_color' => 'getLabelColor',
+'settings' => 'getSettings',
+'images' => 'getImages',
+'organization_name' => 'getOrganizationName',
+'links' => 'getLinks',
+'beacons' => 'getBeacons',
+'locations' => 'getLocations',
 'tags' => 'getTags'    ];
 
     /**
@@ -225,15 +255,21 @@ self::TYPE_MEMBERSHIP,        ];
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
+        $this->container['redeemed_template_id'] = isset($data['redeemed_template_id']) ? $data['redeemed_template_id'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['is_enabled'] = isset($data['is_enabled']) ? $data['is_enabled'] : false;
+        $this->container['background_color'] = isset($data['background_color']) ? $data['background_color'] : null;
+        $this->container['text_color'] = isset($data['text_color']) ? $data['text_color'] : null;
+        $this->container['label_color'] = isset($data['label_color']) ? $data['label_color'] : null;
         $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
-        $this->container['is_enabled'] = isset($data['is_enabled']) ? $data['is_enabled'] : null;
-        $this->container['templates'] = isset($data['templates']) ? $data['templates'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['images'] = isset($data['images']) ? $data['images'] : null;
+        $this->container['organization_name'] = isset($data['organization_name']) ? $data['organization_name'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
+        $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
+        $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
@@ -254,6 +290,15 @@ self::TYPE_MEMBERSHIP,        ];
             );
         }
 
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['images'] === null) {
+            $invalidProperties[] = "'images' can't be null";
+        }
+        if ($this->container['organization_name'] === null) {
+            $invalidProperties[] = "'organization_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -268,54 +313,6 @@ self::TYPE_MEMBERSHIP,        ];
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_id
-     *
-     * @return string
-     */
-    public function getExternalId()
-    {
-        return $this->container['external_id'];
-    }
-
-    /**
-     * Sets external_id
-     *
-     * @param string $external_id external_id
-     *
-     * @return $this
-     */
-    public function setExternalId($external_id)
-    {
-        $this->container['external_id'] = $external_id;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -351,6 +348,78 @@ self::TYPE_MEMBERSHIP,        ];
     }
 
     /**
+     * Gets external_id
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string $external_id The custom/external ID you want to use. Cannot be changed after creation.
+     *
+     * @return $this
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     *
+     * @return string
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param string $template_id Optional. Provide Template ID to specify Project design and distribution settings.
+     *
+     * @return $this
+     */
+    public function setTemplateId($template_id)
+    {
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets redeemed_template_id
+     *
+     * @return string
+     */
+    public function getRedeemedTemplateId()
+    {
+        return $this->container['redeemed_template_id'];
+    }
+
+    /**
+     * Sets redeemed_template_id
+     *
+     * @param string $redeemed_template_id Optional. Template ID that will be switched to after pass redemption.
+     *
+     * @return $this
+     */
+    public function setRedeemedTemplateId($redeemed_template_id)
+    {
+        $this->container['redeemed_template_id'] = $redeemed_template_id;
+
+        return $this;
+    }
+
+    /**
      * Gets title
      *
      * @return string
@@ -363,37 +432,13 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Sets title
      *
-     * @param string $title Used to identify this Campaign. Not shown to the customer.
+     * @param string $title Used to identify this Project. Not shown to the customer.
      *
      * @return $this
      */
     public function setTitle($title)
     {
         $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets settings
-     *
-     * @return OneOfCampaignSettings
-     */
-    public function getSettings()
-    {
-        return $this->container['settings'];
-    }
-
-    /**
-     * Sets settings
-     *
-     * @param OneOfCampaignSettings $settings settings
-     *
-     * @return $this
-     */
-    public function setSettings($settings)
-    {
-        $this->container['settings'] = $settings;
 
         return $this;
     }
@@ -411,7 +456,7 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Sets is_enabled
      *
-     * @param bool $is_enabled Is it allowed to issue new passes for this Campaign.
+     * @param bool $is_enabled Is it allowed to issue new passes for this Project.
      *
      * @return $this
      */
@@ -423,73 +468,217 @@ self::TYPE_MEMBERSHIP,        ];
     }
 
     /**
-     * Gets templates
+     * Gets background_color
      *
-     * @return \WalletPassJP\Client\Model\CampaignTemplates
+     * @return string
      */
-    public function getTemplates()
+    public function getBackgroundColor()
     {
-        return $this->container['templates'];
+        return $this->container['background_color'];
     }
 
     /**
-     * Sets templates
+     * Sets background_color
      *
-     * @param \WalletPassJP\Client\Model\CampaignTemplates $templates templates
+     * @param string $background_color background_color
      *
      * @return $this
      */
-    public function setTemplates($templates)
+    public function setBackgroundColor($background_color)
     {
-        $this->container['templates'] = $templates;
+        $this->container['background_color'] = $background_color;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets text_color
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getTextColor()
     {
-        return $this->container['created_at'];
+        return $this->container['text_color'];
     }
 
     /**
-     * Sets created_at
+     * Sets text_color
      *
-     * @param \DateTime $created_at created_at
+     * @param string $text_color Optional. Can be calculated from background color.
      *
      * @return $this
      */
-    public function setCreatedAt($created_at)
+    public function setTextColor($text_color)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['text_color'] = $text_color;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets label_color
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdatedAt()
+    public function getLabelColor()
     {
-        return $this->container['updated_at'];
+        return $this->container['label_color'];
     }
 
     /**
-     * Sets updated_at
+     * Sets label_color
      *
-     * @param \DateTime $updated_at updated_at
+     * @param string $label_color Can be calculated from background_color.
      *
      * @return $this
      */
-    public function setUpdatedAt($updated_at)
+    public function setLabelColor($label_color)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['label_color'] = $label_color;
+
+        return $this;
+    }
+
+    /**
+     * Gets settings
+     *
+     * @return OneOfProjectRequestSettings
+     */
+    public function getSettings()
+    {
+        return $this->container['settings'];
+    }
+
+    /**
+     * Sets settings
+     *
+     * @param OneOfProjectRequestSettings $settings settings
+     *
+     * @return $this
+     */
+    public function setSettings($settings)
+    {
+        $this->container['settings'] = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets images
+     *
+     * @return string[]
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param string[] $images Array of Asset IDs, at least logo must be present.
+     *
+     * @return $this
+     */
+    public function setImages($images)
+    {
+        $this->container['images'] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Gets organization_name
+     *
+     * @return string
+     */
+    public function getOrganizationName()
+    {
+        return $this->container['organization_name'];
+    }
+
+    /**
+     * Sets organization_name
+     *
+     * @param string $organization_name organization_name
+     *
+     * @return $this
+     */
+    public function setOrganizationName($organization_name)
+    {
+        $this->container['organization_name'] = $organization_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \WalletPassJP\Client\Model\Link[]
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \WalletPassJP\Client\Model\Link[] $links links
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets beacons
+     *
+     * @return \WalletPassJP\Client\Model\Beacon[]
+     */
+    public function getBeacons()
+    {
+        return $this->container['beacons'];
+    }
+
+    /**
+     * Sets beacons
+     *
+     * @param \WalletPassJP\Client\Model\Beacon[] $beacons beacons
+     *
+     * @return $this
+     */
+    public function setBeacons($beacons)
+    {
+        $this->container['beacons'] = $beacons;
+
+        return $this;
+    }
+
+    /**
+     * Gets locations
+     *
+     * @return \WalletPassJP\Client\Model\Location[]
+     */
+    public function getLocations()
+    {
+        return $this->container['locations'];
+    }
+
+    /**
+     * Sets locations
+     *
+     * @param \WalletPassJP\Client\Model\Location[] $locations locations
+     *
+     * @return $this
+     */
+    public function setLocations($locations)
+    {
+        $this->container['locations'] = $locations;
 
         return $this;
     }
@@ -507,7 +696,7 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Sets tags
      *
-     * @param string[] $tags List of attached tags
+     * @param string[] $tags Optional array of tags to attach
      *
      * @return $this
      */
