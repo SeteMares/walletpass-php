@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTags**
-> \WalletPassJP\Client\Model\InlineResponse2008 listTags()
+> \WalletPassJP\Client\Model\CollectionResponse listTags()
 
 Your GET endpoint
 
@@ -156,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

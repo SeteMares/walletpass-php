@@ -1,0 +1,13 @@
+{
+    "name": "setemares/walletpass-php-example",
+    "type": "project",
+    "require": {
+        "setemares/walletpass-php": "*@dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../"
+        }
+    ]
+}

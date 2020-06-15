@@ -16,7 +16,7 @@ To obtain your pass signing certificate follow the following:
 
 ## Requirements
 
-PHP 5.5 and later
+PHP 7.2 and later
 
 ## Installation & Usage
 ### Composer
@@ -54,71 +54,62 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```php
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+use WalletPassJP\Client\Configuration;
 use WalletPassJP\Client\Api\AssetsApi;
 use WalletPassJP\Client\Api\Asset;
 
+$key = 'YOUR_API_KEY';
+$config = (new Configuration())->setEndpoint('https://walletpass.jp/api/v1');
+
 $apiInstance = new AssetsApi(
+    $key,
+    // config is optional
+    $config,
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 
 try {
-    $result = $apiInstance->getAssetByID($asset_id);
+    $result = $apiInstance->show($asset_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssetsApi->getAssetByID: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AssetsApi->show: ', $e->getMessage(), PHP_EOL;
 }
 
-$apiInstance = new AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new AssetsApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
-$tags = ['tags_example']; // string[] | Filter by tags
+$tags = []; // string[] | Filter by tags
 
 try {
-    $result = $apiInstance->listAssets($limit, $page, $tags);
+    $result = $apiInstance->list($limit, $page, $tags);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssetsApi->listAssets: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AssetsApi->list: ', $e->getMessage(), PHP_EOL;
 }
 
-$apiInstance = new AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new AssetsApi($key);
 $asset = new Asset(); // \WalletPassJP\Client\Model\Asset | Asset ID
 $body = new \WalletPassJP\Client\Model\Body1(); // \WalletPassJP\Client\Model\Body1 |
 
 try {
-    $apiInstance->updateAsset($asset, $body);
+    $apiInstance->update($asset, $body);
 } catch (Exception $e) {
-    echo 'Exception when calling AssetsApi->updateAsset: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AssetsApi->update: ', $e->getMessage(), PHP_EOL;
 }
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
 $file = 'file_example'; // string |
 $type = 'logo'; // string |
 $name = 'main_logo'; // string |
-$tags = ['tags_example']; // string[] |
+$tags = []; // string[] |
 
 try {
-    $result = $apiInstance->uploadAsset($file, $type, $name, $tags);
+    $result = $apiInstance->upload($file, $type, $name, $tags);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssetsApi->uploadAsset: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AssetsApi->upload: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

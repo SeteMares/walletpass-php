@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createPass**
-> \WalletPassJP\Client\Model\InlineResponse2013 createPass($template, $body)
+> \WalletPassJP\Client\Model\ResourceResponse createPass($template, $body)
 
 Create pass
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2013**](../Model/InlineResponse2013.md)
+[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTemplateFields**
-> \WalletPassJP\Client\Model\InlineResponse2004 getTemplateFields($template)
+> \WalletPassJP\Client\Model\CollectionResponse getTemplateFields($template)
 
 Get all template fields
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTemplatePasses**
-> \WalletPassJP\Client\Model\InlineResponse2003 listTemplatePasses($template, $limit, $page)
+> \WalletPassJP\Client\Model\CollectionResponse listTemplatePasses($template, $limit, $page)
 
 Get all template passes
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTemplates**
-> \WalletPassJP\Client\Model\InlineResponse2002 listTemplates($limit, $page, $tags)
+> \WalletPassJP\Client\Model\CollectionResponse listTemplates($limit, $page, $tags)
 
 Get all templates
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

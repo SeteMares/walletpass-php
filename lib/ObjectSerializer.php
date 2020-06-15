@@ -18,7 +18,6 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client;
 
 /**
@@ -44,7 +43,9 @@ class ObjectSerializer
         if (is_scalar($data) || null === $data) {
             return $data;
         } elseif ($data instanceof \DateTime) {
-            return ($format === 'date') ? $data->format('Y-m-d') : $data->format(\DateTime::ATOM);
+            return $format === 'date'
+                ? $data->format('Y-m-d')
+                : $data->format(\DateTime::ATOM);
         } elseif (is_array($data)) {
             foreach ($data as $property => $value) {
                 $data[$property] = self::sanitizeForSerialization($value);
@@ -56,20 +57,46 @@ class ObjectSerializer
             foreach ($data::swaggerTypes() as $property => $swaggerType) {
                 $getter = $data::getters()[$property];
                 $value = $data->$getter();
-                if ($value !== null
-                    && !in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)
-                    && method_exists($swaggerType, 'getAllowableEnumValues')
-                    && !in_array($value, $swaggerType::getAllowableEnumValues())) {
+                if (
+                    $value !== null &&
+                    !in_array(
+                        $swaggerType,
+                        [
+                            'DateTime',
+                            'bool',
+                            'boolean',
+                            'byte',
+                            'double',
+                            'float',
+                            'int',
+                            'integer',
+                            'mixed',
+                            'number',
+                            'object',
+                            'string',
+                            'void',
+                        ],
+                        true
+                    ) &&
+                    method_exists($swaggerType, 'getAllowableEnumValues') &&
+                    !in_array($value, $swaggerType::getAllowableEnumValues())
+                ) {
                     $imploded = implode("', '", $swaggerType::getAllowableEnumValues());
-                    throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");
+                    throw new \InvalidArgumentException(
+                        "Invalid value for enum '$swaggerType', must be one of: '$imploded'"
+                    );
                 }
                 if ($value !== null) {
-                    $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $swaggerType, $formats[$property]);
+                    $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization(
+                        $value,
+                        $swaggerType,
+                        $formats[$property]
+                    );
                 }
             }
-            return (object)$values;
+            return (object) $values;
         } else {
-            return (string)$data;
+            return (string) $data;
         }
     }
 
@@ -83,7 +110,7 @@ class ObjectSerializer
      */
     public static function sanitizeFilename($filename)
     {
-        if (preg_match("/.*[\/\\\\](.*)$/", $filename, $match)) {
+        if (preg_match('/.*[\/\\\\](.*)$/', $filename, $match)) {
             return $match[1];
         } else {
             return $filename;
@@ -165,7 +192,8 @@ class ObjectSerializer
      */
     public static function toString($value)
     {
-        if ($value instanceof \DateTime) { // datetime in ISO8601 format
+        if ($value instanceof \DateTime) {
+            // datetime in ISO8601 format
             return $value->format(\DateTime::ATOM);
         } else {
             return $value;
@@ -182,12 +210,19 @@ class ObjectSerializer
      *
      * @return string
      */
-    public static function serializeCollection(array $collection, $collectionFormat, $allowCollectionFormatMulti = false)
-    {
-        if ($allowCollectionFormatMulti && ('multi' === $collectionFormat)) {
+    public static function serializeCollection(
+        array $collection,
+        $collectionFormat,
+        $allowCollectionFormatMulti = false
+    ) {
+        if ($allowCollectionFormatMulti && 'multi' === $collectionFormat) {
             // http_build_query() almost does the job for us. We just
             // need to fix the result of multidimensional arrays.
-            return preg_replace('/%5B[0-9]+%5D=/', '=', http_build_query($collection, '', '&'));
+            return preg_replace(
+                '/%5B[0-9]+%5D=/',
+                '=',
+                http_build_query($collection, '', '&')
+            );
         }
         switch ($collectionFormat) {
             case 'pipes':
@@ -200,7 +235,7 @@ class ObjectSerializer
                 return implode(' ', $collection);
 
             case 'csv':
-                // Deliberate fall through. CSV is default format.
+            // Deliberate fall through. CSV is default format.
             default:
                 return implode(',', $collection);
         }
@@ -212,18 +247,19 @@ class ObjectSerializer
      * @param mixed    $data          object or primitive to be deserialized
      * @param string   $class         class name is passed as a string
      * @param string[] $httpHeaders   HTTP headers
-     * @param string   $discriminator discriminator if polymorphism is used
+     * @param string   $resourceClass class name for collection elements or resource
      *
      * @return object|array|null an single or an array of $class instances
      */
-    public static function deserialize($data, $class, $httpHeaders = null)
+    public static function deserialize($data, $class, $httpHeaders = null, $resourceClass = '')
     {
         if (null === $data) {
             return null;
-        } elseif (substr($class, 0, 4) === 'map[') { // for associative array e.g. map[string,int]
+        } elseif (substr($class, 0, 4) === 'map[') {
+            // for associative array e.g. map[string,int]
             $inner = substr($class, 4, -1);
             $deserialized = [];
-            if (strrpos($inner, ",") !== false) {
+            if (strrpos($inner, ',') !== false) {
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
@@ -253,18 +289,55 @@ class ObjectSerializer
             } else {
                 return null;
             }
-        } elseif (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+        } elseif (
+            in_array(
+                $class,
+                [
+                    'DateTime',
+                    'bool',
+                    'boolean',
+                    'byte',
+                    'double',
+                    'float',
+                    'int',
+                    'integer',
+                    'mixed',
+                    'number',
+                    'object',
+                    'string',
+                    'void',
+                ],
+                true
+            )
+        ) {
             settype($data, $class);
             return $data;
         } elseif ($class === '\SplFileObject') {
             /** @var \Psr\Http\Message\StreamInterface $data */
 
             // determine file name
-            if (array_key_exists('Content-Disposition', $httpHeaders) &&
-                preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)) {
-                $filename = Configuration::getDefaultConfiguration()->getTempFolderPath() . DIRECTORY_SEPARATOR . self::sanitizeFilename($match[1]);
+            if (
+                array_key_exists('Content-Disposition', $httpHeaders) &&
+                (preg_match(
+                    '/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i',
+                    $httpHeaders['Content-Disposition'][0],
+                    $match
+                ) ||
+                    preg_match(
+                        '/attachment; filename=[\'"]?([^\'"\s]+)[\'"]?$/i',
+                        $httpHeaders['Content-Disposition'][0],
+                        $match
+                    ))
+            ) {
+                $filename =
+                    Configuration::getDefaultConfiguration()->getTempFolderPath() .
+                    DIRECTORY_SEPARATOR .
+                    self::sanitizeFilename($match[1]);
             } else {
-                $filename = tempnam(Configuration::getDefaultConfiguration()->getTempFolderPath(), '');
+                $filename = tempnam(
+                    Configuration::getDefaultConfiguration()->getTempFolderPath(),
+                    ''
+                );
             }
 
             $file = fopen($filename, 'w');
@@ -277,13 +350,20 @@ class ObjectSerializer
         } elseif (method_exists($class, 'getAllowableEnumValues')) {
             if (!in_array($data, $class::getAllowableEnumValues())) {
                 $imploded = implode("', '", $class::getAllowableEnumValues());
-                throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
+                throw new \InvalidArgumentException(
+                    "Invalid value for enum '$class', must be one of: '$imploded'"
+                );
             }
             return $data;
         } else {
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
-            if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
+
+            if (
+                !empty($discriminator) &&
+                isset($data->{$discriminator}) &&
+                is_string($data->{$discriminator})
+            ) {
                 $subclass = '{{invokerPackage}}\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
@@ -293,12 +373,18 @@ class ObjectSerializer
             foreach ($instance::swaggerTypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
 
-                if (!isset($propertySetter) || !isset($data->{$instance::attributeMap()[$property]})) {
+                if (
+                    !isset($propertySetter) ||
+                    !isset($data->{$instance::attributeMap()[$property]})
+                ) {
                     continue;
                 }
 
                 $propertyValue = $data->{$instance::attributeMap()[$property]};
                 if (isset($propertyValue)) {
+                    if ($type == 'collection' || $type == 'resource') {
+                        $type = $resourceClass;
+                    }
                     $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
                 }
             }

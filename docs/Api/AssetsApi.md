@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listAssets**
-> \WalletPassJP\Client\Model\InlineResponse200 listAssets($limit, $page, $tags)
+> \WalletPassJP\Client\Model\CollectionResponse listAssets($limit, $page, $tags)
 
 Get all assets
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

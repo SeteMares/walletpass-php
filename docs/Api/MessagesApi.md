@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listMessages**
-> \WalletPassJP\Client\Model\InlineResponse20010 listMessages($limit, $page)
+> \WalletPassJP\Client\Model\CollectionResponse listMessages($limit, $page)
 
 Get all messages
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

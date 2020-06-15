@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listCampaigns**
-> \WalletPassJP\Client\Model\InlineResponse2007 listCampaigns($limit, $page, $tags)
+> \WalletPassJP\Client\Model\CollectionResponse listCampaigns($limit, $page, $tags)
 
 Get a list of created Campaigns
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

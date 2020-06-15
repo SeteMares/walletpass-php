@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Client\ObjectSerializer;
 
 /**
  * Body1 Class Doc Comment
@@ -36,27 +35,29 @@ class Body1 implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'body_1';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
-        'tags' => 'string[]'    ];
+        'tags' => 'string[]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
-        'tags' => null    ];
+        'tags' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -85,7 +86,8 @@ class Body1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'tags' => 'tags'    ];
+        'tags' => 'tags',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -93,7 +95,8 @@ class Body1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'tags' => 'setTags'    ];
+        'tags' => 'setTags',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -101,7 +104,8 @@ class Body1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'tags' => 'getTags'    ];
+        'tags' => 'getTags',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -144,8 +148,6 @@ class Body1 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -186,7 +188,6 @@ class Body1 implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets tags
@@ -271,7 +272,8 @@ class Body1 implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

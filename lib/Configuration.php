@@ -17,7 +17,6 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client;
 
 /**
@@ -54,25 +53,11 @@ class Configuration
     protected $accessToken = '';
 
     /**
-     * Username for HTTP basic authentication
+     * The endpoint
      *
      * @var string
      */
-    protected $username = '';
-
-    /**
-     * Password for HTTP basic authentication
-     *
-     * @var string
-     */
-    protected $password = '';
-
-    /**
-     * The host
-     *
-     * @var string
-     */
-    protected $host = 'https://walletpass.jp/api/v1';
+    protected $endpoint = 'https://walletpass.jp/api/v1';
 
     /**
      * User agent of the HTTP request, set to "WalletPass" by default
@@ -133,7 +118,9 @@ class Configuration
      */
     public function getApiKey($apiKeyIdentifier)
     {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
+        return isset($this->apiKeys[$apiKeyIdentifier])
+            ? $this->apiKeys[$apiKeyIdentifier]
+            : null;
     }
 
     /**
@@ -159,7 +146,9 @@ class Configuration
      */
     public function getApiKeyPrefix($apiKeyIdentifier)
     {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
+        return isset($this->apiKeyPrefixes[$apiKeyIdentifier])
+            ? $this->apiKeyPrefixes[$apiKeyIdentifier]
+            : null;
     }
 
     /**
@@ -186,72 +175,26 @@ class Configuration
     }
 
     /**
-     * Sets the username for HTTP basic authentication
+     * Sets the endpoint
      *
-     * @param string $username Username for HTTP basic authentication
+     * @param string $endpoint Endpoint
      *
      * @return $this
      */
-    public function setUsername($username)
+    public function setEndpoint($endpoint)
     {
-        $this->username = $username;
+        $this->endpoint = $endpoint;
         return $this;
     }
 
     /**
-     * Gets the username for HTTP basic authentication
+     * Gets the endpoint
      *
-     * @return string Username for HTTP basic authentication
+     * @return string Endpoint
      */
-    public function getUsername()
+    public function getEndpoint()
     {
-        return $this->username;
-    }
-
-    /**
-     * Sets the password for HTTP basic authentication
-     *
-     * @param string $password Password for HTTP basic authentication
-     *
-     * @return $this
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    /**
-     * Gets the password for HTTP basic authentication
-     *
-     * @return string Password for HTTP basic authentication
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Sets the host
-     *
-     * @param string $host Host
-     *
-     * @return $this
-     */
-    public function setHost($host)
-    {
-        $this->host = $host;
-        return $this;
-    }
-
-    /**
-     * Gets the host
-     *
-     * @return string Host
-     */
-    public function getHost()
-    {
-        return $this->host;
+        return $this->endpoint;
     }
 
     /**
@@ -384,11 +327,14 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (WalletPassJP\Client) Debug Report:' . PHP_EOL;
+        $report = 'PHP SDK (WalletPassJP\Client) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 1.0' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+        $report .=
+            '    Temp Folder Path: ' .
+            self::getDefaultConfiguration()->getTempFolderPath() .
+            PHP_EOL;
 
         return $report;
     }

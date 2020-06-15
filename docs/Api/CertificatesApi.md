@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listCertificates**
-> \WalletPassJP\Client\Model\InlineResponse2001 listCertificates($limit, $page)
+> \WalletPassJP\Client\Model\CollectionResponse listCertificates($limit, $page)
 
 Get all certificates
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

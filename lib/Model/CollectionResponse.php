@@ -1,64 +1,46 @@
 <?php
-/**
- * InlineResponse2001
- *
- * PHP version 7
- *
- * @category Class
- * @package  WalletPassJP\Client
- * @author   Kinchaku
- */
-
-/**
- * WalletPass
- *
- * WALLET PASS API enables you to issue mobile wallet passes for Apple Wallet, Google Pay and integrate them into your app or cloud system.   ## Prerequisites  Your passes for Apple Wallet must be cryptographically signed with a certificate from your Apple Developer Account.  To obtain your pass signing certificate follow the following:  1. Access your Apple Developer account. 2. In Certificates, Identifiers & Profiles, select Identifiers. 3. Under Identifiers, select Pass Type IDs. 4. Select the pass type identifier, then click Edit. If there is a certificate listed under Production Certificates, click the Download button next to it. If there are no certificates listed, click the Create Certificate button, then follow the instructions to create a pass signing certificate. 5. You can get CSR from `/certificates/csr` endpoint. 6. Upload obtained certificate to /certificates/upload endpoint.
- *
- * OpenAPI spec version: 1.0
- * Contact: contact@walletpass.jp
- */
-
 namespace WalletPassJP\Client\Model;
 
 use \ArrayAccess;
 use WalletPassJP\Client\ObjectSerializer;
 
 /**
- * InlineResponse2001 Class Doc Comment
+ * CollectionResponse
  *
  * @category Class
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class InlineResponse2001 implements ModelInterface, ArrayAccess
+class CollectionResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $swaggerModelName = 'inline_response_200_1';
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $swaggerModelName = 'collection_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
-        'data' => '\WalletPassJP\Client\Model\Certificate[]',
+        'data' => 'collection',
         'meta' => '\WalletPassJP\Client\Model\PaginationMeta',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'data' => null,
-'meta' => null    ];
+        'meta' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -197,7 +179,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \WalletPassJP\Client\Model\Certificate[]
+     * @return array
      */
     public function getData()
     {
@@ -207,7 +189,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \WalletPassJP\Client\Model\Certificate[] $data data
+     * @param array $data data
      *
      * @return $this
      */
