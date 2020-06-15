@@ -371,6 +371,7 @@ class ObjectSerializer
             }
             $instance = new $class();
             foreach ($instance::swaggerTypes() as $property => $type) {
+                // echo "$property : $type \n";
                 $propertySetter = $instance::setters()[$property];
 
                 if (

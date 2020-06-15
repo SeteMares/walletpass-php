@@ -182,13 +182,9 @@ class ProjectsApi extends BaseAPI
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
                 $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
                 }
 
                 return [

@@ -291,7 +291,7 @@
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "1954b205125a81d1a8796058fad18b9903125da1"
+                "reference": "ff973acab76d534d76d08505cbdb8e0dead37c51"
             },
             "require": {
                 "ext-curl": "*",

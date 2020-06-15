@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **background_color** | **string** |  | [optional] 
 **text_color** | **string** | Optional. Can be calculated from background color. | [optional] 
 **label_color** | **string** | Can be calculated from background_color. | [optional] 
-**settings** | [**OneOfProjectRequestSettings**](OneOfProjectRequestSettings.md) |  | [optional] 
+**settings** | **array** |  | [optional] 
 **images** | **string[]** | Array of Asset IDs, at least logo must be present. | 
 **organization_name** | **string** |  | 
 **links** | [**\WalletPassJP\Client\Model\Link[]**](Link.md) |  | [optional] 

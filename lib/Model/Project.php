@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Client\ObjectSerializer;
 
 /**
  * Project Class Doc Comment
@@ -36,45 +35,47 @@ class Project implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Project';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'external_id' => 'string',
-'type' => 'string',
-'title' => 'string',
-'settings' => 'OneOfProjectSettings',
-'is_enabled' => 'bool',
-'templates' => '\WalletPassJP\Client\Model\ProjectTemplates',
-'created_at' => '\DateTime',
-'updated_at' => '\DateTime',
-'tags' => 'string[]'    ];
+        'external_id' => 'string',
+        'type' => 'string',
+        'title' => 'string',
+        'settings' => 'object',
+        'is_enabled' => 'bool',
+        'templates' => '\WalletPassJP\Client\Model\ProjectTemplates',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'tags' => 'string[]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'external_id' => null,
-'type' => null,
-'title' => null,
-'settings' => null,
-'is_enabled' => null,
-'templates' => null,
-'created_at' => 'date-time',
-'updated_at' => 'date-time',
-'tags' => null    ];
+        'external_id' => null,
+        'type' => null,
+        'title' => null,
+        'settings' => null,
+        'is_enabled' => null,
+        'templates' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'tags' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -104,15 +105,16 @@ class Project implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'external_id' => 'external_id',
-'type' => 'type',
-'title' => 'title',
-'settings' => 'settings',
-'is_enabled' => 'is_enabled',
-'templates' => 'templates',
-'created_at' => 'created_at',
-'updated_at' => 'updated_at',
-'tags' => 'tags'    ];
+        'external_id' => 'external_id',
+        'type' => 'type',
+        'title' => 'title',
+        'settings' => 'settings',
+        'is_enabled' => 'is_enabled',
+        'templates' => 'templates',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'tags' => 'tags',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -121,15 +123,16 @@ class Project implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'external_id' => 'setExternalId',
-'type' => 'setType',
-'title' => 'setTitle',
-'settings' => 'setSettings',
-'is_enabled' => 'setIsEnabled',
-'templates' => 'setTemplates',
-'created_at' => 'setCreatedAt',
-'updated_at' => 'setUpdatedAt',
-'tags' => 'setTags'    ];
+        'external_id' => 'setExternalId',
+        'type' => 'setType',
+        'title' => 'setTitle',
+        'settings' => 'setSettings',
+        'is_enabled' => 'setIsEnabled',
+        'templates' => 'setTemplates',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'tags' => 'setTags',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -138,15 +141,16 @@ class Project implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'external_id' => 'getExternalId',
-'type' => 'getType',
-'title' => 'getTitle',
-'settings' => 'getSettings',
-'is_enabled' => 'getIsEnabled',
-'templates' => 'getTemplates',
-'created_at' => 'getCreatedAt',
-'updated_at' => 'getUpdatedAt',
-'tags' => 'getTags'    ];
+        'external_id' => 'getExternalId',
+        'type' => 'getType',
+        'title' => 'getTitle',
+        'settings' => 'getSettings',
+        'is_enabled' => 'getIsEnabled',
+        'templates' => 'getTemplates',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'tags' => 'getTags',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -190,10 +194,10 @@ class Project implements ModelInterface, ArrayAccess
     }
 
     const TYPE_GIFTCARD = 'giftcard';
-const TYPE_COUPON = 'coupon';
-const TYPE_VOUCHER = 'voucher';
-const TYPE_STAMPCARD = 'stampcard';
-const TYPE_MEMBERSHIP = 'membership';
+    const TYPE_COUPON = 'coupon';
+    const TYPE_VOUCHER = 'voucher';
+    const TYPE_STAMPCARD = 'stampcard';
+    const TYPE_MEMBERSHIP = 'membership';
 
     /**
      * Gets allowable values of the enum
@@ -204,10 +208,11 @@ const TYPE_MEMBERSHIP = 'membership';
     {
         return [
             self::TYPE_GIFTCARD,
-self::TYPE_COUPON,
-self::TYPE_VOUCHER,
-self::TYPE_STAMPCARD,
-self::TYPE_MEMBERSHIP,        ];
+            self::TYPE_COUPON,
+            self::TYPE_VOUCHER,
+            self::TYPE_STAMPCARD,
+            self::TYPE_MEMBERSHIP,
+        ];
     }
 
     /**
@@ -226,14 +231,22 @@ self::TYPE_MEMBERSHIP,        ];
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['external_id'] = isset($data['external_id'])
+            ? $data['external_id']
+            : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
-        $this->container['is_enabled'] = isset($data['is_enabled']) ? $data['is_enabled'] : null;
+        $this->container['is_enabled'] = isset($data['is_enabled'])
+            ? $data['is_enabled']
+            : null;
         $this->container['templates'] = isset($data['templates']) ? $data['templates'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['created_at'] = isset($data['created_at'])
+            ? $data['created_at']
+            : null;
+        $this->container['updated_at'] = isset($data['updated_at'])
+            ? $data['updated_at']
+            : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
@@ -247,7 +260,10 @@ self::TYPE_MEMBERSHIP,        ];
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['type']) &&
+            !in_array($this->container['type'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -267,7 +283,6 @@ self::TYPE_MEMBERSHIP,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -387,7 +402,7 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Sets settings
      *
-     * @param OneOfProjectSettings $settings settings
+     * @param \WalletPassJP\Client\Model\OneOfProjectSettings $settings settings
      *
      * @return $this
      */
@@ -577,7 +592,8 @@ self::TYPE_MEMBERSHIP,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

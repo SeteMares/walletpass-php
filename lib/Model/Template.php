@@ -51,7 +51,7 @@ class Template implements ModelInterface, ArrayAccess
         'external_id' => 'string',
         'certificate_id' => 'string',
         'colors' => '\WalletPassJP\Client\Model\Colors',
-        'images' => 'string[]',
+        'images' => '\WalletPassJP\Client\Model\Asset[]',
         'links' => '\WalletPassJP\Client\Model\Link[]',
         'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
         'locations' => '\WalletPassJP\Client\Model\Location[]',
@@ -549,7 +549,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets images
      *
-     * @return string[]
+     * @return \WalletPassJP\Client\Model\Asset[]
      */
     public function getImages()
     {
@@ -559,7 +559,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets images
      *
-     * @param string[] $images Array of Asset IDs
+     * @param \WalletPassJP\Client\Model\Asset[] $images Array of Asset IDs
      *
      * @return $this
      */

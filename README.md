@@ -178,8 +178,6 @@ Class | Method | HTTP request | Description
  - [Message](docs/Model/Message.md)
  - [MessagesLocalizedBody](docs/Model/MessagesLocalizedBody.md)
  - [MessagesLocalizedHeader](docs/Model/MessagesLocalizedHeader.md)
- - [OneOfProjectRequestSettings](docs/Model/OneOfProjectRequestSettings.md)
- - [OneOfProjectSettings](docs/Model/OneOfProjectSettings.md)
  - [PaginationMeta](docs/Model/PaginationMeta.md)
  - [Pass](docs/Model/Pass.md)
  - [PassField](docs/Model/PassField.md)

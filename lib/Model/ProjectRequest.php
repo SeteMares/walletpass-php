@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Client\ObjectSerializer;
 
 /**
  * ProjectRequest Class Doc Comment
@@ -36,57 +35,59 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'ProjectRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'type' => 'string',
-'external_id' => 'string',
-'template_id' => 'string',
-'redeemed_template_id' => 'string',
-'title' => 'string',
-'is_enabled' => 'bool',
-'background_color' => 'string',
-'text_color' => 'string',
-'label_color' => 'string',
-'settings' => 'OneOfProjectRequestSettings',
-'images' => 'string[]',
-'organization_name' => 'string',
-'links' => '\WalletPassJP\Client\Model\Link[]',
-'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
-'locations' => '\WalletPassJP\Client\Model\Location[]',
-'tags' => 'string[]'    ];
+        'external_id' => 'string',
+        'template_id' => 'string',
+        'redeemed_template_id' => 'string',
+        'title' => 'string',
+        'is_enabled' => 'bool',
+        'background_color' => 'string',
+        'text_color' => 'string',
+        'label_color' => 'string',
+        'settings' => 'object',
+        'images' => 'string[]',
+        'organization_name' => 'string',
+        'links' => '\WalletPassJP\Client\Model\Link[]',
+        'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
+        'locations' => '\WalletPassJP\Client\Model\Location[]',
+        'tags' => 'string[]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'type' => null,
-'external_id' => null,
-'template_id' => 'uuid',
-'redeemed_template_id' => 'uuid',
-'title' => null,
-'is_enabled' => null,
-'background_color' => null,
-'text_color' => null,
-'label_color' => null,
-'settings' => null,
-'images' => null,
-'organization_name' => null,
-'links' => null,
-'beacons' => null,
-'locations' => null,
-'tags' => null    ];
+        'external_id' => null,
+        'template_id' => 'uuid',
+        'redeemed_template_id' => 'uuid',
+        'title' => null,
+        'is_enabled' => null,
+        'background_color' => null,
+        'text_color' => null,
+        'label_color' => null,
+        'settings' => null,
+        'images' => null,
+        'organization_name' => null,
+        'links' => null,
+        'beacons' => null,
+        'locations' => null,
+        'tags' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -116,21 +117,22 @@ class ProjectRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'type' => 'type',
-'external_id' => 'external_id',
-'template_id' => 'template_id',
-'redeemed_template_id' => 'redeemed_template_id',
-'title' => 'title',
-'is_enabled' => 'is_enabled',
-'background_color' => 'background_color',
-'text_color' => 'text_color',
-'label_color' => 'label_color',
-'settings' => 'settings',
-'images' => 'images',
-'organization_name' => 'organization_name',
-'links' => 'links',
-'beacons' => 'beacons',
-'locations' => 'locations',
-'tags' => 'tags'    ];
+        'external_id' => 'external_id',
+        'template_id' => 'template_id',
+        'redeemed_template_id' => 'redeemed_template_id',
+        'title' => 'title',
+        'is_enabled' => 'is_enabled',
+        'background_color' => 'background_color',
+        'text_color' => 'text_color',
+        'label_color' => 'label_color',
+        'settings' => 'settings',
+        'images' => 'images',
+        'organization_name' => 'organization_name',
+        'links' => 'links',
+        'beacons' => 'beacons',
+        'locations' => 'locations',
+        'tags' => 'tags',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -139,21 +141,22 @@ class ProjectRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'type' => 'setType',
-'external_id' => 'setExternalId',
-'template_id' => 'setTemplateId',
-'redeemed_template_id' => 'setRedeemedTemplateId',
-'title' => 'setTitle',
-'is_enabled' => 'setIsEnabled',
-'background_color' => 'setBackgroundColor',
-'text_color' => 'setTextColor',
-'label_color' => 'setLabelColor',
-'settings' => 'setSettings',
-'images' => 'setImages',
-'organization_name' => 'setOrganizationName',
-'links' => 'setLinks',
-'beacons' => 'setBeacons',
-'locations' => 'setLocations',
-'tags' => 'setTags'    ];
+        'external_id' => 'setExternalId',
+        'template_id' => 'setTemplateId',
+        'redeemed_template_id' => 'setRedeemedTemplateId',
+        'title' => 'setTitle',
+        'is_enabled' => 'setIsEnabled',
+        'background_color' => 'setBackgroundColor',
+        'text_color' => 'setTextColor',
+        'label_color' => 'setLabelColor',
+        'settings' => 'setSettings',
+        'images' => 'setImages',
+        'organization_name' => 'setOrganizationName',
+        'links' => 'setLinks',
+        'beacons' => 'setBeacons',
+        'locations' => 'setLocations',
+        'tags' => 'setTags',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -162,21 +165,22 @@ class ProjectRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'type' => 'getType',
-'external_id' => 'getExternalId',
-'template_id' => 'getTemplateId',
-'redeemed_template_id' => 'getRedeemedTemplateId',
-'title' => 'getTitle',
-'is_enabled' => 'getIsEnabled',
-'background_color' => 'getBackgroundColor',
-'text_color' => 'getTextColor',
-'label_color' => 'getLabelColor',
-'settings' => 'getSettings',
-'images' => 'getImages',
-'organization_name' => 'getOrganizationName',
-'links' => 'getLinks',
-'beacons' => 'getBeacons',
-'locations' => 'getLocations',
-'tags' => 'getTags'    ];
+        'external_id' => 'getExternalId',
+        'template_id' => 'getTemplateId',
+        'redeemed_template_id' => 'getRedeemedTemplateId',
+        'title' => 'getTitle',
+        'is_enabled' => 'getIsEnabled',
+        'background_color' => 'getBackgroundColor',
+        'text_color' => 'getTextColor',
+        'label_color' => 'getLabelColor',
+        'settings' => 'getSettings',
+        'images' => 'getImages',
+        'organization_name' => 'getOrganizationName',
+        'links' => 'getLinks',
+        'beacons' => 'getBeacons',
+        'locations' => 'getLocations',
+        'tags' => 'getTags',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -220,10 +224,10 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     }
 
     const TYPE_GIFTCARD = 'giftcard';
-const TYPE_COUPON = 'coupon';
-const TYPE_VOUCHER = 'voucher';
-const TYPE_STAMPCARD = 'stampcard';
-const TYPE_MEMBERSHIP = 'membership';
+    const TYPE_COUPON = 'coupon';
+    const TYPE_VOUCHER = 'voucher';
+    const TYPE_STAMPCARD = 'stampcard';
+    const TYPE_MEMBERSHIP = 'membership';
 
     /**
      * Gets allowable values of the enum
@@ -234,10 +238,11 @@ const TYPE_MEMBERSHIP = 'membership';
     {
         return [
             self::TYPE_GIFTCARD,
-self::TYPE_COUPON,
-self::TYPE_VOUCHER,
-self::TYPE_STAMPCARD,
-self::TYPE_MEMBERSHIP,        ];
+            self::TYPE_COUPON,
+            self::TYPE_VOUCHER,
+            self::TYPE_STAMPCARD,
+            self::TYPE_MEMBERSHIP,
+        ];
     }
 
     /**
@@ -256,17 +261,33 @@ self::TYPE_MEMBERSHIP,        ];
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
-        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
-        $this->container['redeemed_template_id'] = isset($data['redeemed_template_id']) ? $data['redeemed_template_id'] : null;
+        $this->container['external_id'] = isset($data['external_id'])
+            ? $data['external_id']
+            : null;
+        $this->container['template_id'] = isset($data['template_id'])
+            ? $data['template_id']
+            : null;
+        $this->container['redeemed_template_id'] = isset($data['redeemed_template_id'])
+            ? $data['redeemed_template_id']
+            : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['is_enabled'] = isset($data['is_enabled']) ? $data['is_enabled'] : false;
-        $this->container['background_color'] = isset($data['background_color']) ? $data['background_color'] : null;
-        $this->container['text_color'] = isset($data['text_color']) ? $data['text_color'] : null;
-        $this->container['label_color'] = isset($data['label_color']) ? $data['label_color'] : null;
+        $this->container['is_enabled'] = isset($data['is_enabled'])
+            ? $data['is_enabled']
+            : false;
+        $this->container['background_color'] = isset($data['background_color'])
+            ? $data['background_color']
+            : null;
+        $this->container['text_color'] = isset($data['text_color'])
+            ? $data['text_color']
+            : null;
+        $this->container['label_color'] = isset($data['label_color'])
+            ? $data['label_color']
+            : null;
         $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
         $this->container['images'] = isset($data['images']) ? $data['images'] : null;
-        $this->container['organization_name'] = isset($data['organization_name']) ? $data['organization_name'] : null;
+        $this->container['organization_name'] = isset($data['organization_name'])
+            ? $data['organization_name']
+            : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
         $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
         $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
@@ -283,7 +304,10 @@ self::TYPE_MEMBERSHIP,        ];
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['type']) &&
+            !in_array($this->container['type'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -312,7 +336,6 @@ self::TYPE_MEMBERSHIP,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -542,7 +565,7 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Gets settings
      *
-     * @return OneOfProjectRequestSettings
+     * @return array
      */
     public function getSettings()
     {
@@ -552,7 +575,7 @@ self::TYPE_MEMBERSHIP,        ];
     /**
      * Sets settings
      *
-     * @param OneOfProjectRequestSettings $settings settings
+     * @param array $settings settings
      *
      * @return $this
      */
@@ -766,7 +789,8 @@ self::TYPE_MEMBERSHIP,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT
