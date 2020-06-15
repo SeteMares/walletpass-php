@@ -32,7 +32,7 @@ class PassesApi extends BaseAPI
     public function create($template, $body = null)
     {
         list($response) = $this->createPassWithHttpInfo($template, $body);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -873,7 +873,7 @@ class PassesApi extends BaseAPI
     public function getPassByExtID($external_id)
     {
         list($response) = $this->getPassByExtIDWithHttpInfo($external_id);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -1163,7 +1163,7 @@ class PassesApi extends BaseAPI
     public function show($pass)
     {
         list($response) = $this->getPassByIDWithHttpInfo($pass);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -1785,13 +1785,9 @@ class PassesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
+            $content = $responseBody->getContents();
+            if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                $content = json_decode($content);
             }
 
             return [
@@ -1881,13 +1877,9 @@ class PassesApi extends BaseAPI
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
                 $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
                 }
 
                 return [
@@ -2017,7 +2009,7 @@ class PassesApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse2003
+     * @return \WalletPassJP\Client\Model\CollectionResponse
      */
     public function list($template, $limit = '15', $page = '1')
     {
@@ -2036,11 +2028,11 @@ class PassesApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTemplatePassesWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse2003';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         try {
@@ -2087,7 +2079,12 @@ class PassesApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Client\Model\Pass[]'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -2096,8 +2093,9 @@ class PassesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\InlineResponse2003',
-                        $e->getResponseHeaders()
+                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Client\Model\Pass[]'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -2173,23 +2171,22 @@ class PassesApi extends BaseAPI
      */
     public function listTemplatePassesAsyncWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse2003';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
                 $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
+                $content = $responseBody->getContents();
+                $content = json_decode($content);
 
                 return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
+                    ObjectSerializer::deserialize(
+                        $content,
+                        $returnType,
+                        [],
+                        '\WalletPassJP\Client\Model\Pass[]'
+                    ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];

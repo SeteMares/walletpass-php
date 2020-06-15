@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCertificateByID**
-> \WalletPassJP\Client\Model\InlineResponse2011 getCertificateByID($certificate)
+> \WalletPassJP\Client\Model\Certificate getCertificateByID($certificate)
 
 Get certificate by ID
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2011**](../Model/InlineResponse2011.md)
+[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadCertificate**
-> \WalletPassJP\Client\Model\InlineResponse2011 uploadCertificate($file)
+> \WalletPassJP\Client\Model\Certificate uploadCertificate($file)
 
 Upload Certificate
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2011**](../Model/InlineResponse2011.md)
+[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadP12Certificate**
-> \WalletPassJP\Client\Model\InlineResponse2011 uploadP12Certificate($body)
+> \WalletPassJP\Client\Model\Certificate uploadP12Certificate($body)
 
 Upload new certificate
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2011**](../Model/InlineResponse2011.md)
+[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 

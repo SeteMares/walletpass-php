@@ -523,7 +523,7 @@ class CertificatesApi extends BaseAPI
     public function show($certificate)
     {
         list($response) = $this->getCertificateByIDWithHttpInfo($certificate);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -1355,7 +1355,7 @@ class CertificatesApi extends BaseAPI
     public function uploadP12Certificate($body = null)
     {
         list($response) = $this->uploadP12CertificateWithHttpInfo($body);
-        return $response;
+        return $response->getData();
     }
 
     /**

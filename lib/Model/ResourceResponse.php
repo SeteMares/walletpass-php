@@ -1,7 +1,6 @@
 <?php
 namespace WalletPassJP\Client\Model;
 
-use \ArrayAccess;
 use WalletPassJP\Client\ObjectSerializer;
 
 /**
@@ -11,7 +10,7 @@ use WalletPassJP\Client\ObjectSerializer;
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class ResourceResponse implements ModelInterface, ArrayAccess
+class ResourceResponse implements ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -144,7 +143,7 @@ class ResourceResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -177,7 +176,7 @@ class ResourceResponse implements ModelInterface, ArrayAccess
      */
     public function getData()
     {
-        return $this->container['data'];
+        return $this->container;
     }
 
     /**
@@ -189,61 +188,9 @@ class ResourceResponse implements ModelInterface, ArrayAccess
      */
     public function setData($data)
     {
-        $this->container['data'] = $data;
+        $this->container = $data;
 
         return $this;
-    }
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param integer $offset Offset
-     *
-     * @return boolean
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * Gets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return mixed
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param integer $offset Offset
-     * @param mixed   $value  Value to be set
-     *
-     * @return void
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return void
-     */
-    public function offsetUnset($offset)
-    {
-        unset($this->container[$offset]);
     }
 
     /**

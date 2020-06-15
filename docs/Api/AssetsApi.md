@@ -57,7 +57,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAssetByID**
-> \WalletPassJP\Client\Model\InlineResponse201 getAssetByID($asset)
+> \WalletPassJP\Client\Model\Asset getAssetByID($asset)
 
 Get Asset by ID
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse201**](../Model/InlineResponse201.md)
+[**\WalletPassJP\Client\Model\Asset**](../Model/Asset.md)
 
 ### Authorization
 
@@ -203,7 +203,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadAsset**
-> \WalletPassJP\Client\Model\InlineResponse201 uploadAsset($file, $type, $name, $tags)
+> \WalletPassJP\Client\Model\Asset uploadAsset($file, $type, $name, $tags)
 
 Upload an asset
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse201**](../Model/InlineResponse201.md)
+[**\WalletPassJP\Client\Model\Asset**](../Model/Asset.md)
 
 ### Authorization
 

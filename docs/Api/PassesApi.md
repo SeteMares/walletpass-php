@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPassGoogle**
-> \WalletPassJP\Client\Model\InlineResponse2006 getPassGoogle($pass)
+> \WalletPassJP\Client\Model\Pass getPassGoogle($pass)
 
 Get pass Google Play installation link
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\WalletPassJP\Client\Model\Pass**](../Model/Pass.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPassLink**
-> \WalletPassJP\Client\Model\InlineResponse2005 getPassLink($pass)
+> string getPassLink($pass)
 
 Get pass download link
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+**string**
 
 ### Authorization
 

@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Client\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Client\ObjectSerializer;
 
 /**
  * PaginationMeta Class Doc Comment
@@ -32,44 +31,46 @@ use \WalletPassJP\Client\ObjectSerializer;
  * @package  WalletPassJP\Client
  * @author   Kinchaku
  */
-class PaginationMeta implements ModelInterface, ArrayAccess
+class PaginationMeta implements ModelInterface
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'PaginationMeta';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'path' => 'string',
-'current_page' => 'int',
-'last_page' => 'int',
-'per_page' => 'int',
-'from' => 'int',
-'to' => 'int',
-'total' => 'int'    ];
+        'current_page' => 'int',
+        'last_page' => 'int',
+        'per_page' => 'int',
+        'from' => 'int',
+        'to' => 'int',
+        'total' => 'int',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'path' => null,
-'current_page' => null,
-'last_page' => 'int32',
-'per_page' => null,
-'from' => 'int32',
-'to' => null,
-'total' => null    ];
+        'current_page' => null,
+        'last_page' => 'int32',
+        'per_page' => null,
+        'from' => 'int32',
+        'to' => null,
+        'total' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -99,12 +100,13 @@ class PaginationMeta implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'path' => 'path',
-'current_page' => 'current_page',
-'last_page' => 'last_page',
-'per_page' => 'per_page',
-'from' => 'from',
-'to' => 'to',
-'total' => 'total'    ];
+        'current_page' => 'current_page',
+        'last_page' => 'last_page',
+        'per_page' => 'per_page',
+        'from' => 'from',
+        'to' => 'to',
+        'total' => 'total',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -113,12 +115,13 @@ class PaginationMeta implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'path' => 'setPath',
-'current_page' => 'setCurrentPage',
-'last_page' => 'setLastPage',
-'per_page' => 'setPerPage',
-'from' => 'setFrom',
-'to' => 'setTo',
-'total' => 'setTotal'    ];
+        'current_page' => 'setCurrentPage',
+        'last_page' => 'setLastPage',
+        'per_page' => 'setPerPage',
+        'from' => 'setFrom',
+        'to' => 'setTo',
+        'total' => 'setTotal',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -127,12 +130,21 @@ class PaginationMeta implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'path' => 'getPath',
-'current_page' => 'getCurrentPage',
-'last_page' => 'getLastPage',
-'per_page' => 'getPerPage',
-'from' => 'getFrom',
-'to' => 'getTo',
-'total' => 'getTotal'    ];
+        'current_page' => 'getCurrentPage',
+        'last_page' => 'getLastPage',
+        'per_page' => 'getPerPage',
+        'from' => 'getFrom',
+        'to' => 'getTo',
+        'total' => 'getTotal',
+    ];
+
+    /**
+     * @return array
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
 
     /**
      * Array of attributes where the key is the local name,
@@ -175,8 +187,6 @@ class PaginationMeta implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -193,7 +203,9 @@ class PaginationMeta implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['current_page'] = isset($data['current_page']) ? $data['current_page'] : null;
+        $this->container['current_page'] = isset($data['current_page'])
+            ? $data['current_page']
+            : null;
         $this->container['last_page'] = isset($data['last_page']) ? $data['last_page'] : null;
         $this->container['per_page'] = isset($data['per_page']) ? $data['per_page'] : 15;
         $this->container['from'] = isset($data['from']) ? $data['from'] : 1;
@@ -223,7 +235,6 @@ class PaginationMeta implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets path
@@ -392,58 +403,6 @@ class PaginationMeta implements ModelInterface, ArrayAccess
 
         return $this;
     }
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param integer $offset Offset
-     *
-     * @return boolean
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * Gets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return mixed
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param integer $offset Offset
-     * @param mixed   $value  Value to be set
-     *
-     * @return void
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return void
-     */
-    public function offsetUnset($offset)
-    {
-        unset($this->container[$offset]);
-    }
 
     /**
      * Gets the string presentation of the object
@@ -452,7 +411,8 @@ class PaginationMeta implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

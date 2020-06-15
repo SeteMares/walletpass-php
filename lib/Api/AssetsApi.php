@@ -280,7 +280,7 @@ class AssetsApi extends BaseAPI
     public function show($asset)
     {
         list($response) = $this->getAssetByIDWithHttpInfo($asset);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -1125,7 +1125,7 @@ class AssetsApi extends BaseAPI
     public function upload($file = null, $type = null, $name = null, $tags = null)
     {
         list($response) = $this->uploadAssetWithHttpInfo($file, $type, $name, $tags);
-        return $response;
+        return $response->getData();
     }
 
     /**

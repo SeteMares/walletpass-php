@@ -32,6 +32,8 @@ class CollectionResponse implements ModelInterface, ArrayAccess
         'meta' => '\WalletPassJP\Client\Model\PaginationMeta',
     ];
 
+    public $meta;
+
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
@@ -149,8 +151,8 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
+        $this->container = isset($data['data']) ? $data['data'] : null;
+        $this->meta = isset($data['meta']) ? $data['meta'] : null;
     }
 
     /**
@@ -183,7 +185,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     public function getData()
     {
-        return $this->container['data'];
+        return $this->container;
     }
 
     /**
@@ -195,7 +197,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     public function setData($data)
     {
-        $this->container['data'] = $data;
+        $this->container = $data;
 
         return $this;
     }
@@ -207,7 +209,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     public function getMeta()
     {
-        return $this->container['meta'];
+        return $this->meta;
     }
 
     /**
@@ -219,7 +221,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     public function setMeta($meta)
     {
-        $this->container['meta'] = $meta;
+        $this->meta = $meta->getContainer();
 
         return $this;
     }

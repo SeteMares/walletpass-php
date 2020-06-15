@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**listMessages**](MessagesApi.md#listmessages) | **GET** /messages | Get all messages
 
 # **createMessage**
-> \WalletPassJP\Client\Model\InlineResponse2015 createMessage($body)
+> \WalletPassJP\Client\Model\Message createMessage($body)
 
 Create a Message
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2015**](../Model/InlineResponse2015.md)
+[**\WalletPassJP\Client\Model\Message**](../Model/Message.md)
 
 ### Authorization
 

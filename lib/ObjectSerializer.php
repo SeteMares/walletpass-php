@@ -253,7 +253,7 @@ class ObjectSerializer
      */
     public static function deserialize($data, $class, $httpHeaders = null, $resourceClass = '')
     {
-        if (null === $data) {
+        if ($data === null) {
             return null;
         } elseif (substr($class, 0, 4) === 'map[') {
             // for associative array e.g. map[string,int]

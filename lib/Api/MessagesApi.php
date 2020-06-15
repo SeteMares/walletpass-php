@@ -32,7 +32,7 @@ class MessagesApi extends BaseAPI
     public function create($body = null)
     {
         list($response) = $this->createMessageWithHttpInfo($body);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -85,17 +85,16 @@ class MessagesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Client\Model\Message'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -105,7 +104,8 @@ class MessagesApi extends BaseAPI
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\WalletPassJP\Client\Model\ResourceResponse',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Client\Model\Message'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -298,7 +298,7 @@ class MessagesApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse20010
+     * @return \WalletPassJP\Client\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1')
     {
@@ -316,11 +316,11 @@ class MessagesApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listMessagesWithHttpInfo($limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse20010';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listMessagesRequest($limit, $page);
 
         try {
@@ -367,7 +367,12 @@ class MessagesApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Client\Model\Message[]'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -376,8 +381,9 @@ class MessagesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\InlineResponse20010',
-                        $e->getResponseHeaders()
+                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Client\Model\Message[]'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -449,7 +455,7 @@ class MessagesApi extends BaseAPI
      */
     public function listMessagesAsyncWithHttpInfo($limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse20010';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listMessagesRequest($limit, $page);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -465,7 +471,12 @@ class MessagesApi extends BaseAPI
                 }
 
                 return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
+                    ObjectSerializer::deserialize(
+                        $content,
+                        $returnType,
+                        [],
+                        '\WalletPassJP\Client\Model\Message[]'
+                    ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];

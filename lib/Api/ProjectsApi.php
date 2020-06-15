@@ -31,7 +31,7 @@ class ProjectsApi extends BaseAPI
     public function create($body = null)
     {
         list($response) = $this->createProjectWithHttpInfo($body);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -559,7 +559,7 @@ class ProjectsApi extends BaseAPI
     public function show($project)
     {
         list($response) = $this->getProjectByIDWithHttpInfo($project);
-        return $response;
+        return $response->getData();
     }
 
     /**
@@ -851,7 +851,7 @@ class ProjectsApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse2007
+     * @return \WalletPassJP\Client\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
@@ -870,7 +870,7 @@ class ProjectsApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listProjectsWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {

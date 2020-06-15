@@ -585,7 +585,7 @@ class TagsApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\InlineResponse2008
+     * @return \WalletPassJP\Client\Model\CollectionResponse
      */
     public function list()
     {
@@ -601,11 +601,11 @@ class TagsApi extends BaseAPI
      *
      * @throws \WalletPassJP\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTagsWithHttpInfo()
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse2008';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listTagsRequest();
 
         try {
@@ -652,7 +652,12 @@ class TagsApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Client\Model\Tag[]'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -661,8 +666,9 @@ class TagsApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\InlineResponse2008',
-                        $e->getResponseHeaders()
+                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Client\Model\Tag[]'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -730,7 +736,7 @@ class TagsApi extends BaseAPI
      */
     public function listTagsAsyncWithHttpInfo()
     {
-        $returnType = '\WalletPassJP\Client\Model\InlineResponse2008';
+        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
         $request = $this->listTagsRequest();
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -746,7 +752,12 @@ class TagsApi extends BaseAPI
                 }
 
                 return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
+                    ObjectSerializer::deserialize(
+                        $content,
+                        $returnType,
+                        [],
+                        '\WalletPassJP\Client\Model\Tag[]'
+                    ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
