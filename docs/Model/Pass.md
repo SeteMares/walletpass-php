@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **status** | **string** | Status is the best determined status of the pass.   - created: Pass has been created.  - installed: Pass has been installed on a device.  - deleted: Pass has been uninstalled from a device.  - canceled: Pass has been canceled without usage.  - used: Pass has been used. | [optional] [default to 'created']
 **is_voided** | **bool** | Indicates that the pass is void—for example, a one time use coupon that has been redeemed. The default value is false. | [optional] 
 **expires_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**meta** | [**\WalletPassJP\Client\Model\WalletPassMetaInformation**](WalletPassMetaInformation.md) |  | [optional] 
+**meta** | [**\WalletPassJP\Model\WalletPassMetaInformation**](WalletPassMetaInformation.md) |  | [optional] 
 **updated_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **created_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 

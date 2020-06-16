@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -18,16 +18,16 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Body4 Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Body4 implements ModelInterface, ArrayAccess
@@ -51,8 +51,8 @@ class Body4 implements ModelInterface, ArrayAccess
         'header' => 'string',
         'body' => 'string',
         'scheduled_at' => '\DateTime',
-        'localized_body' => '\WalletPassJP\Client\Model\MessagesLocalizedBody',
-        'localized_header' => '\WalletPassJP\Client\Model\MessagesLocalizedHeader',
+        'localized_body' => '\WalletPassJP\Model\MessagesLocalizedBody',
+        'localized_header' => '\WalletPassJP\Model\MessagesLocalizedHeader',
     ];
 
     /**
@@ -326,7 +326,7 @@ class Body4 implements ModelInterface, ArrayAccess
     /**
      * Gets localized_body
      *
-     * @return \WalletPassJP\Client\Model\MessagesLocalizedBody
+     * @return \WalletPassJP\Model\MessagesLocalizedBody
      */
     public function getLocalizedBody()
     {
@@ -336,7 +336,7 @@ class Body4 implements ModelInterface, ArrayAccess
     /**
      * Sets localized_body
      *
-     * @param \WalletPassJP\Client\Model\MessagesLocalizedBody $localized_body localized_body
+     * @param \WalletPassJP\Model\MessagesLocalizedBody $localized_body localized_body
      *
      * @return $this
      */
@@ -350,7 +350,7 @@ class Body4 implements ModelInterface, ArrayAccess
     /**
      * Gets localized_header
      *
-     * @return \WalletPassJP\Client\Model\MessagesLocalizedHeader
+     * @return \WalletPassJP\Model\MessagesLocalizedHeader
      */
     public function getLocalizedHeader()
     {
@@ -360,7 +360,7 @@ class Body4 implements ModelInterface, ArrayAccess
     /**
      * Sets localized_header
      *
-     * @param \WalletPassJP\Client\Model\MessagesLocalizedHeader $localized_header localized_header
+     * @param \WalletPassJP\Model\MessagesLocalizedHeader $localized_header localized_header
      *
      * @return $this
      */

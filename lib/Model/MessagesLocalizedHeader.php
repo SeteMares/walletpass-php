@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * MessagesLocalizedHeader Class Doc Comment
  *
  * @category Class
  * @description Android only
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class MessagesLocalizedHeader implements ModelInterface, ArrayAccess

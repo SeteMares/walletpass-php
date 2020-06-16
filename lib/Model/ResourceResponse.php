@@ -1,13 +1,13 @@
 <?php
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Resource Response
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class ResourceResponse implements ModelInterface

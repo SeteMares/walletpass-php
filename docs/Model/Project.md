@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **title** | **string** | Used to identify this Project. Not shown to the customer. | [optional] 
 **settings** | [**OneOfProjectSettings**](OneOfProjectSettings.md) |  | [optional] 
 **is_enabled** | **bool** | Is it allowed to issue new passes for this Project. | [optional] 
-**templates** | [**\WalletPassJP\Client\Model\ProjectTemplates**](ProjectTemplates.md) |  | [optional] 
+**templates** | [**\WalletPassJP\Model\ProjectTemplates**](ProjectTemplates.md) |  | [optional] 
 **created_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **updated_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **tags** | **string[]** | List of attached tags | [optional] 

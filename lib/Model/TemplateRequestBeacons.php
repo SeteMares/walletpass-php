@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,16 +19,16 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * TemplateRequestBeacons Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class TemplateRequestBeacons implements ModelInterface, ArrayAccess
@@ -48,7 +48,7 @@ class TemplateRequestBeacons implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'list' => '\WalletPassJP\Client\Model\Beacon[]',
+        'list' => '\WalletPassJP\Model\Beacon[]',
 'position' => 'string'    ];
 
     /**
@@ -220,7 +220,7 @@ self::POSITION_REPLACE,        ];
     /**
      * Gets list
      *
-     * @return \WalletPassJP\Client\Model\Beacon[]
+     * @return \WalletPassJP\Model\Beacon[]
      */
     public function getList()
     {
@@ -230,7 +230,7 @@ self::POSITION_REPLACE,        ];
     /**
      * Sets list
      *
-     * @param \WalletPassJP\Client\Model\Beacon[] $list list
+     * @param \WalletPassJP\Model\Beacon[] $list list
      *
      * @return $this
      */

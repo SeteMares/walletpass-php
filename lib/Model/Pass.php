@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * Pass Class Doc Comment
  *
  * @category Class
  * @description Response on pass get or create.
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Pass implements ModelInterface, ArrayAccess
@@ -57,7 +57,7 @@ class Pass implements ModelInterface, ArrayAccess
 'status' => 'string',
 'is_voided' => 'bool',
 'expires_at' => '\DateTime',
-'meta' => '\WalletPassJP\Client\Model\WalletPassMetaInformation',
+'meta' => '\WalletPassJP\Model\WalletPassMetaInformation',
 'updated_at' => '\DateTime',
 'created_at' => '\DateTime'    ];
 
@@ -480,7 +480,7 @@ self::STATUS_USED,        ];
     /**
      * Gets meta
      *
-     * @return \WalletPassJP\Client\Model\WalletPassMetaInformation
+     * @return \WalletPassJP\Model\WalletPassMetaInformation
      */
     public function getMeta()
     {
@@ -490,7 +490,7 @@ self::STATUS_USED,        ];
     /**
      * Sets meta
      *
-     * @param \WalletPassJP\Client\Model\WalletPassMetaInformation $meta meta
+     * @param \WalletPassJP\Model\WalletPassMetaInformation $meta meta
      *
      * @return $this
      */

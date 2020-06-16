@@ -1,4 +1,4 @@
-# WalletPassJP\Client\ProjectsApi
+# WalletPassJP\ProjectsApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**updateProject**](ProjectsApi.md#updateproject) | **PATCH** /projects/{project} | Update Project
 
 # **createProject**
-> \WalletPassJP\Client\Model\ResourceResponse createProject($body)
+> \WalletPassJP\Model\ResourceResponse createProject($body)
 
 Create new Project
 
@@ -24,8 +24,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
-$body = new \WalletPassJP\Client\Model\ProjectRequest(); // \WalletPassJP\Client\Model\ProjectRequest |
+$apiInstance = new WalletPassJP\Api\ProjectsApi($key);
+$body = new \WalletPassJP\Model\ProjectRequest(); // \WalletPassJP\Model\ProjectRequest |
 
 try {
     $result = $apiInstance->create($body);
@@ -40,11 +40,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\WalletPassJP\Client\Model\ProjectRequest**](../Model/ProjectRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\ProjectRequest**](../Model/ProjectRequest.md)|  | [optional]
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
+$apiInstance = new WalletPassJP\Api\ProjectsApi($key);
 $project_id = 'project_example'; // string | Project id
 
 try {
@@ -104,7 +104,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getProjectByID**
-> \WalletPassJP\Client\Model\ResourceResponse getProjectByID($project)
+> \WalletPassJP\Model\ResourceResponse getProjectByID($project)
 
 Get Project record.
 
@@ -115,7 +115,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
+$apiInstance = new WalletPassJP\Api\ProjectsApi($key);
 $project_id = 'project_example'; // string | Project id
 
 try {
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listProjects**
-> \WalletPassJP\Client\Model\CollectionResponse listProjects($limit, $page, $tags)
+> \WalletPassJP\Model\CollectionResponse listProjects($limit, $page, $tags)
 
 Get a list of created Projects
 
@@ -162,7 +162,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
+$apiInstance = new WalletPassJP\Api\ProjectsApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 $tags = ['tags_example']; // string[] | Filter by tags
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -213,9 +213,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\ProjectsApi($key);
+$apiInstance = new WalletPassJP\Api\ProjectsApi($key);
 $project_id = 'project_example'; // string | Project id
-$body = new \WalletPassJP\Client\Model\ProjectRequest(); // \WalletPassJP\Client\Model\ProjectRequest |
+$body = new \WalletPassJP\Model\ProjectRequest(); // \WalletPassJP\Model\ProjectRequest |
 
 try {
     $apiInstance->update($project_id, $body);
@@ -230,7 +230,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project** | **string**| Project |
- **body** | [**\WalletPassJP\Client\Model\ProjectRequest**](../Model/ProjectRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\ProjectRequest**](../Model/ProjectRequest.md)|  | [optional]
 
 ### Return type
 

@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,16 +19,16 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * TemplateRequestLocations Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class TemplateRequestLocations implements ModelInterface, ArrayAccess
@@ -48,7 +48,7 @@ class TemplateRequestLocations implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'list' => '\WalletPassJP\Client\Model\Location[]',
+        'list' => '\WalletPassJP\Model\Location[]',
 'position' => 'string'    ];
 
     /**
@@ -218,7 +218,7 @@ self::POSITION_PREPEND,        ];
     /**
      * Gets list
      *
-     * @return \WalletPassJP\Client\Model\Location[]
+     * @return \WalletPassJP\Model\Location[]
      */
     public function getList()
     {
@@ -228,7 +228,7 @@ self::POSITION_PREPEND,        ];
     /**
      * Sets list
      *
-     * @param \WalletPassJP\Client\Model\Location[] $list list
+     * @param \WalletPassJP\Model\Location[] $list list
      *
      * @return $this
      */

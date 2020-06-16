@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * Location Class Doc Comment
  *
  * @category Class
  * @description For iOS users message will be displayed on lockscreen.  When the location is interpreted with a small radius, the current location must be on the order of a hundred meters or closer; with a large radius, on the order of a thousand meters or closer.  ##### Large radius (max. 1000m): - Event ticket - Boarding pass  ##### Small radius (max. 100m): - Coupon - Store card - Generic  Boarding passes and event tickets almost always specify a relevant date, so they appear only on the valid date and not each time the user is near the location.
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Location implements ModelInterface, ArrayAccess

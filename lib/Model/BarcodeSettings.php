@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * BarcodeSettings Class Doc Comment
  *
  * @category Class
  * @description ##### Barcode format can be:  - &#x60;qrcode&#x60;: QR code can store 4 types of data: numeric, alphanumeric, byte/binary, and Kanji.  - &#x60;aztec&#x60;: Aztec codes are commonly used by the transportation industry such as tickets and airline boarding passes.  - &#x60;pdf417&#x60;: 2D barcode which can store multiple data encodings. Not recommended for large payloads.  - &#x60;code128&#x60;: Supports any character of the ASCII 128 character set which can store highly diversified information. Suitable for older scanners that may not support 2D barcodes, however, some older scanners may also not be able to read from a phone screen, so requires proper testing before use.  - &#x60;none&#x60;: This does not set a barcode. If you set barcode type as none, no barcode will be shown on the pass.    ##### Barcode usage type:  Default is &#x60;system&#x60;.  - &#x60;system&#x60;: Each issued pass will use it&#x27;s unique id for barcode payload.  - &#x60;fixed&#x60;: All issued passes use the same payload as defined in it&#x27;s template. - &#x60;per_pass&#x60;: Barcode needs to be provided on each pass creation request in &#x60;sku&#x60; field.
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class BarcodeSettings implements ModelInterface, ArrayAccess

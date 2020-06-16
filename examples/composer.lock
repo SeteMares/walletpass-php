@@ -291,7 +291,7 @@
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "72ac289e4b72127801adc6e45cf114645ad1f3ff"
+                "reference": "591deb51ca209376da3eee30e93dc37161c7f71b"
             },
             "require": {
                 "ext-curl": "*",
@@ -308,7 +308,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "WalletPassJP\\Client\\": "lib/"
+                    "WalletPassJP\\": "lib/"
                 }
             },
             "license": [

@@ -54,14 +54,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```php
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-use WalletPassJP\Client\Configuration;
-use WalletPassJP\Client\Api\AssetsApi;
-use WalletPassJP\Client\Api\Asset;
+use WalletPassJP\Configuration;
+use WalletPassJP\Client;
 
 $key = 'YOUR_API_KEY';
 $config = (new Configuration())->setEndpoint('https://walletpass.jp/api/v1');
 
-$apiInstance = new AssetsApi(
+$apiInstance = new Client(
     $key,
     // config is optional
     $config,
@@ -70,46 +69,33 @@ $apiInstance = new AssetsApi(
     new GuzzleHttp\Client()
 );
 
+$asset_id = 'asset id';
+
 try {
-    $result = $apiInstance->show($asset_id);
+    $result = $apiInstance->assets()->show($asset_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->show: ', $e->getMessage(), PHP_EOL;
 }
 
-$apiInstance = new AssetsApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 $tags = []; // string[] | Filter by tags
 
 try {
-    $result = $apiInstance->list($limit, $page, $tags);
+    $result = $apiInstance->assets()->list($limit, $page, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->list: ', $e->getMessage(), PHP_EOL;
 }
 
-$apiInstance = new AssetsApi($key);
-$asset = new Asset(); // \WalletPassJP\Client\Model\Asset | Asset ID
-$body = new \WalletPassJP\Client\Model\Body1(); // \WalletPassJP\Client\Model\Body1 |
+$asset_id = 'asset id'; // Asset ID
+$body = new \WalletPassJP\Model\Body1(); // \WalletPassJP\Model\Body1 |
 
 try {
-    $apiInstance->update($asset, $body);
+    $apiInstance->assets()->update($asset_id, $body);
 } catch (Exception $e) {
     echo 'Exception when calling AssetsApi->update: ', $e->getMessage(), PHP_EOL;
-}
-
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
-$file = 'file_example'; // string |
-$type = 'logo'; // string |
-$name = 'main_logo'; // string |
-$tags = []; // string[] |
-
-try {
-    $result = $apiInstance->upload($file, $type, $name, $tags);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AssetsApi->upload: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

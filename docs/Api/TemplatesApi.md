@@ -1,4 +1,4 @@
-# WalletPassJP\Client\TemplatesApi
+# WalletPassJP\TemplatesApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**updateTemplate**](TemplatesApi.md#updatetemplate) | **PATCH** /templates/{template} | Update template
 
 # **copyTemplate**
-> \WalletPassJP\Client\Model\ResourceResponse copyTemplate($template, $body)
+> \WalletPassJP\Model\ResourceResponse copyTemplate($template, $body)
 
 Create a copy of a specified Template record.
 
@@ -26,7 +26,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = '';
 
 try {
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createPass**
-> \WalletPassJP\Client\Model\ResourceResponse createPass($template, $body)
+> \WalletPassJP\Model\ResourceResponse createPass($template, $body)
 
 Create Pass record for the specified Template.
 
@@ -71,9 +71,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
-$body = new \WalletPassJP\Client\Model\PassRequest(); // \WalletPassJP\Client\Model\PassRequest |
+$body = new \WalletPassJP\Model\PassRequest(); // \WalletPassJP\Model\PassRequest |
 
 try {
     $result = $apiInstance->createPass($template, $body);
@@ -89,11 +89,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **template** | string | Template ID 
- **body** | [**\WalletPassJP\Client\Model\PassRequest**](../Model/PassRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\PassRequest**](../Model/PassRequest.md)|  | [optional]
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createTemplate**
-> \WalletPassJP\Client\Model\ResourceResponse createTemplate($body)
+> \WalletPassJP\Model\ResourceResponse createTemplate($body)
 
 Create template
 
@@ -120,8 +120,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
-$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest |
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
+$body = new \WalletPassJP\Model\TemplateRequest(); // \WalletPassJP\Model\TemplateRequest |
 
 try {
     $result = $apiInstance->create($body);
@@ -136,11 +136,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\WalletPassJP\Client\Model\TemplateRequest**](../Model/TemplateRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\TemplateRequest**](../Model/TemplateRequest.md)|  | [optional]
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
 
 try {
@@ -200,7 +200,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTemplateByID**
-> \WalletPassJP\Client\Model\ResourceResponse getTemplateByID($template)
+> \WalletPassJP\Model\ResourceResponse getTemplateByID($template)
 
 Get template
 
@@ -213,7 +213,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
 
 try {
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\ResourceResponse**](../Model/ResourceResponse.md)
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTemplateFields**
-> \WalletPassJP\Client\Model\CollectionResponse getTemplateFields($template)
+> \WalletPassJP\Model\CollectionResponse getTemplateFields($template)
 
 Get all template fields
 
@@ -260,7 +260,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
 
 try {
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTemplatePasses**
-> \WalletPassJP\Client\Model\CollectionResponse listTemplatePasses($template, $limit, $page)
+> \WalletPassJP\Model\CollectionResponse listTemplatePasses($template, $limit, $page)
 
 Get all template passes
 
@@ -307,7 +307,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTemplates**
-> \WalletPassJP\Client\Model\CollectionResponse listTemplates($limit, $page, $tags)
+> \WalletPassJP\Model\CollectionResponse listTemplates($limit, $page, $tags)
 
 Get all templates
 
@@ -360,7 +360,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 $tags = ['tags_example']; // string[] | Filter by tags
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -411,9 +411,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TemplatesApi($key);
+$apiInstance = new WalletPassJP\Api\TemplatesApi($key);
 $template_id = ''; // Template ID
-$body = new \WalletPassJP\Client\Model\TemplateRequest(); // \WalletPassJP\Client\Model\TemplateRequest |
+$body = new \WalletPassJP\Model\TemplateRequest(); // \WalletPassJP\Model\TemplateRequest |
 
 try {
     $apiInstance->update($template, $body);
@@ -428,7 +428,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **template** | string | Template ID 
- **body** | [**\WalletPassJP\Client\Model\TemplateRequest**](../Model/TemplateRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\TemplateRequest**](../Model/TemplateRequest.md)|  | [optional]
 
 ### Return type
 

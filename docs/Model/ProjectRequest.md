@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **settings** | **array** |  | [optional] 
 **images** | **string[]** | Array of Asset IDs, at least logo must be present. | 
 **organization_name** | **string** |  | 
-**links** | [**\WalletPassJP\Client\Model\Link[]**](Link.md) |  | [optional] 
-**beacons** | [**\WalletPassJP\Client\Model\Beacon[]**](Beacon.md) |  | [optional] 
-**locations** | [**\WalletPassJP\Client\Model\Location[]**](Location.md) |  | [optional] 
+**links** | [**\WalletPassJP\Model\Link[]**](Link.md) |  | [optional] 
+**beacons** | [**\WalletPassJP\Model\Beacon[]**](Beacon.md) |  | [optional] 
+**locations** | [**\WalletPassJP\Model\Location[]**](Location.md) |  | [optional] 
 **tags** | **string[]** | Optional array of tags to attach | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

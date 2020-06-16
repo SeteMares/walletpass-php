@@ -1,20 +1,20 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use WalletPassJP\Client\Api\Api as BaseAPI;
-use WalletPassJP\Client\ApiException;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Api\Api as BaseAPI;
+use WalletPassJP\ApiException;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * CertificatesApi
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class CertificatesApi extends BaseAPI
@@ -26,7 +26,7 @@ class CertificatesApi extends BaseAPI
      *
      * @param  string $certificate Certificate ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -42,7 +42,7 @@ class CertificatesApi extends BaseAPI
      *
      * @param  string $certificate Certificate ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -90,7 +90,7 @@ class CertificatesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -98,7 +98,7 @@ class CertificatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -106,7 +106,7 @@ class CertificatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -114,7 +114,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,7 +270,7 @@ class CertificatesApi extends BaseAPI
      * Get CSR
      *
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
@@ -286,7 +286,7 @@ class CertificatesApi extends BaseAPI
      * Get CSR
      *
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
@@ -356,7 +356,7 @@ class CertificatesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -364,7 +364,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -516,9 +516,9 @@ class CertificatesApi extends BaseAPI
      *
      * @param  string $certificate Certificate ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function show($certificate)
     {
@@ -533,13 +533,13 @@ class CertificatesApi extends BaseAPI
      *
      * @param  string $certificate Certificate ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCertificateByIDWithHttpInfo($certificate)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getCertificateByIDRequest($certificate);
 
         try {
@@ -590,7 +590,7 @@ class CertificatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Certificate'
+                    '\WalletPassJP\Model\Certificate'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -600,16 +600,16 @@ class CertificatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Certificate'
+                        '\WalletPassJP\Model\Certificate'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -617,7 +617,7 @@ class CertificatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -625,7 +625,7 @@ class CertificatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -633,7 +633,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -674,7 +674,7 @@ class CertificatesApi extends BaseAPI
      */
     public function getCertificateByIDAsyncWithHttpInfo($certificate)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getCertificateByIDRequest($certificate);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -694,7 +694,7 @@ class CertificatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Certificate'
+                        '\WalletPassJP\Model\Certificate'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -810,9 +810,9 @@ class CertificatesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1')
     {
@@ -828,13 +828,13 @@ class CertificatesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCertificatesWithHttpInfo($limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listCertificatesRequest($limit, $page);
 
         try {
@@ -885,7 +885,7 @@ class CertificatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Certificate[]'
+                    '\WalletPassJP\Model\Certificate[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -895,16 +895,16 @@ class CertificatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Certificate[]'
+                        '\WalletPassJP\Model\Certificate[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -912,7 +912,7 @@ class CertificatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -920,7 +920,7 @@ class CertificatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -928,7 +928,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -971,7 +971,7 @@ class CertificatesApi extends BaseAPI
      */
     public function listCertificatesAsyncWithHttpInfo($limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listCertificatesRequest($limit, $page);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -984,7 +984,7 @@ class CertificatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Certificate[]'
+                        '\WalletPassJP\Model\Certificate[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1096,9 +1096,9 @@ class CertificatesApi extends BaseAPI
      * Update Certificate
      *
      * @param  string $certificate Certificate ID (required)
-     * @param  \WalletPassJP\Client\Model\Body2 $body body (optional)
+     * @param  \WalletPassJP\Model\Body2 $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1113,9 +1113,9 @@ class CertificatesApi extends BaseAPI
      * Update Certificate
      *
      * @param  string $certificate Certificate ID (required)
-     * @param  \WalletPassJP\Client\Model\Body2 $body (optional)
+     * @param  \WalletPassJP\Model\Body2 $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1163,7 +1163,7 @@ class CertificatesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1171,7 +1171,7 @@ class CertificatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1179,7 +1179,7 @@ class CertificatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1187,7 +1187,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1203,7 +1203,7 @@ class CertificatesApi extends BaseAPI
      * Update Certificate
      *
      * @param  string $certificate Certificate ID (required)
-     * @param  \WalletPassJP\Client\Model\Body2 $body (optional)
+     * @param  \WalletPassJP\Model\Body2 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1223,7 +1223,7 @@ class CertificatesApi extends BaseAPI
      * Update Certificate
      *
      * @param  string $certificate Certificate ID (required)
-     * @param  \WalletPassJP\Client\Model\Body2 $body (optional)
+     * @param  \WalletPassJP\Model\Body2 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1258,7 +1258,7 @@ class CertificatesApi extends BaseAPI
      * Create request for operation 'updateCertificate'
      *
      * @param  string $certificate Certificate ID (required)
-     * @param  \WalletPassJP\Client\Model\Body2 $body (optional)
+     * @param  \WalletPassJP\Model\Body2 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1346,11 +1346,11 @@ class CertificatesApi extends BaseAPI
      *
      * Upload new certificate
      *
-     * @param  \WalletPassJP\Client\Model\CertificateRequest $body body (optional)
+     * @param  \WalletPassJP\Model\CertificateRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function uploadP12Certificate($body = null)
     {
@@ -1363,15 +1363,15 @@ class CertificatesApi extends BaseAPI
      *
      * Upload new certificate
      *
-     * @param  \WalletPassJP\Client\Model\CertificateRequest $body (optional)
+     * @param  \WalletPassJP\Model\CertificateRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadP12CertificateWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->uploadP12CertificateRequest($body);
 
         try {
@@ -1422,7 +1422,7 @@ class CertificatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Certificate'
+                    '\WalletPassJP\Model\Certificate'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -1432,16 +1432,16 @@ class CertificatesApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Certificate'
+                        '\WalletPassJP\Model\Certificate'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1449,7 +1449,7 @@ class CertificatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1457,7 +1457,7 @@ class CertificatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1472,7 +1472,7 @@ class CertificatesApi extends BaseAPI
      *
      * Upload new certificate
      *
-     * @param  \WalletPassJP\Client\Model\CertificateRequest $body (optional)
+     * @param  \WalletPassJP\Model\CertificateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1489,14 +1489,14 @@ class CertificatesApi extends BaseAPI
      *
      * Upload new certificate
      *
-     * @param  \WalletPassJP\Client\Model\CertificateRequest $body (optional)
+     * @param  \WalletPassJP\Model\CertificateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function uploadP12CertificateAsyncWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->uploadP12CertificateRequest($body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1516,7 +1516,7 @@ class CertificatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Certificate'
+                        '\WalletPassJP\Model\Certificate'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1542,7 +1542,7 @@ class CertificatesApi extends BaseAPI
     /**
      * Create request for operation 'uploadP12Certificate'
      *
-     * @param  \WalletPassJP\Client\Model\CertificateRequest $body (optional)
+     * @param  \WalletPassJP\Model\CertificateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -1,4 +1,4 @@
-# WalletPassJP\Client\CertificatesApi
+# WalletPassJP\CertificatesApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -26,7 +26,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$apiInstance = new WalletPassJP\Api\CertificatesApi($key);
 $certificate_id = '';
 
 try {
@@ -70,7 +70,7 @@ Get Certificate Signing Request
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi();
+$apiInstance = new WalletPassJP\Api\CertificatesApi();
 
 try {
     $result = $apiInstance->getCSR();
@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCertificateByID**
-> \WalletPassJP\Client\Model\Certificate getCertificateByID($certificate)
+> \WalletPassJP\Model\Certificate getCertificateByID($certificate)
 
 Get certificate by ID
 
@@ -113,7 +113,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$apiInstance = new WalletPassJP\Api\CertificatesApi($key);
 $certificate_id = 'certificate_example'; // Certificate ID
 
 try {
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
+[**\WalletPassJP\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listCertificates**
-> \WalletPassJP\Client\Model\CollectionResponse listCertificates($limit, $page)
+> \WalletPassJP\Model\CollectionResponse listCertificates($limit, $page)
 
 Get all certificates
 
@@ -162,7 +162,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$apiInstance = new WalletPassJP\Api\CertificatesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -211,13 +211,13 @@ Set this certificate as a new default
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi(
+$apiInstance = new WalletPassJP\Api\CertificatesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $certificate_id = 'certificate_example'; // Certificate ID
-$body = new \WalletPassJP\Client\Model\Body2(); // \WalletPassJP\Client\Model\Body2 |
+$body = new \WalletPassJP\Model\Body2(); // \WalletPassJP\Model\Body2 |
 
 try {
     $apiInstance->update($certificate, $body);
@@ -234,7 +234,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **certificate** | **string**| Certificate ID |
- **body** | [**\WalletPassJP\Client\Model\Body2**](../Model/Body2.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\Body2**](../Model/Body2.md)|  | [optional]
 
 ### Return type
 
@@ -252,7 +252,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadCertificate**
-> \WalletPassJP\Client\Model\Certificate uploadCertificate($file)
+> \WalletPassJP\Model\Certificate uploadCertificate($file)
 
 Upload Certificate
 
@@ -265,7 +265,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
+$apiInstance = new WalletPassJP\Api\CertificatesApi($key);
 $file = 'file_example'; // string |
 
 try {
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
+[**\WalletPassJP\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadP12Certificate**
-> \WalletPassJP\Client\Model\Certificate uploadP12Certificate($body)
+> \WalletPassJP\Model\Certificate uploadP12Certificate($body)
 
 Upload new certificate
 
@@ -314,8 +314,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\CertificatesApi($key);
-$body = new \WalletPassJP\Client\Model\CertificateRequest(); // \WalletPassJP\Client\Model\CertificateRequest |
+$apiInstance = new WalletPassJP\Api\CertificatesApi($key);
+$body = new \WalletPassJP\Model\CertificateRequest(); // \WalletPassJP\Model\CertificateRequest |
 
 try {
     $result = $apiInstance->uploadP12Certificate($body);
@@ -332,11 +332,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\WalletPassJP\Client\Model\CertificateRequest**](../Model/CertificateRequest.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\CertificateRequest**](../Model/CertificateRequest.md)|  | [optional]
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Certificate**](../Model/Certificate.md)
+[**\WalletPassJP\Model\Certificate**](../Model/Certificate.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -18,16 +18,16 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * ProjectRequest Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class ProjectRequest implements ModelInterface, ArrayAccess
@@ -59,9 +59,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'settings' => 'object',
         'images' => 'string[]',
         'organization_name' => 'string',
-        'links' => '\WalletPassJP\Client\Model\Link[]',
-        'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
-        'locations' => '\WalletPassJP\Client\Model\Location[]',
+        'links' => '\WalletPassJP\Model\Link[]',
+        'beacons' => '\WalletPassJP\Model\Beacon[]',
+        'locations' => '\WalletPassJP\Model\Location[]',
         'tags' => 'string[]',
     ];
 
@@ -637,7 +637,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Gets links
      *
-     * @return \WalletPassJP\Client\Model\Link[]
+     * @return \WalletPassJP\Model\Link[]
      */
     public function getLinks()
     {
@@ -647,7 +647,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param \WalletPassJP\Client\Model\Link[] $links links
+     * @param \WalletPassJP\Model\Link[] $links links
      *
      * @return $this
      */
@@ -661,7 +661,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Gets beacons
      *
-     * @return \WalletPassJP\Client\Model\Beacon[]
+     * @return \WalletPassJP\Model\Beacon[]
      */
     public function getBeacons()
     {
@@ -671,7 +671,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Sets beacons
      *
-     * @param \WalletPassJP\Client\Model\Beacon[] $beacons beacons
+     * @param \WalletPassJP\Model\Beacon[] $beacons beacons
      *
      * @return $this
      */
@@ -685,7 +685,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Gets locations
      *
-     * @return \WalletPassJP\Client\Model\Location[]
+     * @return \WalletPassJP\Model\Location[]
      */
     public function getLocations()
     {
@@ -695,7 +695,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     /**
      * Sets locations
      *
-     * @param \WalletPassJP\Client\Model\Location[] $locations locations
+     * @param \WalletPassJP\Model\Location[] $locations locations
      *
      * @return $this
      */

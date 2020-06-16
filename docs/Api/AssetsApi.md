@@ -1,4 +1,4 @@
-# WalletPassJP\Client\AssetsApi
+# WalletPassJP\AssetsApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -24,7 +24,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$apiInstance = new WalletPassJP\Api\AssetsApi($key);
 $asset_id = 'asset_example'; // Asset ID
 
 try {
@@ -57,7 +57,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAssetByID**
-> \WalletPassJP\Client\Model\Asset getAssetByID($asset)
+> \WalletPassJP\Model\Asset getAssetByID($asset)
 
 Get Asset by ID
 
@@ -70,7 +70,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$apiInstance = new WalletPassJP\Api\AssetsApi($key);
 $asset_id = 'asset_example'; // Asset ID
 
 try {
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Asset**](../Model/Asset.md)
+[**\WalletPassJP\Model\Asset**](../Model/Asset.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listAssets**
-> \WalletPassJP\Client\Model\CollectionResponse listAssets($limit, $page, $tags)
+> \WalletPassJP\Model\CollectionResponse listAssets($limit, $page, $tags)
 
 Get all assets
 
@@ -117,7 +117,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$apiInstance = new WalletPassJP\Api\AssetsApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 $tags = ['tags_example']; // string[] | Filter by tags
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 
@@ -168,9 +168,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$apiInstance = new WalletPassJP\Api\AssetsApi($key);
 $asset_id = 'asset_example'; // Asset ID
-$body = new \WalletPassJP\Client\Model\Body1(); // \WalletPassJP\Client\Model\Body1 |
+$body = new \WalletPassJP\Model\Body1(); // \WalletPassJP\Model\Body1 |
 
 try {
     $apiInstance->update($asset, $body);
@@ -185,7 +185,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asset** | **string** | Asset ID |
- **body** | [**\WalletPassJP\Client\Model\Body1**](../Model/Body1.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\Body1**](../Model/Body1.md)|  | [optional]
 
 ### Return type
 
@@ -203,7 +203,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadAsset**
-> \WalletPassJP\Client\Model\Asset uploadAsset($file, $type, $name, $tags)
+> \WalletPassJP\Model\Asset uploadAsset($file, $type, $name, $tags)
 
 Upload an asset
 
@@ -216,7 +216,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\AssetsApi($key);
+$apiInstance = new WalletPassJP\Api\AssetsApi($key);
 $file = 'file_example'; // string |
 $type = 'type_example'; // string |
 $name = 'name_example'; // string |
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Asset**](../Model/Asset.md)
+[**\WalletPassJP\Model\Asset**](../Model/Asset.md)
 
 ### Authorization
 

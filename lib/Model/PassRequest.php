@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * PassRequest Class Doc Comment
  *
  * @category Class
  * @description Request for pass create or update.
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class PassRequest implements ModelInterface, ArrayAccess
@@ -52,7 +52,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'external_id' => 'string',
 'sku' => 'string',
 'voided' => 'bool',
-'fields' => '\WalletPassJP\Client\Model\PassRequestFields[]'    ];
+'fields' => '\WalletPassJP\Model\PassRequestFields[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -282,7 +282,7 @@ class PassRequest implements ModelInterface, ArrayAccess
     /**
      * Gets fields
      *
-     * @return \WalletPassJP\Client\Model\PassRequestFields[]
+     * @return \WalletPassJP\Model\PassRequestFields[]
      */
     public function getFields()
     {
@@ -292,7 +292,7 @@ class PassRequest implements ModelInterface, ArrayAccess
     /**
      * Sets fields
      *
-     * @param \WalletPassJP\Client\Model\PassRequestFields[] $fields fields
+     * @param \WalletPassJP\Model\PassRequestFields[] $fields fields
      *
      * @return $this
      */

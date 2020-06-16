@@ -1,4 +1,4 @@
-# WalletPassJP\Client\TagsApi
+# WalletPassJP\TagsApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -22,7 +22,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
+$apiInstance = new WalletPassJP\Api\TagsApi($key);
 $tag = 'tag_example'; // string | Tag name
 
 try {
@@ -55,7 +55,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTagModels**
-> \WalletPassJP\Client\Model\InlineResponse2009 getTagModels($tag, $limit, $page)
+> \WalletPassJP\Model\InlineResponse2009 getTagModels($tag, $limit, $page)
 
 Get associated models
 
@@ -68,7 +68,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
+$apiInstance = new WalletPassJP\Api\TagsApi($key);
 $tag = 'tag_example'; // string | Tag name
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\WalletPassJP\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTags**
-> \WalletPassJP\Client\Model\CollectionResponse listTags()
+> \WalletPassJP\Model\CollectionResponse listTags()
 
 Your GET endpoint
 
@@ -119,7 +119,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\TagsApi($key);
+$apiInstance = new WalletPassJP\Api\TagsApi($key);
 
 try {
     $result = $apiInstance->list();
@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

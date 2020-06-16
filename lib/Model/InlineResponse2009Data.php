@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,16 +19,16 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * InlineResponse2009Data Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class InlineResponse2009Data implements ModelInterface, ArrayAccess
@@ -48,9 +48,9 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'assets' => '\WalletPassJP\Client\Model\Asset[]',
-'projects' => '\WalletPassJP\Client\Model\Project[]',
-'templates' => '\WalletPassJP\Client\Model\Template[]'    ];
+        'assets' => '\WalletPassJP\Model\Asset[]',
+'projects' => '\WalletPassJP\Model\Project[]',
+'templates' => '\WalletPassJP\Model\Template[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -203,7 +203,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Gets assets
      *
-     * @return \WalletPassJP\Client\Model\Asset[]
+     * @return \WalletPassJP\Model\Asset[]
      */
     public function getAssets()
     {
@@ -213,7 +213,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Sets assets
      *
-     * @param \WalletPassJP\Client\Model\Asset[] $assets assets
+     * @param \WalletPassJP\Model\Asset[] $assets assets
      *
      * @return $this
      */
@@ -227,7 +227,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Gets projects
      *
-     * @return \WalletPassJP\Client\Model\Project[]
+     * @return \WalletPassJP\Model\Project[]
      */
     public function getProjects()
     {
@@ -237,7 +237,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Sets projects
      *
-     * @param \WalletPassJP\Client\Model\Project[] $projects projects
+     * @param \WalletPassJP\Model\Project[] $projects projects
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Gets templates
      *
-     * @return \WalletPassJP\Client\Model\Template[]
+     * @return \WalletPassJP\Model\Template[]
      */
     public function getTemplates()
     {
@@ -261,7 +261,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Sets templates
      *
-     * @param \WalletPassJP\Client\Model\Template[] $templates templates
+     * @param \WalletPassJP\Model\Template[] $templates templates
      *
      * @return $this
      */

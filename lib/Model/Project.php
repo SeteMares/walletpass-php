@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -18,16 +18,16 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Project Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Project implements ModelInterface, ArrayAccess
@@ -53,7 +53,7 @@ class Project implements ModelInterface, ArrayAccess
         'title' => 'string',
         'settings' => 'object',
         'is_enabled' => 'bool',
-        'templates' => '\WalletPassJP\Client\Model\ProjectTemplates',
+        'templates' => '\WalletPassJP\Model\ProjectTemplates',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'tags' => 'string[]',
@@ -402,7 +402,7 @@ class Project implements ModelInterface, ArrayAccess
     /**
      * Sets settings
      *
-     * @param \WalletPassJP\Client\Model\OneOfProjectSettings $settings settings
+     * @param \WalletPassJP\Model\OneOfProjectSettings $settings settings
      *
      * @return $this
      */
@@ -440,7 +440,7 @@ class Project implements ModelInterface, ArrayAccess
     /**
      * Gets templates
      *
-     * @return \WalletPassJP\Client\Model\ProjectTemplates
+     * @return \WalletPassJP\Model\ProjectTemplates
      */
     public function getTemplates()
     {
@@ -450,7 +450,7 @@ class Project implements ModelInterface, ArrayAccess
     /**
      * Sets templates
      *
-     * @param \WalletPassJP\Client\Model\ProjectTemplates $templates templates
+     * @param \WalletPassJP\Model\ProjectTemplates $templates templates
      *
      * @return $this
      */

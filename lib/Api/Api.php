@@ -1,17 +1,17 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
-use WalletPassJP\Client\Configuration;
-use WalletPassJP\Client\HeaderSelector;
+use WalletPassJP\Configuration;
+use WalletPassJP\HeaderSelector;
 
 /**
  * Api Class
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Api
@@ -32,20 +32,20 @@ class Api
     protected $headerSelector;
 
     /**
-     * @param string               $key
      * @param Configuration|null   $config
      * @param ClientInterface|null $client
+     * @param string|null          $key
      * @param HeaderSelector|null  $selector
      */
     public function __construct(
-        string $key,
         Configuration $config = null,
         ClientInterface $client = null,
+        string $key = '',
         HeaderSelector $selector = null
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: new Configuration();
-        $this->config->setAccessToken($key);
+        $key and $this->config->setAccessToken($key);
+        $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 

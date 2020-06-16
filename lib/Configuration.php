@@ -4,7 +4,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -17,14 +17,14 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client;
+namespace WalletPassJP;
 
 /**
  * Configuration Class Doc Comment
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Configuration
@@ -327,7 +327,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report = 'PHP SDK (WalletPassJP\Client) Debug Report:' . PHP_EOL;
+        $report = 'PHP SDK (WalletPassJP) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 1.0' . PHP_EOL;

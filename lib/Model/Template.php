@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -18,16 +18,16 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Template Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class Template implements ModelInterface, ArrayAccess
@@ -50,11 +50,11 @@ class Template implements ModelInterface, ArrayAccess
         'id' => 'string',
         'external_id' => 'string',
         'certificate_id' => 'string',
-        'colors' => '\WalletPassJP\Client\Model\Colors',
-        'images' => '\WalletPassJP\Client\Model\Asset[]',
-        'links' => '\WalletPassJP\Client\Model\Link[]',
-        'beacons' => '\WalletPassJP\Client\Model\Beacon[]',
-        'locations' => '\WalletPassJP\Client\Model\Location[]',
+        'colors' => '\WalletPassJP\Model\Colors',
+        'images' => '\WalletPassJP\Model\Asset[]',
+        'links' => '\WalletPassJP\Model\Link[]',
+        'beacons' => '\WalletPassJP\Model\Beacon[]',
+        'locations' => '\WalletPassJP\Model\Location[]',
         'grouping_identifier' => 'string',
         'logo_text' => 'string',
         'pass_type' => 'string',
@@ -63,11 +63,11 @@ class Template implements ModelInterface, ArrayAccess
         'relevant_date' => '\DateTime',
         'organization_name' => 'string',
         'sharing_status' => 'string',
-        'barcode' => '\WalletPassJP\Client\Model\BarcodeSettings',
-        'expiry_settings' => '\WalletPassJP\Client\Model\TemplateExpirySettings',
+        'barcode' => '\WalletPassJP\Model\BarcodeSettings',
+        'expiry_settings' => '\WalletPassJP\Model\TemplateExpirySettings',
         'associated_store_identifier' => 'string',
-        'fields' => '\WalletPassJP\Client\Model\PassField[]',
-        'google_pay_apps' => '\WalletPassJP\Client\Model\TemplateGooglePayApps[]',
+        'fields' => '\WalletPassJP\Model\PassField[]',
+        'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
         'ios_logo_layout' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -525,7 +525,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets colors
      *
-     * @return \WalletPassJP\Client\Model\Colors
+     * @return \WalletPassJP\Model\Colors
      */
     public function getColors()
     {
@@ -535,7 +535,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets colors
      *
-     * @param \WalletPassJP\Client\Model\Colors $colors colors
+     * @param \WalletPassJP\Model\Colors $colors colors
      *
      * @return $this
      */
@@ -549,7 +549,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets images
      *
-     * @return \WalletPassJP\Client\Model\Asset[]
+     * @return \WalletPassJP\Model\Asset[]
      */
     public function getImages()
     {
@@ -559,7 +559,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets images
      *
-     * @param \WalletPassJP\Client\Model\Asset[] $images Array of Asset IDs
+     * @param \WalletPassJP\Model\Asset[] $images Array of Asset IDs
      *
      * @return $this
      */
@@ -573,7 +573,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets links
      *
-     * @return \WalletPassJP\Client\Model\Link[]
+     * @return \WalletPassJP\Model\Link[]
      */
     public function getLinks()
     {
@@ -583,7 +583,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param \WalletPassJP\Client\Model\Link[] $links links
+     * @param \WalletPassJP\Model\Link[] $links links
      *
      * @return $this
      */
@@ -597,7 +597,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets beacons
      *
-     * @return \WalletPassJP\Client\Model\Beacon[]
+     * @return \WalletPassJP\Model\Beacon[]
      */
     public function getBeacons()
     {
@@ -607,7 +607,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets beacons
      *
-     * @param \WalletPassJP\Client\Model\Beacon[] $beacons beacons
+     * @param \WalletPassJP\Model\Beacon[] $beacons beacons
      *
      * @return $this
      */
@@ -621,7 +621,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets locations
      *
-     * @return \WalletPassJP\Client\Model\Location[]
+     * @return \WalletPassJP\Model\Location[]
      */
     public function getLocations()
     {
@@ -631,7 +631,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets locations
      *
-     * @param \WalletPassJP\Client\Model\Location[] $locations An array of valid coordinates. latitude and longitude must contain valid values. relevant_text is the push notification that is shown on lockscreen. You can also specify an altitude and the max_distance which defines the number of meters around the coordinate where the notification will be shown.
+     * @param \WalletPassJP\Model\Location[] $locations An array of valid coordinates. latitude and longitude must contain valid values. relevant_text is the push notification that is shown on lockscreen. You can also specify an altitude and the max_distance which defines the number of meters around the coordinate where the notification will be shown.
      *
      * @return $this
      */
@@ -855,7 +855,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets barcode
      *
-     * @return \WalletPassJP\Client\Model\BarcodeSettings
+     * @return \WalletPassJP\Model\BarcodeSettings
      */
     public function getBarcode()
     {
@@ -865,7 +865,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets barcode
      *
-     * @param \WalletPassJP\Client\Model\BarcodeSettings $barcode barcode
+     * @param \WalletPassJP\Model\BarcodeSettings $barcode barcode
      *
      * @return $this
      */
@@ -879,7 +879,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets expiry_settings
      *
-     * @return \WalletPassJP\Client\Model\TemplateExpirySettings
+     * @return \WalletPassJP\Model\TemplateExpirySettings
      */
     public function getExpirySettings()
     {
@@ -889,7 +889,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets expiry_settings
      *
-     * @param \WalletPassJP\Client\Model\TemplateExpirySettings $expiry_settings expiry_settings
+     * @param \WalletPassJP\Model\TemplateExpirySettings $expiry_settings expiry_settings
      *
      * @return $this
      */
@@ -927,7 +927,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets fields
      *
-     * @return \WalletPassJP\Client\Model\PassField[]
+     * @return \WalletPassJP\Model\PassField[]
      */
     public function getFields()
     {
@@ -937,7 +937,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets fields
      *
-     * @param \WalletPassJP\Client\Model\PassField[] $fields This allows you to configure individual data field that is rendered on the customer UI (data collection page and the pass).
+     * @param \WalletPassJP\Model\PassField[] $fields This allows you to configure individual data field that is rendered on the customer UI (data collection page and the pass).
      *
      * @return $this
      */
@@ -951,7 +951,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Gets google_pay_apps
      *
-     * @return \WalletPassJP\Client\Model\TemplateGooglePayApps[]
+     * @return \WalletPassJP\Model\TemplateGooglePayApps[]
      */
     public function getGooglePayApps()
     {
@@ -961,7 +961,7 @@ class Template implements ModelInterface, ArrayAccess
     /**
      * Sets google_pay_apps
      *
-     * @param \WalletPassJP\Client\Model\TemplateGooglePayApps[] $google_pay_apps Settings to render an app on the head of a pass. Apps can be Android, iOS or Web
+     * @param \WalletPassJP\Model\TemplateGooglePayApps[] $google_pay_apps Settings to render an app on the head of a pass. Apps can be Android, iOS or Web
      *
      * @return $this
      */

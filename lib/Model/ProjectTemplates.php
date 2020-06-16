@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,17 +19,17 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * ProjectTemplates Class Doc Comment
  *
  * @category Class
  * @description Template ID that will be switched to after pass redemption.
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class ProjectTemplates implements ModelInterface, ArrayAccess
@@ -49,8 +49,8 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'default' => '\WalletPassJP\Client\Model\Template',
-'redeemed' => '\WalletPassJP\Client\Model\Template'    ];
+        'default' => '\WalletPassJP\Model\Template',
+'redeemed' => '\WalletPassJP\Model\Template'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -198,7 +198,7 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     /**
      * Gets default
      *
-     * @return \WalletPassJP\Client\Model\Template
+     * @return \WalletPassJP\Model\Template
      */
     public function getDefault()
     {
@@ -208,7 +208,7 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     /**
      * Sets default
      *
-     * @param \WalletPassJP\Client\Model\Template $default default
+     * @param \WalletPassJP\Model\Template $default default
      *
      * @return $this
      */
@@ -222,7 +222,7 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     /**
      * Gets redeemed
      *
-     * @return \WalletPassJP\Client\Model\Template
+     * @return \WalletPassJP\Model\Template
      */
     public function getRedeemed()
     {
@@ -232,7 +232,7 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     /**
      * Sets redeemed
      *
-     * @param \WalletPassJP\Client\Model\Template $redeemed redeemed
+     * @param \WalletPassJP\Model\Template $redeemed redeemed
      *
      * @return $this
      */

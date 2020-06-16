@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -19,16 +19,16 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\Client\ObjectSerializer;
+use \WalletPassJP\ObjectSerializer;
 
 /**
  * InlineResponse2009 Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class InlineResponse2009 implements ModelInterface, ArrayAccess
@@ -48,8 +48,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\WalletPassJP\Client\Model\InlineResponse2009Data',
-'meta' => '\WalletPassJP\Client\Model\PaginationMeta'    ];
+        'data' => '\WalletPassJP\Model\InlineResponse2009Data',
+'meta' => '\WalletPassJP\Model\PaginationMeta'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -197,7 +197,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \WalletPassJP\Client\Model\InlineResponse2009Data
+     * @return \WalletPassJP\Model\InlineResponse2009Data
      */
     public function getData()
     {
@@ -207,7 +207,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \WalletPassJP\Client\Model\InlineResponse2009Data $data data
+     * @param \WalletPassJP\Model\InlineResponse2009Data $data data
      *
      * @return $this
      */
@@ -221,7 +221,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Gets meta
      *
-     * @return \WalletPassJP\Client\Model\PaginationMeta
+     * @return \WalletPassJP\Model\PaginationMeta
      */
     public function getMeta()
     {
@@ -231,7 +231,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets meta
      *
-     * @param \WalletPassJP\Client\Model\PaginationMeta $meta meta
+     * @param \WalletPassJP\Model\PaginationMeta $meta meta
      *
      * @return $this
      */

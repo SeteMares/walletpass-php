@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client\Model
+ * @package  WalletPassJP\Model
  * @author   Kinchaku
  */
 
@@ -19,12 +19,12 @@
  */
 
 
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package WalletPassJP\Client\Model
+ * @package WalletPassJP\Model
  * @author  Kinchaku
  */
 interface ModelInterface

@@ -1,14 +1,14 @@
 <?php
-namespace WalletPassJP\Client\Model;
+namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * CollectionResponse
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class CollectionResponse implements ModelInterface, ArrayAccess
@@ -29,7 +29,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
      */
     protected static $swaggerTypes = [
         'data' => 'collection',
-        'meta' => '\WalletPassJP\Client\Model\PaginationMeta',
+        'meta' => '\WalletPassJP\Model\PaginationMeta',
     ];
 
     public $meta;
@@ -205,7 +205,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets meta
      *
-     * @return \WalletPassJP\Client\Model\PaginationMeta
+     * @return \WalletPassJP\Model\PaginationMeta
      */
     public function getMeta()
     {
@@ -215,7 +215,7 @@ class CollectionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets meta
      *
-     * @param \WalletPassJP\Client\Model\PaginationMeta $meta meta
+     * @param \WalletPassJP\Model\PaginationMeta $meta meta
      *
      * @return $this
      */

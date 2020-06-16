@@ -4,7 +4,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -18,7 +18,7 @@
  */
 
 
-namespace WalletPassJP\Client;
+namespace WalletPassJP;
 
 use \Exception;
 
@@ -26,7 +26,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class HeaderSelector

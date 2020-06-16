@@ -1,18 +1,18 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
-use WalletPassJP\Client\ApiException;
-use WalletPassJP\Client\ObjectSerializer;
-use WalletPassJP\Client\Api\Api as BaseAPI;
+use WalletPassJP\ApiException;
+use WalletPassJP\ObjectSerializer;
+use WalletPassJP\Api\Api as BaseAPI;
 
 /**
  * Templates Api
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class TemplatesApi extends BaseAPI
@@ -25,9 +25,9 @@ class TemplatesApi extends BaseAPI
      * @param  string $template Template ID (required)
      * @param  object $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function copy($template, $body = null)
     {
@@ -43,13 +43,13 @@ class TemplatesApi extends BaseAPI
      * @param  string $template Template ID (required)
      * @param  object $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function copyTemplateWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->copyTemplateRequest($template, $body);
 
         try {
@@ -100,7 +100,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Template'
+                    '\WalletPassJP\Model\Template'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -110,16 +110,16 @@ class TemplatesApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -127,7 +127,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -135,7 +135,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -143,7 +143,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -186,7 +186,7 @@ class TemplatesApi extends BaseAPI
      */
     public function copyTemplateAsyncWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->copyTemplateRequest($template, $body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -200,7 +200,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -325,11 +325,11 @@ class TemplatesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function createPass($template, $body = null)
     {
@@ -343,15 +343,15 @@ class TemplatesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPassWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createPassRequest($template, $body);
 
         try {
@@ -402,7 +402,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Pass'
+                    '\WalletPassJP\Model\Pass'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -412,16 +412,16 @@ class TemplatesApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Pass'
+                        '\WalletPassJP\Model\Pass'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -429,7 +429,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -437,7 +437,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -445,7 +445,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -461,7 +461,7 @@ class TemplatesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -481,14 +481,14 @@ class TemplatesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createPassAsyncWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createPassRequest($template, $body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -502,7 +502,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Pass'
+                        '\WalletPassJP\Model\Pass'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -529,7 +529,7 @@ class TemplatesApi extends BaseAPI
      * Create request for operation 'createPass'
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -628,9 +628,9 @@ class TemplatesApi extends BaseAPI
      *
      * @param  stringRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function create($body = null)
     {
@@ -643,15 +643,15 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTemplateWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createTemplateRequest($body);
 
         try {
@@ -702,7 +702,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Template'
+                    '\WalletPassJP\Model\Template'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -712,16 +712,16 @@ class TemplatesApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -729,7 +729,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -737,7 +737,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -752,7 +752,7 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -769,14 +769,14 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createTemplateAsyncWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createTemplateRequest($body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -790,7 +790,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -816,7 +816,7 @@ class TemplatesApi extends BaseAPI
     /**
      * Create request for operation 'createTemplate'
      *
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -903,7 +903,7 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -919,7 +919,7 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -967,7 +967,7 @@ class TemplatesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -975,7 +975,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -983,7 +983,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -991,7 +991,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1150,9 +1150,9 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function show($template)
     {
@@ -1167,13 +1167,13 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTemplateByIDWithHttpInfo($template)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getTemplateByIDRequest($template);
 
         try {
@@ -1224,7 +1224,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Template'
+                    '\WalletPassJP\Model\Template'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -1234,16 +1234,16 @@ class TemplatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1251,7 +1251,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1259,7 +1259,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1267,7 +1267,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1306,7 +1306,7 @@ class TemplatesApi extends BaseAPI
      */
     public function getTemplateByIDAsyncWithHttpInfo($template)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getTemplateByIDRequest($template);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1326,7 +1326,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Template'
+                        '\WalletPassJP\Model\Template'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1445,9 +1445,9 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function getTemplateFields($template)
     {
@@ -1462,13 +1462,13 @@ class TemplatesApi extends BaseAPI
      *
      * @param  string $template Template ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTemplateFieldsWithHttpInfo($template)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->getTemplateFieldsRequest($template);
 
         try {
@@ -1519,7 +1519,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\PassField[]'
+                    '\WalletPassJP\Model\PassField[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -1529,16 +1529,16 @@ class TemplatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\PassField[]'
+                        '\WalletPassJP\Model\PassField[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1546,7 +1546,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1554,7 +1554,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1562,7 +1562,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1603,7 +1603,7 @@ class TemplatesApi extends BaseAPI
      */
     public function getTemplateFieldsAsyncWithHttpInfo($template)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->getTemplateFieldsRequest($template);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1617,7 +1617,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\PassField[]'
+                        '\WalletPassJP\Model\PassField[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1738,9 +1738,9 @@ class TemplatesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function listPasses($template, $limit = '15', $page = '1')
     {
@@ -1757,13 +1757,13 @@ class TemplatesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTemplatePassesWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         try {
@@ -1814,7 +1814,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Pass[]'
+                    '\WalletPassJP\Model\Pass[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -1824,16 +1824,16 @@ class TemplatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Pass[]'
+                        '\WalletPassJP\Model\Pass[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1841,7 +1841,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1849,7 +1849,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1857,7 +1857,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1902,7 +1902,7 @@ class TemplatesApi extends BaseAPI
      */
     public function listTemplatePassesAsyncWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1922,7 +1922,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Pass[]'
+                        '\WalletPassJP\Model\Pass[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -2054,9 +2054,9 @@ class TemplatesApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
@@ -2073,13 +2073,13 @@ class TemplatesApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTemplatesWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatesRequest($limit, $page, $tags);
 
         try {
@@ -2130,7 +2130,7 @@ class TemplatesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Template[]'
+                    '\WalletPassJP\Model\Template[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -2140,16 +2140,16 @@ class TemplatesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Template[]'
+                        '\WalletPassJP\Model\Template[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2157,7 +2157,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2165,7 +2165,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2173,7 +2173,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2218,7 +2218,7 @@ class TemplatesApi extends BaseAPI
      */
     public function listTemplatesAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatesRequest($limit, $page, $tags);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -2238,7 +2238,7 @@ class TemplatesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Template[]'
+                        '\WalletPassJP\Model\Template[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -2362,9 +2362,9 @@ class TemplatesApi extends BaseAPI
      * Update template
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2379,9 +2379,9 @@ class TemplatesApi extends BaseAPI
      * Update template
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2429,7 +2429,7 @@ class TemplatesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2437,7 +2437,7 @@ class TemplatesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2445,7 +2445,7 @@ class TemplatesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2453,7 +2453,7 @@ class TemplatesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2469,7 +2469,7 @@ class TemplatesApi extends BaseAPI
      * Update template
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2489,7 +2489,7 @@ class TemplatesApi extends BaseAPI
      * Update template
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2524,7 +2524,7 @@ class TemplatesApi extends BaseAPI
      * Create request for operation 'updateTemplate'
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

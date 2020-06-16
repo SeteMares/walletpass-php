@@ -1,18 +1,18 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
-use WalletPassJP\Client\ApiException;
-use WalletPassJP\Client\ObjectSerializer;
-use WalletPassJP\Client\Api\Api as BaseAPI;
+use WalletPassJP\ApiException;
+use WalletPassJP\ObjectSerializer;
+use WalletPassJP\Api\Api as BaseAPI;
 
 /**
  * Projects Api
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class ProjectsApi extends BaseAPI
@@ -22,11 +22,11 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function create($body = null)
     {
@@ -39,15 +39,15 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProjectWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createProjectRequest($body);
 
         try {
@@ -94,7 +94,7 @@ class ProjectsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Project'
+                    '\WalletPassJP\Model\Project'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -104,16 +104,16 @@ class ProjectsApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Project'
+                        '\WalletPassJP\Model\Project'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -121,7 +121,7 @@ class ProjectsApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -129,7 +129,7 @@ class ProjectsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -137,7 +137,7 @@ class ProjectsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -152,7 +152,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -169,14 +169,14 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createProjectAsyncWithHttpInfo($body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createProjectRequest($body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -192,7 +192,7 @@ class ProjectsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Project'
+                        '\WalletPassJP\Model\Project'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -218,7 +218,7 @@ class ProjectsApi extends BaseAPI
     /**
      * Create request for operation 'createProject'
      *
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -305,7 +305,7 @@ class ProjectsApi extends BaseAPI
      *
      * @param  string $project Project (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -321,7 +321,7 @@ class ProjectsApi extends BaseAPI
      *
      * @param  string $project Project (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -369,7 +369,7 @@ class ProjectsApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -377,7 +377,7 @@ class ProjectsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class ProjectsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class ProjectsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -548,9 +548,9 @@ class ProjectsApi extends BaseAPI
      *
      * @param  string $project Project (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function show($project)
     {
@@ -565,13 +565,13 @@ class ProjectsApi extends BaseAPI
      *
      * @param  string $project Project (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProjectByIDWithHttpInfo($project)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getProjectByIDRequest($project);
 
         try {
@@ -622,7 +622,7 @@ class ProjectsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Project'
+                    '\WalletPassJP\Model\Project'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -632,16 +632,16 @@ class ProjectsApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Project'
+                        '\WalletPassJP\Model\Project'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -649,7 +649,7 @@ class ProjectsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -657,7 +657,7 @@ class ProjectsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -665,7 +665,7 @@ class ProjectsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -704,7 +704,7 @@ class ProjectsApi extends BaseAPI
      */
     public function getProjectByIDAsyncWithHttpInfo($project)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getProjectByIDRequest($project);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -724,7 +724,7 @@ class ProjectsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Project'
+                        '\WalletPassJP\Model\Project'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -845,9 +845,9 @@ class ProjectsApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
@@ -864,13 +864,13 @@ class ProjectsApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listProjectsWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listProjectsRequest($limit, $page, $tags);
 
         try {
@@ -921,7 +921,7 @@ class ProjectsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Project[]'
+                    '\WalletPassJP\Model\Project[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -931,16 +931,16 @@ class ProjectsApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Project[]'
+                        '\WalletPassJP\Model\Project[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -948,7 +948,7 @@ class ProjectsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -956,7 +956,7 @@ class ProjectsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -964,7 +964,7 @@ class ProjectsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1009,7 +1009,7 @@ class ProjectsApi extends BaseAPI
      */
     public function listProjectsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listProjectsRequest($limit, $page, $tags);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1029,7 +1029,7 @@ class ProjectsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Project[]'
+                        '\WalletPassJP\Model\Project[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -1153,9 +1153,9 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1170,9 +1170,9 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1220,7 +1220,7 @@ class ProjectsApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1228,7 +1228,7 @@ class ProjectsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1236,7 +1236,7 @@ class ProjectsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1244,7 +1244,7 @@ class ProjectsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1260,7 +1260,7 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1280,7 +1280,7 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1315,7 +1315,7 @@ class ProjectsApi extends BaseAPI
      * Create request for operation 'updateProject'
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Client\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

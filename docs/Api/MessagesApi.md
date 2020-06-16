@@ -1,4 +1,4 @@
-# WalletPassJP\Client\MessagesApi
+# WalletPassJP\MessagesApi
 
 All URIs are relative to *https://walletpass.jp/api/v1*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**listMessages**](MessagesApi.md#listmessages) | **GET** /messages | Get all messages
 
 # **createMessage**
-> \WalletPassJP\Client\Model\Message createMessage($body)
+> \WalletPassJP\Model\Message createMessage($body)
 
 Create a Message
 
@@ -21,8 +21,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\MessagesApi($key);
-$body = new \WalletPassJP\Client\Model\Body4(); // \WalletPassJP\Client\Model\Body4 |
+$apiInstance = new WalletPassJP\Api\MessagesApi($key);
+$body = new \WalletPassJP\Model\Body4(); // \WalletPassJP\Model\Body4 |
 
 try {
     $result = $apiInstance->create($body);
@@ -37,11 +37,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\WalletPassJP\Client\Model\Body4**](../Model/Body4.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\Body4**](../Model/Body4.md)|  | [optional]
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\Message**](../Model/Message.md)
+[**\WalletPassJP\Model\Message**](../Model/Message.md)
 
 ### Authorization
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listMessages**
-> \WalletPassJP\Client\Model\CollectionResponse listMessages($limit, $page)
+> \WalletPassJP\Model\CollectionResponse listMessages($limit, $page)
 
 Get all messages
 
@@ -68,7 +68,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Configure HTTP bearer authorization: Bearer
 $key = 'YOUR_ACCESS_TOKEN';
 
-$apiInstance = new WalletPassJP\Client\Api\MessagesApi($key);
+$apiInstance = new WalletPassJP\Api\MessagesApi($key);
 $limit = 15; // int | Records imit
 $page = 1; // int | Page number
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\WalletPassJP\Client\Model\CollectionResponse**](../Model/CollectionResponse.md)
+[**\WalletPassJP\Model\CollectionResponse**](../Model/CollectionResponse.md)
 
 ### Authorization
 

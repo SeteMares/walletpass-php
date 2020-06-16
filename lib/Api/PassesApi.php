@@ -1,18 +1,18 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
-use WalletPassJP\Client\ApiException;
-use WalletPassJP\Client\ObjectSerializer;
-use WalletPassJP\Client\Api\Api as BaseAPI;
+use WalletPassJP\ApiException;
+use WalletPassJP\ObjectSerializer;
+use WalletPassJP\Api\Api as BaseAPI;
 
 /**
  * Passes Api
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class PassesApi extends BaseAPI
@@ -23,11 +23,11 @@ class PassesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function create($template, $body = null)
     {
@@ -41,15 +41,15 @@ class PassesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPassWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createPassRequest($template, $body);
 
         try {
@@ -105,7 +105,7 @@ class PassesApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -113,7 +113,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -121,7 +121,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -129,7 +129,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -137,7 +137,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -153,7 +153,7 @@ class PassesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -173,14 +173,14 @@ class PassesApi extends BaseAPI
      * Create pass
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createPassAsyncWithHttpInfo($template, $body = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createPassRequest($template, $body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -222,7 +222,7 @@ class PassesApi extends BaseAPI
      * Create request for operation 'createPass'
      *
      * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Client\Model\PassRequest $body (optional)
+     * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -321,7 +321,7 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -337,7 +337,7 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -385,7 +385,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -570,9 +570,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass in pkpass format
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -587,9 +587,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass in pkpass format
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
@@ -659,7 +659,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -667,7 +667,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -675,7 +675,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -683,7 +683,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -698,7 +698,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass in pkpass format
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -715,7 +715,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass in pkpass format
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -763,7 +763,7 @@ class PassesApi extends BaseAPI
     /**
      * Create request for operation 'getPassApple'
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -866,9 +866,9 @@ class PassesApi extends BaseAPI
      *
      * @param  string $external_id The custom or external ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function getPassByExtID($external_id)
     {
@@ -883,13 +883,13 @@ class PassesApi extends BaseAPI
      *
      * @param  string $external_id The custom or external ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPassByExtIDWithHttpInfo($external_id)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByExtIDRequest($external_id);
 
         try {
@@ -945,7 +945,7 @@ class PassesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -953,7 +953,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -961,7 +961,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -969,7 +969,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -977,7 +977,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1018,7 +1018,7 @@ class PassesApi extends BaseAPI
      */
     public function getPassByExtIDAsyncWithHttpInfo($external_id)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByExtIDRequest($external_id);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1156,9 +1156,9 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function show($pass)
     {
@@ -1173,13 +1173,13 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPassByIDWithHttpInfo($pass)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByIDRequest($pass);
 
         try {
@@ -1235,7 +1235,7 @@ class PassesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1243,7 +1243,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1251,7 +1251,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1259,7 +1259,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1267,7 +1267,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1306,7 +1306,7 @@ class PassesApi extends BaseAPI
      */
     public function getPassByIDAsyncWithHttpInfo($pass)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByIDRequest($pass);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1442,9 +1442,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass Google Play installation link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -1459,9 +1459,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass Google Play installation link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1531,7 +1531,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1539,7 +1539,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1547,7 +1547,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1555,7 +1555,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1570,7 +1570,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass Google Play installation link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1587,7 +1587,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass Google Play installation link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1628,7 +1628,7 @@ class PassesApi extends BaseAPI
     /**
      * Create request for operation 'getPassGoogle'
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1723,9 +1723,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass download link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -1740,9 +1740,9 @@ class PassesApi extends BaseAPI
      *
      * Get pass download link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1808,7 +1808,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1816,7 +1816,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1824,7 +1824,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1832,7 +1832,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1847,7 +1847,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass download link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1864,7 +1864,7 @@ class PassesApi extends BaseAPI
      *
      * Get pass download link
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1908,7 +1908,7 @@ class PassesApi extends BaseAPI
     /**
      * Create request for operation 'getPassLink'
      *
-     * @param  \WalletPassJP\Client\Model\Pass $pass Pass ID (required)
+     * @param  \WalletPassJP\Model\Pass $pass Pass ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2007,9 +2007,9 @@ class PassesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function list($template, $limit = '15', $page = '1')
     {
@@ -2026,13 +2026,13 @@ class PassesApi extends BaseAPI
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTemplatePassesWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         try {
@@ -2083,7 +2083,7 @@ class PassesApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Pass[]'
+                    '\WalletPassJP\Model\Pass[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -2093,16 +2093,16 @@ class PassesApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Pass[]'
+                        '\WalletPassJP\Model\Pass[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2110,7 +2110,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2118,7 +2118,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2126,7 +2126,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2171,7 +2171,7 @@ class PassesApi extends BaseAPI
      */
     public function listTemplatePassesAsyncWithHttpInfo($template, $limit = '15', $page = '1')
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -2185,7 +2185,7 @@ class PassesApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Pass[]'
+                        '\WalletPassJP\Model\Pass[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -2315,7 +2315,7 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2331,7 +2331,7 @@ class PassesApi extends BaseAPI
      *
      * @param  string $pass Pass ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2379,7 +2379,7 @@ class PassesApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2387,7 +2387,7 @@ class PassesApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2395,7 +2395,7 @@ class PassesApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2403,7 +2403,7 @@ class PassesApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

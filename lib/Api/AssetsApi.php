@@ -1,20 +1,20 @@
 <?php
-namespace WalletPassJP\Client\Api;
+namespace WalletPassJP\Api;
 
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use WalletPassJP\Client\Api\Api as BaseAPI;
-use WalletPassJP\Client\ApiException;
-use WalletPassJP\Client\ObjectSerializer;
+use WalletPassJP\Api\Api as BaseAPI;
+use WalletPassJP\ApiException;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * AssetsApi
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class AssetsApi extends BaseAPI
@@ -26,7 +26,7 @@ class AssetsApi extends BaseAPI
      *
      * @param  string $asset Asset ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -42,7 +42,7 @@ class AssetsApi extends BaseAPI
      *
      * @param  string $asset Asset ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -90,7 +90,7 @@ class AssetsApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -98,7 +98,7 @@ class AssetsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -106,7 +106,7 @@ class AssetsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -114,7 +114,7 @@ class AssetsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -273,9 +273,9 @@ class AssetsApi extends BaseAPI
      *
      * @param  string $asset Asset ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function show($asset)
     {
@@ -290,13 +290,13 @@ class AssetsApi extends BaseAPI
      *
      * @param  string $asset Asset ID (required)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetByIDWithHttpInfo($asset)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getAssetByIDRequest($asset);
 
         try {
@@ -343,7 +343,7 @@ class AssetsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Asset'
+                    '\WalletPassJP\Model\Asset'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -353,16 +353,16 @@ class AssetsApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Asset'
+                        '\WalletPassJP\Model\Asset'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -370,7 +370,7 @@ class AssetsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -378,7 +378,7 @@ class AssetsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -386,7 +386,7 @@ class AssetsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class AssetsApi extends BaseAPI
      */
     public function getAssetByIDAsyncWithHttpInfo($asset)
     {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getAssetByIDRequest($asset);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -438,7 +438,7 @@ class AssetsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Asset'
+                        '\WalletPassJP\Model\Asset'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -559,9 +559,9 @@ class AssetsApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\CollectionResponse
+     * @return \WalletPassJP\Model\CollectionResponse
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
@@ -578,13 +578,13 @@ class AssetsApi extends BaseAPI
      * @param  int $page Page number (optional, default to 1)
      * @param  string[] $tags Filter by tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAssetsWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listAssetsRequest($limit, $page, $tags);
 
         try {
@@ -631,7 +631,7 @@ class AssetsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Asset[]'
+                    '\WalletPassJP\Model\Asset[]'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -641,16 +641,16 @@ class AssetsApi extends BaseAPI
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\CollectionResponse',
+                        '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Asset[]'
+                        '\WalletPassJP\Model\Asset[]'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -658,7 +658,7 @@ class AssetsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -666,7 +666,7 @@ class AssetsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -674,7 +674,7 @@ class AssetsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -719,7 +719,7 @@ class AssetsApi extends BaseAPI
      */
     public function listAssetsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
-        $returnType = '\WalletPassJP\Client\Model\CollectionResponse';
+        $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listAssetsRequest($limit, $page, $tags);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -732,7 +732,7 @@ class AssetsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Asset[]'
+                        '\WalletPassJP\Model\Asset[]'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
@@ -856,9 +856,9 @@ class AssetsApi extends BaseAPI
      * Update Asset
      *
      * @param  string $asset Asset ID (required)
-     * @param  \WalletPassJP\Client\Model\Body1 $body body (optional)
+     * @param  \WalletPassJP\Model\Body1 $body body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -873,9 +873,9 @@ class AssetsApi extends BaseAPI
      * Update Asset
      *
      * @param  string $asset Asset ID (required)
-     * @param  \WalletPassJP\Client\Model\Body1 $body (optional)
+     * @param  \WalletPassJP\Model\Body1 $body (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -923,7 +923,7 @@ class AssetsApi extends BaseAPI
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -931,7 +931,7 @@ class AssetsApi extends BaseAPI
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -939,7 +939,7 @@ class AssetsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -947,7 +947,7 @@ class AssetsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -963,7 +963,7 @@ class AssetsApi extends BaseAPI
      * Update Asset
      *
      * @param  string $asset Asset ID (required)
-     * @param  \WalletPassJP\Client\Model\Body1 $body (optional)
+     * @param  \WalletPassJP\Model\Body1 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -981,7 +981,7 @@ class AssetsApi extends BaseAPI
      * Update Asset
      *
      * @param  string $asset Asset ID (required)
-     * @param  \WalletPassJP\Client\Model\Body1 $body (optional)
+     * @param  \WalletPassJP\Model\Body1 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1016,7 +1016,7 @@ class AssetsApi extends BaseAPI
      * Create request for operation 'updateAsset'
      *
      * @param  string $asset Asset ID (required)
-     * @param  \WalletPassJP\Client\Model\Body1 $body (optional)
+     * @param  \WalletPassJP\Model\Body1 $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1118,9 +1118,9 @@ class AssetsApi extends BaseAPI
      * @param  string $name name (optional)
      * @param  string[] $tags tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Client\Model\ResourceResponse
+     * @return \WalletPassJP\Model\ResourceResponse
      */
     public function upload($file = null, $type = null, $name = null, $tags = null)
     {
@@ -1138,9 +1138,9 @@ class AssetsApi extends BaseAPI
      * @param  string $name (optional)
      * @param  string[] $tags (optional)
      *
-     * @throws \WalletPassJP\Client\ApiException on non-2xx response
+     * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \WalletPassJP\Client\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadAssetWithHttpInfo(
         $file = null,
@@ -1148,7 +1148,7 @@ class AssetsApi extends BaseAPI
         $name = null,
         $tags = null
     ) {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->uploadAssetRequest($file, $type, $name, $tags);
 
         try {
@@ -1195,7 +1195,7 @@ class AssetsApi extends BaseAPI
                     $content,
                     $returnType,
                     [],
-                    '\WalletPassJP\Client\Model\Asset'
+                    '\WalletPassJP\Model\Asset'
                 ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
@@ -1205,16 +1205,16 @@ class AssetsApi extends BaseAPI
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\ResourceResponse',
+                        '\WalletPassJP\Model\ResourceResponse',
                         $e->getResponseHeaders(),
-                        '\WalletPassJP\Client\Model\Asset'
+                        '\WalletPassJP\Model\Asset'
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1222,7 +1222,7 @@ class AssetsApi extends BaseAPI
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1230,7 +1230,7 @@ class AssetsApi extends BaseAPI
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WalletPassJP\Client\Model\Error',
+                        '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1281,7 +1281,7 @@ class AssetsApi extends BaseAPI
         $name = null,
         $tags = null
     ) {
-        $returnType = '\WalletPassJP\Client\Model\ResourceResponse';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->uploadAssetRequest($file, $type, $name, $tags);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
@@ -1294,7 +1294,7 @@ class AssetsApi extends BaseAPI
                         $content,
                         $returnType,
                         [],
-                        '\WalletPassJP\Client\Model\Asset'
+                        '\WalletPassJP\Model\Asset'
                     ),
                     $response->getStatusCode(),
                     $response->getHeaders(),

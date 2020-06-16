@@ -4,7 +4,7 @@
  * PHP version 7
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 
@@ -17,7 +17,7 @@
  * Contact: contact@walletpass.jp
  */
 
-namespace WalletPassJP\Client;
+namespace WalletPassJP;
 
 use \Exception;
 
@@ -25,7 +25,7 @@ use \Exception;
  * ApiException
  *
  * @category Class
- * @package  WalletPassJP\Client
+ * @package  WalletPassJP
  * @author   Kinchaku
  */
 class ApiException extends Exception
