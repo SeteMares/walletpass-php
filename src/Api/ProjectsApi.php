@@ -7,6 +7,7 @@ use GuzzleHttp\Psr7\Request;
 use WalletPassJP\ApiException;
 use WalletPassJP\ObjectSerializer;
 use WalletPassJP\Api\Api as BaseAPI;
+use WalletPassJP\Model\ProjectRequest;
 
 /**
  * Projects Api
@@ -22,7 +23,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Model\ProjectRequest $body body (optional)
+     * @param  array $body body (optional)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -30,7 +31,7 @@ class ProjectsApi extends BaseAPI
      */
     public function create($body = null)
     {
-        list($response) = $this->createProjectWithHttpInfo($body);
+        list($response) = $this->createProjectWithHttpInfo(new ProjectRequest($body));
         return $response->getData();
     }
 
@@ -152,16 +153,18 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  array $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    private function createProjectAsync($body = null)
+    public function createAsync($body = null)
     {
-        return $this->createProjectAsyncWithHttpInfo($body)->then(function ($response) {
-            return $response[0];
-        });
+        return $this->createProjectAsyncWithHttpInfo(new ProjectRequest($body))->then(
+            function ($response) {
+                return $response[0];
+            }
+        );
     }
 
     /**
@@ -413,7 +416,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    private function deleteProjectAsync($project)
+    public function deleteAsync($project)
     {
         return $this->deleteProjectAsyncWithHttpInfo($project)->then(function ($response) {
             return $response[0];

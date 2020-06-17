@@ -30,7 +30,14 @@
     },
     "autoload": {
         "psr-4": {
-            "WalletPassJP\\": "lib/"
+            "WalletPassJP\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WalletPassJP\\ServiceProvider"
+            ]
         }
     }
 }
