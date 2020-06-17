@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Certificate Class Doc Comment
@@ -36,39 +35,41 @@ class Certificate implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Certificate';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'team_identifier' => 'string',
-'pass_type_identifier' => 'string',
-'name' => 'string',
-'is_default' => 'bool',
-'expires_at' => '\DateTime',
-'created_at' => '\DateTime'    ];
+        'team_identifier' => 'string',
+        'pass_type_identifier' => 'string',
+        'name' => 'string',
+        'is_default' => 'bool',
+        'expires_at' => '\DateTime',
+        'created_at' => '\DateTime',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'team_identifier' => null,
-'pass_type_identifier' => null,
-'name' => null,
-'is_default' => null,
-'expires_at' => 'date-time',
-'created_at' => 'date-time'    ];
+        'team_identifier' => null,
+        'pass_type_identifier' => null,
+        'name' => null,
+        'is_default' => null,
+        'expires_at' => 'date-time',
+        'created_at' => 'date-time',
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -98,12 +99,13 @@ class Certificate implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'team_identifier' => 'team_identifier',
-'pass_type_identifier' => 'pass_type_identifier',
-'name' => 'name',
-'is_default' => 'is_default',
-'expires_at' => 'expires_at',
-'created_at' => 'created_at'    ];
+        'team_identifier' => 'team_identifier',
+        'pass_type_identifier' => 'pass_type_identifier',
+        'name' => 'name',
+        'is_default' => 'is_default',
+        'expires_at' => 'expires_at',
+        'created_at' => 'created_at',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -112,12 +114,13 @@ class Certificate implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'team_identifier' => 'setTeamIdentifier',
-'pass_type_identifier' => 'setPassTypeIdentifier',
-'name' => 'setName',
-'is_default' => 'setIsDefault',
-'expires_at' => 'setExpiresAt',
-'created_at' => 'setCreatedAt'    ];
+        'team_identifier' => 'setTeamIdentifier',
+        'pass_type_identifier' => 'setPassTypeIdentifier',
+        'name' => 'setName',
+        'is_default' => 'setIsDefault',
+        'expires_at' => 'setExpiresAt',
+        'created_at' => 'setCreatedAt',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -126,12 +129,13 @@ class Certificate implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'team_identifier' => 'getTeamIdentifier',
-'pass_type_identifier' => 'getPassTypeIdentifier',
-'name' => 'getName',
-'is_default' => 'getIsDefault',
-'expires_at' => 'getExpiresAt',
-'created_at' => 'getCreatedAt'    ];
+        'team_identifier' => 'getTeamIdentifier',
+        'pass_type_identifier' => 'getPassTypeIdentifier',
+        'name' => 'getName',
+        'is_default' => 'getIsDefault',
+        'expires_at' => 'getExpiresAt',
+        'created_at' => 'getCreatedAt',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +178,6 @@ class Certificate implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -192,12 +194,22 @@ class Certificate implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['team_identifier'] = isset($data['team_identifier']) ? $data['team_identifier'] : null;
-        $this->container['pass_type_identifier'] = isset($data['pass_type_identifier']) ? $data['pass_type_identifier'] : null;
+        $this->container['team_identifier'] = isset($data['team_identifier'])
+            ? $data['team_identifier']
+            : null;
+        $this->container['pass_type_identifier'] = isset($data['pass_type_identifier'])
+            ? $data['pass_type_identifier']
+            : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['is_default'] = isset($data['is_default']) ? $data['is_default'] : false;
-        $this->container['expires_at'] = isset($data['expires_at']) ? $data['expires_at'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['is_default'] = isset($data['is_default'])
+            ? $data['is_default']
+            : false;
+        $this->container['expires_at'] = isset($data['expires_at'])
+            ? $data['expires_at']
+            : null;
+        $this->container['created_at'] = isset($data['created_at'])
+            ? $data['created_at']
+            : null;
     }
 
     /**
@@ -222,7 +234,6 @@ class Certificate implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -445,13 +456,40 @@ class Certificate implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Magic property getter
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (isset(self::$getters[$name])) {
+            return call_user_func_array([$this, self::$getters[$name]], []);
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): ' .
+                $name .
+                ' in ' .
+                $trace[0]['file'] .
+                ' on line ' .
+                $trace[0]['line'],
+            E_USER_NOTICE
+        );
+
+        return null;
+    }
+
+    /**
      * Gets the string presentation of the object
      *
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Asset Class Doc Comment
@@ -37,37 +36,39 @@ class Asset implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Asset';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'type' => 'string',
-'name' => 'string',
-'url' => 'string',
-'created_at' => '\DateTime',
-'tags' => 'string[]'    ];
+        'type' => 'string',
+        'name' => 'string',
+        'url' => 'string',
+        'created_at' => '\DateTime',
+        'tags' => 'string[]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'type' => null,
-'name' => null,
-'url' => 'uri',
-'created_at' => 'date-time',
-'tags' => null    ];
+        'type' => null,
+        'name' => null,
+        'url' => 'uri',
+        'created_at' => 'date-time',
+        'tags' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,11 +98,12 @@ class Asset implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'type' => 'type',
-'name' => 'name',
-'url' => 'url',
-'created_at' => 'created_at',
-'tags' => 'tags'    ];
+        'type' => 'type',
+        'name' => 'name',
+        'url' => 'url',
+        'created_at' => 'created_at',
+        'tags' => 'tags',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -110,11 +112,12 @@ class Asset implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'type' => 'setType',
-'name' => 'setName',
-'url' => 'setUrl',
-'created_at' => 'setCreatedAt',
-'tags' => 'setTags'    ];
+        'type' => 'setType',
+        'name' => 'setName',
+        'url' => 'setUrl',
+        'created_at' => 'setCreatedAt',
+        'tags' => 'setTags',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -123,11 +126,12 @@ class Asset implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'type' => 'getType',
-'name' => 'getName',
-'url' => 'getUrl',
-'created_at' => 'getCreatedAt',
-'tags' => 'getTags'    ];
+        'type' => 'getType',
+        'name' => 'getName',
+        'url' => 'getUrl',
+        'created_at' => 'getCreatedAt',
+        'tags' => 'getTags',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -171,12 +175,12 @@ class Asset implements ModelInterface, ArrayAccess
     }
 
     const TYPE_ICON = 'icon';
-const TYPE_LOGO = 'logo';
-const TYPE_STRIP = 'strip';
-const TYPE_THUMBNAIL = 'thumbnail';
-const TYPE_BACKGROUND = 'background';
-const TYPE_FOOTER = 'footer';
-const TYPE_APPLE_LOGO = 'apple_logo';
+    const TYPE_LOGO = 'logo';
+    const TYPE_STRIP = 'strip';
+    const TYPE_THUMBNAIL = 'thumbnail';
+    const TYPE_BACKGROUND = 'background';
+    const TYPE_FOOTER = 'footer';
+    const TYPE_APPLE_LOGO = 'apple_logo';
 
     /**
      * Gets allowable values of the enum
@@ -187,12 +191,13 @@ const TYPE_APPLE_LOGO = 'apple_logo';
     {
         return [
             self::TYPE_ICON,
-self::TYPE_LOGO,
-self::TYPE_STRIP,
-self::TYPE_THUMBNAIL,
-self::TYPE_BACKGROUND,
-self::TYPE_FOOTER,
-self::TYPE_APPLE_LOGO,        ];
+            self::TYPE_LOGO,
+            self::TYPE_STRIP,
+            self::TYPE_THUMBNAIL,
+            self::TYPE_BACKGROUND,
+            self::TYPE_FOOTER,
+            self::TYPE_APPLE_LOGO,
+        ];
     }
 
     /**
@@ -214,7 +219,9 @@ self::TYPE_APPLE_LOGO,        ];
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['created_at'] = isset($data['created_at'])
+            ? $data['created_at']
+            : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
@@ -228,7 +235,10 @@ self::TYPE_APPLE_LOGO,        ];
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['type']) &&
+            !in_array($this->container['type'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -248,7 +258,6 @@ self::TYPE_APPLE_LOGO,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -402,6 +411,33 @@ self::TYPE_APPLE_LOGO,        ];
 
         return $this;
     }
+
+    /**
+     * Magic property getter
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (isset(self::$getters[$name])) {
+            return call_user_func_array([$this, self::$getters[$name]], []);
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): ' .
+                $name .
+                ' in ' .
+                $trace[0]['file'] .
+                ' on line ' .
+                $trace[0]['line'],
+            E_USER_NOTICE
+        );
+
+        return null;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -462,7 +498,8 @@ self::TYPE_APPLE_LOGO,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

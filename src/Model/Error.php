@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Error Class Doc Comment
@@ -37,29 +36,31 @@ class Error implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Error';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'message' => 'string',
-'errors' => 'map[string,string[]]'    ];
+        'errors' => 'map[string,string[]]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'message' => null,
-'errors' => null    ];
+        'errors' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -89,7 +90,8 @@ class Error implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'message' => 'message',
-'errors' => 'errors'    ];
+        'errors' => 'errors',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -98,7 +100,8 @@ class Error implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'message' => 'setMessage',
-'errors' => 'setErrors'    ];
+        'errors' => 'setErrors',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -107,7 +110,8 @@ class Error implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'message' => 'getMessage',
-'errors' => 'getErrors'    ];
+        'errors' => 'getErrors',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -150,8 +154,6 @@ class Error implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -193,7 +195,6 @@ class Error implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets message
@@ -296,13 +297,40 @@ class Error implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Magic property getter
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (isset(self::$getters[$name])) {
+            return call_user_func_array([$this, self::$getters[$name]], []);
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): ' .
+                $name .
+                ' in ' .
+                $trace[0]['file'] .
+                ' on line ' .
+                $trace[0]['line'],
+            E_USER_NOTICE
+        );
+
+        return null;
+    }
+
+    /**
      * Gets the string presentation of the object
      *
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Message Class Doc Comment
@@ -36,45 +35,47 @@ class Message implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Message';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'user' => 'string',
-'header' => 'string',
-'body' => 'string',
-'localized_header' => '\WalletPassJP\Model\MessagesLocalizedHeader',
-'localized_body' => '\WalletPassJP\Model\MessagesLocalizedBody',
-'scheduled_at' => '\DateTime',
-'sent_at' => '\DateTime',
-'pass_filter' => 'object',
-'template_id' => 'string'    ];
+        'user' => 'string',
+        'header' => 'string',
+        'body' => 'string',
+        'localized_header' => '\WalletPassJP\Model\MessagesLocalizedHeader',
+        'localized_body' => '\WalletPassJP\Model\MessagesLocalizedBody',
+        'scheduled_at' => '\DateTime',
+        'sent_at' => '\DateTime',
+        'pass_filter' => 'object',
+        'template_id' => 'string',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'user' => null,
-'header' => null,
-'body' => null,
-'localized_header' => null,
-'localized_body' => null,
-'scheduled_at' => 'date-time',
-'sent_at' => 'date-time',
-'pass_filter' => null,
-'template_id' => 'uuid'    ];
+        'user' => null,
+        'header' => null,
+        'body' => null,
+        'localized_header' => null,
+        'localized_body' => null,
+        'scheduled_at' => 'date-time',
+        'sent_at' => 'date-time',
+        'pass_filter' => null,
+        'template_id' => 'uuid',
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -104,15 +105,16 @@ class Message implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'user' => 'user',
-'header' => 'header',
-'body' => 'body',
-'localized_header' => 'localized_header',
-'localized_body' => 'localized_body',
-'scheduled_at' => 'scheduled_at',
-'sent_at' => 'sent_at',
-'pass_filter' => 'pass_filter',
-'template_id' => 'template_id'    ];
+        'user' => 'user',
+        'header' => 'header',
+        'body' => 'body',
+        'localized_header' => 'localized_header',
+        'localized_body' => 'localized_body',
+        'scheduled_at' => 'scheduled_at',
+        'sent_at' => 'sent_at',
+        'pass_filter' => 'pass_filter',
+        'template_id' => 'template_id',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -121,15 +123,16 @@ class Message implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'user' => 'setUser',
-'header' => 'setHeader',
-'body' => 'setBody',
-'localized_header' => 'setLocalizedHeader',
-'localized_body' => 'setLocalizedBody',
-'scheduled_at' => 'setScheduledAt',
-'sent_at' => 'setSentAt',
-'pass_filter' => 'setPassFilter',
-'template_id' => 'setTemplateId'    ];
+        'user' => 'setUser',
+        'header' => 'setHeader',
+        'body' => 'setBody',
+        'localized_header' => 'setLocalizedHeader',
+        'localized_body' => 'setLocalizedBody',
+        'scheduled_at' => 'setScheduledAt',
+        'sent_at' => 'setSentAt',
+        'pass_filter' => 'setPassFilter',
+        'template_id' => 'setTemplateId',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -138,15 +141,16 @@ class Message implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'user' => 'getUser',
-'header' => 'getHeader',
-'body' => 'getBody',
-'localized_header' => 'getLocalizedHeader',
-'localized_body' => 'getLocalizedBody',
-'scheduled_at' => 'getScheduledAt',
-'sent_at' => 'getSentAt',
-'pass_filter' => 'getPassFilter',
-'template_id' => 'getTemplateId'    ];
+        'user' => 'getUser',
+        'header' => 'getHeader',
+        'body' => 'getBody',
+        'localized_header' => 'getLocalizedHeader',
+        'localized_body' => 'getLocalizedBody',
+        'scheduled_at' => 'getScheduledAt',
+        'sent_at' => 'getSentAt',
+        'pass_filter' => 'getPassFilter',
+        'template_id' => 'getTemplateId',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -189,8 +193,6 @@ class Message implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -210,12 +212,22 @@ class Message implements ModelInterface, ArrayAccess
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['header'] = isset($data['header']) ? $data['header'] : null;
         $this->container['body'] = isset($data['body']) ? $data['body'] : null;
-        $this->container['localized_header'] = isset($data['localized_header']) ? $data['localized_header'] : null;
-        $this->container['localized_body'] = isset($data['localized_body']) ? $data['localized_body'] : null;
-        $this->container['scheduled_at'] = isset($data['scheduled_at']) ? $data['scheduled_at'] : null;
+        $this->container['localized_header'] = isset($data['localized_header'])
+            ? $data['localized_header']
+            : null;
+        $this->container['localized_body'] = isset($data['localized_body'])
+            ? $data['localized_body']
+            : null;
+        $this->container['scheduled_at'] = isset($data['scheduled_at'])
+            ? $data['scheduled_at']
+            : null;
         $this->container['sent_at'] = isset($data['sent_at']) ? $data['sent_at'] : null;
-        $this->container['pass_filter'] = isset($data['pass_filter']) ? $data['pass_filter'] : null;
-        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
+        $this->container['pass_filter'] = isset($data['pass_filter'])
+            ? $data['pass_filter']
+            : null;
+        $this->container['template_id'] = isset($data['template_id'])
+            ? $data['template_id']
+            : null;
     }
 
     /**
@@ -240,7 +252,6 @@ class Message implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -535,13 +546,40 @@ class Message implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Magic property getter
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (isset(self::$getters[$name])) {
+            return call_user_func_array([$this, self::$getters[$name]], []);
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): ' .
+                $name .
+                ' in ' .
+                $trace[0]['file'] .
+                ' on line ' .
+                $trace[0]['line'],
+            E_USER_NOTICE
+        );
+
+        return null;
+    }
+
+    /**
      * Gets the string presentation of the object
      *
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

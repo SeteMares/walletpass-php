@@ -87,7 +87,7 @@ class TagsApi extends BaseAPI
             switch ($e->getCode()) {
                 case 401:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -95,7 +95,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -103,7 +103,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -111,7 +111,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -357,7 +357,7 @@ class TagsApi extends BaseAPI
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\InlineResponse2009',
                         $e->getResponseHeaders()
                     );
@@ -365,7 +365,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -373,7 +373,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -381,7 +381,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -389,7 +389,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -665,7 +665,7 @@ class TagsApi extends BaseAPI
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\CollectionResponse',
                         $e->getResponseHeaders(),
                         '\WalletPassJP\Model\Tag[]'
@@ -674,7 +674,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -682,7 +682,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -690,7 +690,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
@@ -698,7 +698,7 @@ class TagsApi extends BaseAPI
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
+                        json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\Error',
                         $e->getResponseHeaders()
                     );
