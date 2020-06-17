@@ -56,6 +56,7 @@ class Project implements ModelInterface, ArrayAccess
         'templates' => '\WalletPassJP\Model\ProjectTemplates',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'archived_at' => '\DateTime',
         'tags' => 'string[]',
     ];
 
@@ -74,6 +75,7 @@ class Project implements ModelInterface, ArrayAccess
         'templates' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
+        'archived_at' => 'date-time',
         'tags' => null,
     ];
 
@@ -113,6 +115,7 @@ class Project implements ModelInterface, ArrayAccess
         'templates' => 'templates',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
+        'archived_at' => 'archived_at',
         'tags' => 'tags',
     ];
 
@@ -131,6 +134,7 @@ class Project implements ModelInterface, ArrayAccess
         'templates' => 'setTemplates',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
+        'archived_at' => 'setArchivedAt',
         'tags' => 'setTags',
     ];
 
@@ -149,6 +153,7 @@ class Project implements ModelInterface, ArrayAccess
         'templates' => 'getTemplates',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
+        'archived_at' => 'getArchivedAt',
         'tags' => 'getTags',
     ];
 
@@ -246,6 +251,9 @@ class Project implements ModelInterface, ArrayAccess
             : null;
         $this->container['updated_at'] = isset($data['updated_at'])
             ? $data['updated_at']
+            : null;
+        $this->container['archived_at'] = isset($data['archived_at'])
+            ? $data['archived_at']
             : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
@@ -505,6 +513,30 @@ class Project implements ModelInterface, ArrayAccess
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime $archived_at Archived at
+     *
+     * @return $this
+     */
+    public function setArchivedAt($archived_at)
+    {
+        $this->container['archived_at'] = $archived_at;
 
         return $this;
     }

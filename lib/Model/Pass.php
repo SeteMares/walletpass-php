@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Pass Class Doc Comment
@@ -37,47 +36,49 @@ class Pass implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Pass';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'external_id' => 'string',
-'sku' => 'string',
-'template_id' => 'string',
-'link' => 'string',
-'status' => 'string',
-'is_voided' => 'bool',
-'expires_at' => '\DateTime',
-'meta' => '\WalletPassJP\Model\WalletPassMetaInformation',
-'updated_at' => '\DateTime',
-'created_at' => '\DateTime'    ];
+        'external_id' => 'string',
+        'sku' => 'string',
+        'template_id' => 'string',
+        'link' => 'string',
+        'status' => 'string',
+        'is_voided' => 'bool',
+        'expires_at' => '\DateTime',
+        'meta' => '\WalletPassJP\Model\WalletPassMetaInformation',
+        'updated_at' => '\DateTime',
+        'created_at' => '\DateTime',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'external_id' => null,
-'sku' => null,
-'template_id' => 'uuid',
-'link' => null,
-'status' => null,
-'is_voided' => null,
-'expires_at' => 'date-time',
-'meta' => null,
-'updated_at' => 'date-time',
-'created_at' => 'date-time'    ];
+        'external_id' => null,
+        'sku' => null,
+        'template_id' => 'uuid',
+        'link' => null,
+        'status' => null,
+        'is_voided' => null,
+        'expires_at' => 'date-time',
+        'meta' => null,
+        'updated_at' => 'date-time',
+        'created_at' => 'date-time',
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -107,16 +108,17 @@ class Pass implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'external_id' => 'external_id',
-'sku' => 'sku',
-'template_id' => 'template_id',
-'link' => 'link',
-'status' => 'status',
-'is_voided' => 'is_voided',
-'expires_at' => 'expires_at',
-'meta' => 'meta',
-'updated_at' => 'updated_at',
-'created_at' => 'created_at'    ];
+        'external_id' => 'external_id',
+        'sku' => 'sku',
+        'template_id' => 'template_id',
+        'link' => 'link',
+        'status' => 'status',
+        'is_voided' => 'is_voided',
+        'expires_at' => 'expires_at',
+        'meta' => 'meta',
+        'updated_at' => 'updated_at',
+        'created_at' => 'created_at',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -125,16 +127,17 @@ class Pass implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'external_id' => 'setExternalId',
-'sku' => 'setSku',
-'template_id' => 'setTemplateId',
-'link' => 'setLink',
-'status' => 'setStatus',
-'is_voided' => 'setIsVoided',
-'expires_at' => 'setExpiresAt',
-'meta' => 'setMeta',
-'updated_at' => 'setUpdatedAt',
-'created_at' => 'setCreatedAt'    ];
+        'external_id' => 'setExternalId',
+        'sku' => 'setSku',
+        'template_id' => 'setTemplateId',
+        'link' => 'setLink',
+        'status' => 'setStatus',
+        'is_voided' => 'setIsVoided',
+        'expires_at' => 'setExpiresAt',
+        'meta' => 'setMeta',
+        'updated_at' => 'setUpdatedAt',
+        'created_at' => 'setCreatedAt',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -143,16 +146,17 @@ class Pass implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'external_id' => 'getExternalId',
-'sku' => 'getSku',
-'template_id' => 'getTemplateId',
-'link' => 'getLink',
-'status' => 'getStatus',
-'is_voided' => 'getIsVoided',
-'expires_at' => 'getExpiresAt',
-'meta' => 'getMeta',
-'updated_at' => 'getUpdatedAt',
-'created_at' => 'getCreatedAt'    ];
+        'external_id' => 'getExternalId',
+        'sku' => 'getSku',
+        'template_id' => 'getTemplateId',
+        'link' => 'getLink',
+        'status' => 'getStatus',
+        'is_voided' => 'getIsVoided',
+        'expires_at' => 'getExpiresAt',
+        'meta' => 'getMeta',
+        'updated_at' => 'getUpdatedAt',
+        'created_at' => 'getCreatedAt',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -196,10 +200,10 @@ class Pass implements ModelInterface, ArrayAccess
     }
 
     const STATUS_CREATED = 'created';
-const STATUS_INSTALLED = 'installed';
-const STATUS_DELETED = 'deleted';
-const STATUS_CANCELED = 'canceled';
-const STATUS_USED = 'used';
+    const STATUS_INSTALLED = 'installed';
+    const STATUS_DELETED = 'deleted';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_USED = 'used';
 
     /**
      * Gets allowable values of the enum
@@ -210,10 +214,11 @@ const STATUS_USED = 'used';
     {
         return [
             self::STATUS_CREATED,
-self::STATUS_INSTALLED,
-self::STATUS_DELETED,
-self::STATUS_CANCELED,
-self::STATUS_USED,        ];
+            self::STATUS_INSTALLED,
+            self::STATUS_DELETED,
+            self::STATUS_CANCELED,
+            self::STATUS_USED,
+        ];
     }
 
     /**
@@ -232,16 +237,26 @@ self::STATUS_USED,        ];
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['external_id'] = isset($data['external_id'])
+            ? $data['external_id']
+            : null;
         $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
-        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
+        $this->container['template_id'] = isset($data['template_id'])
+            ? $data['template_id']
+            : null;
         $this->container['link'] = isset($data['link']) ? $data['link'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : 'created';
         $this->container['is_voided'] = isset($data['is_voided']) ? $data['is_voided'] : null;
-        $this->container['expires_at'] = isset($data['expires_at']) ? $data['expires_at'] : null;
+        $this->container['expires_at'] = isset($data['expires_at'])
+            ? $data['expires_at']
+            : null;
         $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at'])
+            ? $data['updated_at']
+            : null;
+        $this->container['created_at'] = isset($data['created_at'])
+            ? $data['created_at']
+            : null;
     }
 
     /**
@@ -254,7 +269,10 @@ self::STATUS_USED,        ];
         $invalidProperties = [];
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['status']) &&
+            !in_array($this->container['status'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -274,7 +292,6 @@ self::STATUS_USED,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -608,7 +625,8 @@ self::STATUS_USED,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

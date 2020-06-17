@@ -45,7 +45,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProjectWithHttpInfo($body = null)
+    private function createProjectWithHttpInfo($body = null)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createProjectRequest($body);
@@ -157,7 +157,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProjectAsync($body = null)
+    private function createProjectAsync($body = null)
     {
         return $this->createProjectAsyncWithHttpInfo($body)->then(function ($response) {
             return $response[0];
@@ -174,7 +174,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProjectAsyncWithHttpInfo($body = null)
+    private function createProjectAsyncWithHttpInfo($body = null)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createProjectRequest($body);
@@ -325,7 +325,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteProjectWithHttpInfo($project)
+    private function deleteProjectWithHttpInfo($project)
     {
         $returnType = '';
         $request = $this->deleteProjectRequest($project);
@@ -413,7 +413,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProjectAsync($project)
+    private function deleteProjectAsync($project)
     {
         return $this->deleteProjectAsyncWithHttpInfo($project)->then(function ($response) {
             return $response[0];
@@ -430,7 +430,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProjectAsyncWithHttpInfo($project)
+    private function deleteProjectAsyncWithHttpInfo($project)
     {
         $returnType = '';
         $request = $this->deleteProjectRequest($project);
@@ -569,7 +569,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProjectByIDWithHttpInfo($project)
+    private function getProjectByIDWithHttpInfo($project)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getProjectByIDRequest($project);
@@ -685,7 +685,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProjectByIDAsync($project)
+    private function getProjectByIDAsync($project)
     {
         return $this->getProjectByIDAsyncWithHttpInfo($project)->then(function ($response) {
             return $response[0];
@@ -702,7 +702,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProjectByIDAsyncWithHttpInfo($project)
+    private function getProjectByIDAsyncWithHttpInfo($project)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getProjectByIDRequest($project);
@@ -868,7 +868,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProjectsWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    private function listProjectsWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listProjectsRequest($limit, $page, $tags);
@@ -986,7 +986,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProjectsAsync($limit = '15', $page = '1', $tags = null)
+    private function listProjectsAsync($limit = '15', $page = '1', $tags = null)
     {
         return $this->listProjectsAsyncWithHttpInfo($limit, $page, $tags)->then(function (
             $response
@@ -1007,7 +1007,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProjectsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    private function listProjectsAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listProjectsRequest($limit, $page, $tags);
@@ -1176,7 +1176,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProjectWithHttpInfo($project, $body = null)
+    private function updateProjectWithHttpInfo($project, $body = null)
     {
         $returnType = '';
         $request = $this->updateProjectRequest($project, $body);
@@ -1265,7 +1265,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProjectAsync($project, $body = null)
+    private function updateProjectAsync($project, $body = null)
     {
         return $this->updateProjectAsyncWithHttpInfo($project, $body)->then(function (
             $response
@@ -1285,7 +1285,7 @@ class ProjectsApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProjectAsyncWithHttpInfo($project, $body = null)
+    private function updateProjectAsyncWithHttpInfo($project, $body = null)
     {
         $returnType = '';
         $request = $this->updateProjectRequest($project, $body);
@@ -1402,6 +1402,223 @@ class ProjectsApi extends BaseAPI
         return new Request(
             'PATCH',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation archiveProject/unarchiveProject
+     *
+     * Archive/Unarchive Project
+     *
+     * @param  string $project Project ID (required)
+     * @param  bool|null $archive (optional)
+     *
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function archive($project, $archive = true)
+    {
+        $this->archiveProjectWithHttpInfo($project, $archive);
+    }
+
+    /**
+     *
+     * Archive/Unarchive Project
+     *
+     * @param  string $project Project (required)
+     * @param  bool|null $archive (optional)
+     *
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    private function archiveProjectWithHttpInfo($project, $archive = true)
+    {
+        $returnType = '';
+        $request = $this->archiveProjectRequest($project, $archive);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse()
+                        ? $e
+                            ->getResponse()
+                            ->getBody()
+                            ->getContents()
+                        : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveAsync
+     *
+     * Archive/Unarchive Project
+     *
+     * @param  string $project Project (required)
+     * @param  bool|null $archive (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsync($project, $archive = true)
+    {
+        return $this->archiveProjectAsyncWithHttpInfo($project, $archive)->then(function (
+            $response
+        ) {
+            return $response[0];
+        });
+    }
+
+    /**
+     *
+     * Archive/Unarchive Project
+     *
+     * @param  string $project Project (required)
+     * @param  bool|null $archive (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    private function archiveProjectAsyncWithHttpInfo($project, $archive = true)
+    {
+        $returnType = '';
+        $request = $this->archiveProjectRequest($project, $archive);
+
+        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
+            function ($response) use ($returnType) {
+                return [null, $response->getStatusCode(), $response->getHeaders()];
+            },
+            function ($exception) {
+                $response = $exception->getResponse();
+                $statusCode = $response->getStatusCode();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $exception->getRequest()->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+        );
+    }
+
+    /**
+     * Create request for operation 'archiveProject'
+     *
+     * @param  string $project Project ID (required)
+     * @param  bool|null $archive (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function archiveProjectRequest($project, $archive = true)
+    {
+        // verify the required parameter 'project' is set
+        if ($project === null || (is_array($project) && count($project) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $project when calling updateProject'
+            );
+        }
+
+        $resourcePath = '/projects/{project}/' . ($archive ? 'archive' : 'unarchive');
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($project !== null) {
+            $resourcePath = str_replace('{project}', $project, $resourcePath);
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+
+        // // this endpoint requires Bearer token
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge($defaultHeaders, $headerParams, $headers);
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getEndpoint() . $resourcePath,
             $headers,
             $httpBody
         );
