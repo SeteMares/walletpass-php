@@ -1186,9 +1186,7 @@ class AssetsApi extends BaseAPI
 
             $responseBody = $response->getBody();
             $content = $responseBody->getContents();
-            if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                $content = json_decode($content);
-            }
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -1339,22 +1337,30 @@ class AssetsApi extends BaseAPI
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = false;
+        $multipart = true;
 
         // form params
-        if ($file !== null) {
-            $multipart = true;
-            $formParams['file'] = \GuzzleHttp\Psr7\try_fopen(
-                ObjectSerializer::toFormValue($file),
-                'rb'
+        if (!$file) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter "file" while calling uploadAsset'
             );
         }
+
+        $formParams['file'] = \GuzzleHttp\Psr7\try_fopen(
+            ObjectSerializer::toFormValue($file),
+            'rb'
+        );
+
         // form params
-        if ($type !== null) {
-            $formParams['type'] = ObjectSerializer::toFormValue($type);
+        if (!$type) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter "type" while calling uploadAsset'
+            );
         }
+        $formParams['type'] = ObjectSerializer::toFormValue($type);
+
         // form params
-        if ($name !== null) {
+        if ($name) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
@@ -1362,36 +1368,26 @@ class AssetsApi extends BaseAPI
             $formParams['tags'] = ObjectSerializer::toFormValue($tags);
         }
         // body params
-        $_tempBody = null;
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(['application/json']);
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['multipart/form-data']
-            );
-        }
+        $headers = $this->headerSelector->selectHeadersForMultipart(['application/json']);
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if (
-                $httpBody instanceof \stdClass &&
-                $headers['Content-Type'] === 'application/json'
-            ) {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue,
-                    ];
+                    if (is_array($formParamValue)) {
+                        foreach ($formParamValue as $value) {
+                            $multipartContents[] = [
+                                'name' => $formParamName . '[]',
+                                'contents' => $value,
+                            ];
+                        }
+                    } else {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValue,
+                        ];
+                    }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
