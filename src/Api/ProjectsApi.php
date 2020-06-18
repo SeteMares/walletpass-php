@@ -23,7 +23,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  array $body body (optional)
+     * @param  array $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -40,7 +40,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -161,7 +161,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  array $body (optional)
+     * @param  array $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -180,7 +180,7 @@ class ProjectsApi extends BaseAPI
      *
      * Create new Project
      *
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -229,7 +229,7 @@ class ProjectsApi extends BaseAPI
     /**
      * Create request for operation 'createProject'
      *
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1164,7 +1164,7 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Model\ProjectRequest $body body (optional)
+     * @param  array $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1172,7 +1172,7 @@ class ProjectsApi extends BaseAPI
      */
     public function update($project, $body = null)
     {
-        $this->updateProjectWithHttpInfo($project, $body);
+        $this->updateProjectWithHttpInfo($project, new ProjectRequest($body));
     }
 
     /**
@@ -1181,7 +1181,7 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1279,16 +1279,17 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  array $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    private function updateProjectAsync($project, $body = null)
+    public function updateProjectAsync($project, $body = null)
     {
-        return $this->updateProjectAsyncWithHttpInfo($project, $body)->then(function (
-            $response
-        ) {
+        return $this->updateProjectAsyncWithHttpInfo(
+            $project,
+            new ProjectRequest($body)
+        )->then(function ($response) {
             return $response[0];
         });
     }
@@ -1299,7 +1300,7 @@ class ProjectsApi extends BaseAPI
      * Update Project
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1334,7 +1335,7 @@ class ProjectsApi extends BaseAPI
      * Create request for operation 'updateProject'
      *
      * @param  string $project Project (required)
-     * @param  \WalletPassJP\Model\ProjectRequest $body (optional)
+     * @param  \WalletPassJP\Model\ProjectRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
