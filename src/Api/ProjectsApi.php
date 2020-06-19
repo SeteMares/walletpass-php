@@ -27,7 +27,7 @@ class ProjectsApi extends BaseAPI
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Model\ResourceResponse
+     * @return \WalletPassJP\Model\Project
      */
     public function create($body = null)
     {
@@ -1168,11 +1168,15 @@ class ProjectsApi extends BaseAPI
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \WalletPassJP\Model\Project
      */
     public function update($project, $body = null)
     {
-        $this->updateProjectWithHttpInfo($project, new ProjectRequest($body));
+        list($response) = $this->updateProjectWithHttpInfo(
+            $project,
+            new ProjectRequest($body)
+        );
+        return $response->getData();
     }
 
     /**
@@ -1189,7 +1193,7 @@ class ProjectsApi extends BaseAPI
      */
     private function updateProjectWithHttpInfo($project, $body = null)
     {
-        $returnType = '';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->updateProjectRequest($project, $body);
 
         try {
@@ -1225,9 +1229,35 @@ class ProjectsApi extends BaseAPI
                 );
             }
 
+            $responseBody = $response->getBody();
+            $content = $responseBody->getContents();
+            if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                $content = json_decode($content);
+            }
+
+            return [
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Model\Project'
+                ),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\ResourceResponse',
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Model\Project'
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         json_decode($e->getResponseBody()),
@@ -1307,12 +1337,27 @@ class ProjectsApi extends BaseAPI
      */
     private function updateProjectAsyncWithHttpInfo($project, $body = null)
     {
-        $returnType = '';
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->updateProjectRequest($project, $body);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
-                return [null, $response->getStatusCode(), $response->getHeaders()];
+                $responseBody = $response->getBody();
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+
+                return [
+                    ObjectSerializer::deserialize(
+                        $content,
+                        $returnType,
+                        [],
+                        '\WalletPassJP\Model\Project'
+                    ),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
             },
             function ($exception) {
                 $response = $exception->getResponse();
