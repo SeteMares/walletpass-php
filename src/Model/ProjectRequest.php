@@ -48,6 +48,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'text_color' => 'string',
         'label_color' => 'string',
         'settings' => 'object',
+        'barcode' => 'object',
         'images' => 'string[]',
         'organization_name' => 'string',
         'links' => '\WalletPassJP\Model\Link[]',
@@ -72,6 +73,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'text_color' => null,
         'label_color' => null,
         'settings' => null,
+        'barcode' => null,
         'images' => null,
         'organization_name' => null,
         'links' => null,
@@ -117,6 +119,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'text_color' => 'text_color',
         'label_color' => 'label_color',
         'settings' => 'settings',
+        'barcode' => 'barcode',
         'images' => 'images',
         'organization_name' => 'organization_name',
         'links' => 'links',
@@ -141,6 +144,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'text_color' => 'setTextColor',
         'label_color' => 'setLabelColor',
         'settings' => 'setSettings',
+        'barcode' => 'setBarcode',
         'images' => 'setImages',
         'organization_name' => 'setOrganizationName',
         'links' => 'setLinks',
@@ -165,6 +169,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'text_color' => 'getTextColor',
         'label_color' => 'getLabelColor',
         'settings' => 'getSettings',
+        'barcode' => 'getBarcode',
         'images' => 'getImages',
         'organization_name' => 'getOrganizationName',
         'links' => 'getLinks',
@@ -274,7 +279,8 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         $this->container['label_color'] = isset($data['label_color'])
             ? $data['label_color']
             : null;
-        $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
+        $this->container['settings'] = $data['settings'] ?? null;
+        $this->container['barcode'] = $data['barcode'] ?? null;
         $this->container['images'] = isset($data['images']) ? $data['images'] : null;
         $this->container['organization_name'] = isset($data['organization_name'])
             ? $data['organization_name']
@@ -573,6 +579,30 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     public function setSettings($settings)
     {
         $this->container['settings'] = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets barcode
+     *
+     * @return array
+     */
+    public function getBarcode()
+    {
+        return $this->container['barcode'];
+    }
+
+    /**
+     * Sets barcode
+     *
+     * @param array $barcode barcode
+     *
+     * @return $this
+     */
+    public function setBarcode($barcode)
+    {
+        $this->container['barcode'] = $barcode;
 
         return $this;
     }
