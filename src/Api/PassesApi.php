@@ -96,7 +96,12 @@ class PassesApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Model\Pass'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -106,7 +111,8 @@ class PassesApi extends BaseAPI
                     $data = ObjectSerializer::deserialize(
                         json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\ResourceResponse',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Model\Pass'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -892,7 +898,12 @@ class PassesApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Model\Pass'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -902,7 +913,8 @@ class PassesApi extends BaseAPI
                     $data = ObjectSerializer::deserialize(
                         json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\ResourceResponse',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Model\Pass'
                     );
                     $e->setResponseObject($data);
                     break;
@@ -1149,7 +1161,12 @@ class PassesApi extends BaseAPI
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Model\Pass'
+                ),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -1159,7 +1176,8 @@ class PassesApi extends BaseAPI
                     $data = ObjectSerializer::deserialize(
                         json_decode($e->getResponseBody()),
                         '\WalletPassJP\Model\ResourceResponse',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Model\Pass'
                     );
                     $e->setResponseObject($data);
                     break;
