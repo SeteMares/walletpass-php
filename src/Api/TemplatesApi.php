@@ -7,6 +7,8 @@ use GuzzleHttp\Psr7\Request;
 use WalletPassJP\ApiException;
 use WalletPassJP\ObjectSerializer;
 use WalletPassJP\Api\Api as BaseAPI;
+use WalletPassJP\Model\PassRequest;
+use WalletPassJP\Model\TemplateRequest;
 
 /**
  * Templates Api
@@ -22,16 +24,15 @@ class TemplatesApi extends BaseAPI
      *
      * Copy template
      *
-     * @param  string $template Template ID (required)
-     * @param  object $body body (optional)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\ResourceResponse
      */
-    public function copy($template, $body = null)
+    public function copy($template_id)
     {
-        list($response) = $this->copyTemplateWithHttpInfo($template, $body);
+        list($response) = $this->copyTemplateWithHttpInfo($template_id);
         return $response->getData();
     }
 
@@ -40,17 +41,16 @@ class TemplatesApi extends BaseAPI
      *
      * Copy template
      *
-     * @param  string $template Template ID (required)
-     * @param  object $body (optional)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function copyTemplateWithHttpInfo($template, $body = null)
+    private function copyTemplateWithHttpInfo($template_id)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->copyTemplateRequest($template, $body);
+        $request = $this->copyTemplateRequest($template_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -86,14 +86,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -158,17 +152,14 @@ class TemplatesApi extends BaseAPI
      *
      * Copy template
      *
-     * @param  string $template Template ID (required)
-     * @param  object $body (optional)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function copyTemplateAsync($template, $body = null)
+    public function copyTemplateAsync($template_id)
     {
-        return $this->copyTemplateAsyncWithHttpInfo($template, $body)->then(function (
-            $response
-        ) {
+        return $this->copyTemplateAsyncWithHttpInfo($template_id)->then(function ($response) {
             return $response[0];
         });
     }
@@ -178,66 +169,32 @@ class TemplatesApi extends BaseAPI
      *
      * Copy template
      *
-     * @param  string $template Template ID (required)
-     * @param  object $body (optional)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function copyTemplateAsyncWithHttpInfo($template, $body = null)
+    private function copyTemplateAsyncWithHttpInfo($template_id)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->copyTemplateRequest($template, $body);
+        $request = $this->copyTemplateRequest($template_id);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                $content = json_decode($content);
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Template'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Template');
     }
 
     /**
      * Create request for operation 'copyTemplate'
      *
-     * @param  string $template Template ID (required)
-     * @param  object $body (optional)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function copyTemplateRequest($template, $body = null)
+    protected function copyTemplateRequest($template_id)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling copyTemplate'
+                'Missing the required parameter $template_id when calling copyTemplate'
             );
         }
 
@@ -249,16 +206,12 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(['application/json']);
         } else {
@@ -324,16 +277,16 @@ class TemplatesApi extends BaseAPI
      *
      * Create pass
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\PassRequest $body body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  array $body body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\ResourceResponse
      */
-    public function createPass($template, $body = null)
+    public function createPass($template_id, $body)
     {
-        list($response) = $this->createPassWithHttpInfo($template, $body);
+        list($response) = $this->createPassWithHttpInfo($template_id, new PassRequest($body));
         return $response->getData();
     }
 
@@ -342,17 +295,17 @@ class TemplatesApi extends BaseAPI
      *
      * Create pass
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\PassRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  PassRequest $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPassWithHttpInfo($template, $body = null)
+    private function createPassWithHttpInfo($template_id, $body)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->createPassRequest($template, $body);
+        $request = $this->createPassRequest($template_id, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -388,14 +341,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -468,19 +415,19 @@ class TemplatesApi extends BaseAPI
      *
      * Create pass
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\PassRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  array $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPassAsync($template, $body = null)
+    public function createPassAsync($template_id, $body)
     {
-        return $this->createPassAsyncWithHttpInfo($template, $body)->then(function (
-            $response
-        ) {
-            return $response[0];
-        });
+        return $this->createPassAsyncWithHttpInfo($template_id, new PassRequest($body))->then(
+            function ($response) {
+                return $response[0];
+            }
+        );
     }
 
     /**
@@ -488,66 +435,34 @@ class TemplatesApi extends BaseAPI
      *
      * Create pass
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\PassRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  \WalletPassJP\Model\PassRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPassAsyncWithHttpInfo($template, $body = null)
+    private function createPassAsyncWithHttpInfo($template_id, $body)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->createPassRequest($template, $body);
+        $request = $this->createPassRequest($template_id, $body);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                $content = json_decode($content);
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Pass'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass');
     }
 
     /**
      * Create request for operation 'createPass'
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\PassRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  \WalletPassJP\Model\PassRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createPassRequest($template, $body = null)
+    protected function createPassRequest($template_id, $body)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling createPass'
+                'Missing the required parameter $template_id when calling createPass'
             );
         }
 
@@ -559,8 +474,8 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
@@ -634,15 +549,15 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  stringRequest $body body (optional)
+     * @param  array $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\ResourceResponse
      */
-    public function create($body = null)
+    public function create($body)
     {
-        list($response) = $this->createTemplateWithHttpInfo($body);
+        list($response) = $this->createTemplateWithHttpInfo(new TemplateRequest($body));
         return $response->getData();
     }
 
@@ -651,13 +566,13 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTemplateWithHttpInfo($body = null)
+    private function createTemplateWithHttpInfo($body)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createTemplateRequest($body);
@@ -696,14 +611,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -768,16 +677,18 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  array $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTemplateAsync($body = null)
+    public function createTemplateAsync($body)
     {
-        return $this->createTemplateAsyncWithHttpInfo($body)->then(function ($response) {
-            return $response[0];
-        });
+        return $this->createTemplateAsyncWithHttpInfo(new TemplateRequest($body))->then(
+            function ($response) {
+                return $response[0];
+            }
+        );
     }
 
     /**
@@ -785,59 +696,27 @@ class TemplatesApi extends BaseAPI
      *
      * Create template
      *
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTemplateAsyncWithHttpInfo($body = null)
+    private function createTemplateAsyncWithHttpInfo($body)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->createTemplateRequest($body);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                $content = json_decode($content);
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Template'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Template');
     }
 
     /**
      * Create request for operation 'createTemplate'
      *
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  \WalletPassJP\Model\TemplateRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createTemplateRequest($body = null)
+    protected function createTemplateRequest($body)
     {
         $resourcePath = '/templates';
         $formParams = [];
@@ -917,15 +796,15 @@ class TemplatesApi extends BaseAPI
      *
      * Delete template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function delete($template)
+    public function delete($template_id)
     {
-        $this->deleteTemplateWithHttpInfo($template);
+        $this->deleteTemplateWithHttpInfo($template_id);
     }
 
     /**
@@ -933,16 +812,16 @@ class TemplatesApi extends BaseAPI
      *
      * Delete template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteTemplateWithHttpInfo($template)
+    private function deleteTemplateWithHttpInfo($template_id)
     {
         $returnType = '';
-        $request = $this->deleteTemplateRequest($template);
+        $request = $this->deleteTemplateRequest($template_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1022,14 +901,16 @@ class TemplatesApi extends BaseAPI
      *
      * Delete template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTemplateAsync($template)
+    public function deleteTemplateAsync($template_id)
     {
-        return $this->deleteTemplateAsyncWithHttpInfo($template)->then(function ($response) {
+        return $this->deleteTemplateAsyncWithHttpInfo($template_id)->then(function (
+            $response
+        ) {
             return $response[0];
         });
     }
@@ -1039,15 +920,15 @@ class TemplatesApi extends BaseAPI
      *
      * Delete template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTemplateAsyncWithHttpInfo($template)
+    private function deleteTemplateAsyncWithHttpInfo($template_id)
     {
         $returnType = '';
-        $request = $this->deleteTemplateRequest($template);
+        $request = $this->deleteTemplateRequest($template_id);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
@@ -1073,17 +954,17 @@ class TemplatesApi extends BaseAPI
     /**
      * Create request for operation 'deleteTemplate'
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteTemplateRequest($template)
+    protected function deleteTemplateRequest($template_id)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling deleteTemplate'
+                'Missing the required parameter $template_id when calling deleteTemplate'
             );
         }
 
@@ -1095,8 +976,8 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
@@ -1164,15 +1045,15 @@ class TemplatesApi extends BaseAPI
      *
      * Get template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Model\ResourceResponse
+     * @return \WalletPassJP\Model\Template
      */
-    public function show($template)
+    public function show($template_id)
     {
-        list($response) = $this->getTemplateByIDWithHttpInfo($template);
+        list($response) = $this->getTemplateByIDWithHttpInfo($template_id);
         return $response->getData();
     }
 
@@ -1181,16 +1062,16 @@ class TemplatesApi extends BaseAPI
      *
      * Get template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTemplateByIDWithHttpInfo($template)
+    private function getTemplateByIDWithHttpInfo($template_id)
     {
         $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->getTemplateByIDRequest($template);
+        $request = $this->getTemplateByIDRequest($template_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1226,14 +1107,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -1298,14 +1173,16 @@ class TemplatesApi extends BaseAPI
      *
      * Get template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTemplateByIDAsync($template)
+    public function getTemplateByIDAsync($template_id)
     {
-        return $this->getTemplateByIDAsyncWithHttpInfo($template)->then(function ($response) {
+        return $this->getTemplateByIDAsyncWithHttpInfo($template_id)->then(function (
+            $response
+        ) {
             return $response[0];
         });
     }
@@ -1315,70 +1192,32 @@ class TemplatesApi extends BaseAPI
      *
      * Get template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTemplateByIDAsyncWithHttpInfo($template)
+    private function getTemplateByIDAsyncWithHttpInfo($template_id)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->getTemplateByIDRequest($template);
+        $request = $this->getTemplateByIDRequest($template_id);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Template'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Template');
     }
 
     /**
      * Create request for operation 'getTemplateByID'
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTemplateByIDRequest($template)
+    protected function getTemplateByIDRequest($template_id)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling getTemplateByID'
+                'Missing the required parameter $template_id when calling getTemplateByID'
             );
         }
 
@@ -1390,8 +1229,8 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
@@ -1459,15 +1298,15 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template fields
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\CollectionResponse
      */
-    public function getTemplateFields($template)
+    public function getTemplateFields($template_id)
     {
-        list($response) = $this->getTemplateFieldsWithHttpInfo($template);
+        list($response) = $this->getTemplateFieldsWithHttpInfo($template_id);
         return $response;
     }
 
@@ -1476,16 +1315,16 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template fields
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTemplateFieldsWithHttpInfo($template)
+    private function getTemplateFieldsWithHttpInfo($template_id)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
-        $request = $this->getTemplateFieldsRequest($template);
+        $request = $this->getTemplateFieldsRequest($template_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1521,14 +1360,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -1593,14 +1426,14 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template fields
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTemplateFieldsAsync($template)
+    public function getTemplateFieldsAsync($template_id)
     {
-        return $this->getTemplateFieldsAsyncWithHttpInfo($template)->then(function (
+        return $this->getTemplateFieldsAsyncWithHttpInfo($template_id)->then(function (
             $response
         ) {
             return $response[0];
@@ -1612,64 +1445,37 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template fields
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTemplateFieldsAsyncWithHttpInfo($template)
+    private function getTemplateFieldsAsyncWithHttpInfo($template_id)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
-        $request = $this->getTemplateFieldsRequest($template);
+        $request = $this->getTemplateFieldsRequest($template_id);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                $content = json_decode($content);
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\PassField[]'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
+        return $this->sendAsyncRequest(
+            $request,
+            '\WalletPassJP\Model\PassField[]',
+            $returnType
         );
     }
 
     /**
      * Create request for operation 'getTemplateFields'
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTemplateFieldsRequest($template)
+    protected function getTemplateFieldsRequest($template_id)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling getTemplateFields'
+                'Missing the required parameter $template_id when calling getTemplateFields'
             );
         }
 
@@ -1681,8 +1487,8 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
@@ -1750,7 +1556,7 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template passes
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1758,9 +1564,9 @@ class TemplatesApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\CollectionResponse
      */
-    public function listPasses($template, $limit = '15', $page = '1')
+    public function listPasses($template_id, $limit = '15', $page = '1')
     {
-        list($response) = $this->listTemplatePassesWithHttpInfo($template, $limit, $page);
+        list($response) = $this->listTemplatePassesWithHttpInfo($template_id, $limit, $page);
         return $response;
     }
 
@@ -1769,7 +1575,7 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template passes
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1777,10 +1583,10 @@ class TemplatesApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTemplatePassesWithHttpInfo($template, $limit = '15', $page = '1')
+    private function listTemplatePassesWithHttpInfo($template_id, $limit = '15', $page = '1')
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
-        $request = $this->listTemplatePassesRequest($template, $limit, $page);
+        $request = $this->listTemplatePassesRequest($template_id, $limit, $page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1816,14 +1622,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -1888,16 +1688,16 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template passes
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTemplatePassesAsync($template, $limit = '15', $page = '1')
+    public function listTemplatePassesAsync($template_id, $limit = '15', $page = '1')
     {
-        return $this->listTemplatePassesAsyncWithHttpInfo($template, $limit, $page)->then(
+        return $this->listTemplatePassesAsyncWithHttpInfo($template_id, $limit, $page)->then(
             function ($response) {
                 return $response[0];
             }
@@ -1909,74 +1709,40 @@ class TemplatesApi extends BaseAPI
      *
      * Get all template passes
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTemplatePassesAsyncWithHttpInfo($template, $limit = '15', $page = '1')
-    {
+    private function listTemplatePassesAsyncWithHttpInfo(
+        $template_id,
+        $limit = '15',
+        $page = '1'
+    ) {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
-        $request = $this->listTemplatePassesRequest($template, $limit, $page);
+        $request = $this->listTemplatePassesRequest($template_id, $limit, $page);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Pass[]'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass[]', $returnType);
     }
 
     /**
      * Create request for operation 'listTemplatePasses'
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  int $limit Records imit (optional, default to 15)
      * @param  int $page Page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listTemplatePassesRequest($template, $limit = '15', $page = '1')
+    protected function listTemplatePassesRequest($template_id, $limit = '15', $page = '1')
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling listTemplatePasses'
+                'Missing the required parameter $template_id when calling listTemplatePasses'
             );
         }
 
@@ -1997,8 +1763,8 @@ class TemplatesApi extends BaseAPI
         }
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params
@@ -2093,7 +1859,7 @@ class TemplatesApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return array of \WalletPassJP\Model\CollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTemplatesWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    private function listTemplatesWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatesRequest($limit, $page, $tags);
@@ -2132,14 +1898,8 @@ class TemplatesApi extends BaseAPI
             }
 
             $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    $content = json_decode($content);
-                }
-            }
+            $content = $responseBody->getContents();
+            $content = json_decode($content);
 
             return [
                 ObjectSerializer::deserialize(
@@ -2232,48 +1992,15 @@ class TemplatesApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTemplatesAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
+    private function listTemplatesAsyncWithHttpInfo($limit = '15', $page = '1', $tags = null)
     {
         $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatesRequest($limit, $page, $tags);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Template[]'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
+        return $this->sendAsyncRequest(
+            $request,
+            '\WalletPassJP\Model\Template[]',
+            $returnType
         );
     }
 
@@ -2377,16 +2104,20 @@ class TemplatesApi extends BaseAPI
      *
      * Update template
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\TemplateRequest $body body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  array $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \WalletPassJP\Model\Template|null
      */
-    public function update($template, $body = null)
+    public function update($template_id, $body)
     {
-        $this->updateTemplateWithHttpInfo($template, $body);
+        list($response) = $this->updateTemplateWithHttpInfo(
+            $template_id,
+            new TemplateRequest($body)
+        );
+        return $response ? $response->getData() : null;
     }
 
     /**
@@ -2394,17 +2125,17 @@ class TemplatesApi extends BaseAPI
      *
      * Update template
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \WalletPassJP\Model\ResourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTemplateWithHttpInfo($template, $body = null)
+    private function updateTemplateWithHttpInfo($template_id, $body)
     {
-        $returnType = '';
-        $request = $this->updateTemplateRequest($template, $body);
+        $returnType = '\WalletPassJP\Model\ResourceResponse';
+        $request = $this->updateTemplateRequest($template_id, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2439,9 +2170,30 @@ class TemplatesApi extends BaseAPI
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            $content = json_decode($responseBody->getContents());
+
+            return [
+                ObjectSerializer::deserialize(
+                    $content,
+                    $returnType,
+                    [],
+                    '\WalletPassJP\Model\Template'
+                ),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\ResourceResponse',
+                        $e->getResponseHeaders(),
+                        '\WalletPassJP\Model\Template'
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         json_decode($e->getResponseBody()),
@@ -2492,15 +2244,15 @@ class TemplatesApi extends BaseAPI
      *
      * Update template
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  array $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTemplateAsync($template, $body = null)
+    public function updateTemplateAsync($template_id, $body)
     {
-        return $this->updateTemplateAsyncWithHttpInfo($template, $body)->then(function (
+        return $this->updateTemplateAsyncWithHttpInfo($template_id, $body)->then(function (
             $response
         ) {
             return $response[0];
@@ -2512,53 +2264,34 @@ class TemplatesApi extends BaseAPI
      *
      * Update template
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  \WalletPassJP\Model\TemplateRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTemplateAsyncWithHttpInfo($template, $body = null)
+    private function updateTemplateAsyncWithHttpInfo($template_id, $body)
     {
-        $returnType = '';
-        $request = $this->updateTemplateRequest($template, $body);
+        $request = $this->updateTemplateRequest($template_id, $body);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                return [null, $response->getStatusCode(), $response->getHeaders()];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Template');
     }
 
     /**
      * Create request for operation 'updateTemplate'
      *
-     * @param  string $template Template ID (required)
-     * @param  \WalletPassJP\Model\TemplateRequest $body (optional)
+     * @param  string $template_id Template ID (required)
+     * @param  \WalletPassJP\Model\TemplateRequest $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateTemplateRequest($template, $body = null)
+    protected function updateTemplateRequest($template_id, $body)
     {
         // verify the required parameter 'template' is set
-        if ($template === null || (is_array($template) && count($template) === 0)) {
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $template when calling updateTemplate'
+                'Missing the required parameter $template_id when calling updateTemplate'
             );
         }
 
@@ -2570,8 +2303,8 @@ class TemplatesApi extends BaseAPI
         $multipart = false;
 
         // path params
-        if ($template !== null) {
-            $resourcePath = str_replace('{template}', $template, $resourcePath);
+        if ($template_id !== null) {
+            $resourcePath = str_replace('{template}', $template_id, $resourcePath);
         }
 
         // body params

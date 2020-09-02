@@ -26,6 +26,17 @@ use WalletPassJP\ObjectSerializer;
 /**
  * Pass Class Doc Comment
  *
+ * @property string $id
+ * @property string $external_id
+ * @property string $sku
+ * @property string $template_id
+ * @property string $link
+ * @property string $status
+ * @property bool $is_voided
+ * @property \DateTime $created_at
+ * @property \DateTime $updated_at
+ * @property \DateTime $expires_at
+ * @property array $meta
  * @category Class
  * @description Response on pass get or create.
  * @package  WalletPassJP

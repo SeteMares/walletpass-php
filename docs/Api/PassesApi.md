@@ -5,17 +5,19 @@ All URIs are relative to *https://walletpass.jp/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createPass**](PassesApi.md#createpass) | **POST** /templates/{template}/passes | Create pass
+[**updatePass**](PassesApi.md#updatepass) | **PATCH** /passes/{pass} | Update pass
 [**deletePass**](PassesApi.md#deletepass) | **DELETE** /passes/{pass} | Delete pass
+[**getPassByID**](PassesApi.md#getpassbyid) | **GET** /passes/{pass} | Get pass
 [**getPassApple**](PassesApi.md#getpassapple) | **GET** /passes/{pass}/pkpass | Get pass in pkpass format
 [**getPassByExtID**](PassesApi.md#getpassbyextid) | **GET** /passes/external/{externalID} | Get pass by external ID
-[**getPassByID**](PassesApi.md#getpassbyid) | **GET** /passes/{pass} | Get pass
 [**getPassGoogle**](PassesApi.md#getpassgoogle) | **GET** /passes/{pass}/gpay | Get pass Google Play installation link
 [**getPassLink**](PassesApi.md#getpasslink) | **GET** /passes/{pass}/link | Get pass download link
 [**listTemplatePasses**](PassesApi.md#listtemplatepasses) | **GET** /templates/{template}/passes | Get all template passes
-[**updatePass**](PassesApi.md#updatepass) | **PATCH** /passes/{pass} | Update pass
+[**redeemPass**](PassesApi.md#redeempass) | **PATCH** /passes/{pass}/redeem | Redeem pass
+[**punchPass**](PassesApi.md#punchpass) | **PATCH** /passes/{pass}/punch | Punch pass
 
 # **createPass**
-> \WalletPassJP\Model\ResourceResponse createPass($template, $body)
+> \WalletPassJP\Model\ResourceResponse createPass($template_id, $body)
 
 Create pass
 
@@ -33,7 +35,7 @@ $template_id = 'template_example'; // Template ID
 $body = new \WalletPassJP\Model\PassRequest(); // \WalletPassJP\Model\PassRequest |
 
 try {
-    $result = $apiInstance->create($template, $body);
+    $result = $apiInstance->create($template_id, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PassesApi->createPass: ', $e->getMessage(), PHP_EOL;
@@ -59,6 +61,101 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+
+# **getPassByID**
+> \WalletPassJP\Model\ResourceResponse getPassByID($pass)
+
+Get pass
+
+Get Pass record.
+
+### Example
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
+
+$apiInstance = new WalletPassJP\Api\PassesApi($key);
+$pass_id = 'pass_example'; // string | Pass ID
+
+try {
+    $result = $apiInstance->show($pass_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PassesApi->getPassByID: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pass** | **string**| Pass ID |
+
+### Return type
+
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getPassByExtID**
+> \WalletPassJP\Model\ResourceResponse getPassByExtID($external_id)
+
+Get pass by external ID
+
+Get Pass record by external ID.
+
+### Example
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
+
+$apiInstance = new WalletPassJP\Api\PassesApi($key);
+$external_id = 'external_id_example'; // string | The custom or external ID
+
+try {
+    $result = $apiInstance->getPassByExtID($external_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PassesApi->getPassByExtID: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **external_id** | **string**| The custom or external ID |
+
+### Return type
+
+[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -153,100 +250,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.apple.pkpass, application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getPassByExtID**
-> \WalletPassJP\Model\ResourceResponse getPassByExtID($external_id)
-
-Get pass by external ID
-
-Get Pass record by external ID.
-
-### Example
-```php
-<?php
-require_once __DIR__ . '/vendor/autoload.php';
-// Configure HTTP bearer authorization: Bearer
-$key = 'YOUR_ACCESS_TOKEN';
-
-$apiInstance = new WalletPassJP\Api\PassesApi($key);
-$external_id = 'external_id_example'; // string | The custom or external ID
-
-try {
-    $result = $apiInstance->getPassByExtID($external_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PassesApi->getPassByExtID: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **external_id** | **string**| The custom or external ID |
-
-### Return type
-
-[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
-
-### Authorization
-
-[Bearer](../../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getPassByID**
-> \WalletPassJP\Model\ResourceResponse getPassByID($pass)
-
-Get pass
-
-Get Pass record.
-
-### Example
-```php
-<?php
-require_once __DIR__ . '/vendor/autoload.php';
-// Configure HTTP bearer authorization: Bearer
-$key = 'YOUR_ACCESS_TOKEN';
-
-$apiInstance = new WalletPassJP\Api\PassesApi($key);
-$pass_id = 'pass_example'; // string | Pass ID
-
-try {
-    $result = $apiInstance->show($pass_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PassesApi->getPassByID: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pass** | **string**| Pass ID |
-
-### Return type
-
-[**\WalletPassJP\Model\ResourceResponse**](../Model/ResourceResponse.md)
-
-### Authorization
-
-[Bearer](../../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -441,3 +444,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **redeemPass**
+> redeemPass($pass)
+
+Redeem Pass.
+
+### Example
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
+
+$apiInstance = new WalletPassJP\Api\PassesApi($key);
+$pass_id = 'pass_example'; // string | Pass ID
+
+try {
+    $apiInstance->redeem($pass_id);
+} catch (Exception $e) {
+    echo 'Exception when calling PassesApi->redeemPass: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pass** | **string**| Pass ID |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **punchPass**
+> punchPass($pass)
+
+Punch Pass.
+
+### Example
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+// Configure HTTP bearer authorization: Bearer
+$key = 'YOUR_ACCESS_TOKEN';
+
+$apiInstance = new WalletPassJP\Api\PassesApi($key);
+$pass_id = 'pass_example'; // string | Pass ID
+
+try {
+    $apiInstance->punch($pass_id);
+} catch (Exception $e) {
+    echo 'Exception when calling PassesApi->punchPass: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pass** | **string**| Pass ID |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

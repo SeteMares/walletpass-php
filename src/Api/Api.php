@@ -4,8 +4,10 @@ namespace WalletPassJP\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
+use WalletPassJP\ApiException;
 use WalletPassJP\Configuration;
 use WalletPassJP\HeaderSelector;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Api Class
@@ -76,6 +78,76 @@ class Api
         }
 
         return $options;
+    }
+
+    /**
+     *
+     * @param \GuzzleHttp\Psr7\Request $request
+     * @param string $className
+     * @param string|null $returnType
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    protected function sendAsyncRequest($request, $className, $returnType = null)
+    {
+        $returnType = $returnType ?: '\WalletPassJP\Model\ResourceResponse';
+
+        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
+            function ($response) use ($returnType, $className) {
+                $responseBody = $response->getBody();
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, $returnType, [], $className),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            },
+            function ($exception) {
+                $response = $exception->getResponse();
+                $statusCode = $response->getStatusCode();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $exception->getRequest()->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+        );
+    }
+
+    /**
+     *
+     * @param \GuzzleHttp\Psr7\Request $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    protected function sendAsyncWithoutResponse($request)
+    {
+        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
+            function ($response) {
+                return [null, $response->getStatusCode(), $response->getHeaders()];
+            },
+            function ($exception) {
+                $response = $exception->getResponse();
+                $statusCode = $response->getStatusCode();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $exception->getRequest()->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+        );
     }
 }
 ?>

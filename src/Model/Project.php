@@ -26,6 +26,17 @@ use WalletPassJP\ObjectSerializer;
 /**
  * Project Class Doc Comment
  *
+ * @property string $id
+ * @property string $external_id
+ * @property string $type
+ * @property string $title
+ * @property array $settings
+ * @property bool $is_enabled
+ * @property ProjectTemplates $templates
+ * @property \DateTime $created_at
+ * @property \DateTime $updated_at
+ * @property \DateTime $archived_at
+ * @property array $tags
  * @category Class
  * @package  WalletPassJP
  * @author   Kinchaku

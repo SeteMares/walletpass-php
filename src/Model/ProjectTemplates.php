@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * ProjectTemplates Class Doc Comment
@@ -37,29 +36,31 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Project_templates';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'default' => '\WalletPassJP\Model\Template',
-'redeemed' => '\WalletPassJP\Model\Template'    ];
+        'redeemed' => '\WalletPassJP\Model\Template',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'default' => null,
-'redeemed' => null    ];
+        'redeemed' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -89,7 +90,8 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'default' => 'default',
-'redeemed' => 'redeemed'    ];
+        'redeemed' => 'redeemed',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -98,7 +100,8 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'default' => 'setDefault',
-'redeemed' => 'setRedeemed'    ];
+        'redeemed' => 'setRedeemed',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -107,7 +110,8 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'default' => 'getDefault',
-'redeemed' => 'getRedeemed'    ];
+        'redeemed' => 'getRedeemed',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -150,8 +154,6 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -193,7 +195,6 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets default
@@ -302,7 +303,8 @@ class ProjectTemplates implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

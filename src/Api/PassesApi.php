@@ -180,50 +180,17 @@ class PassesApi extends BaseAPI
      *
      * Create pass
      *
-     * @param  string $template Template ID (required)
+     * @param  string $template_id Template ID (required)
      * @param  \WalletPassJP\Model\PassRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPassAsyncWithHttpInfo($template, $body = null)
+    public function createPassAsyncWithHttpInfo($template_id, $body = null)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
-        $request = $this->createPassRequest($template, $body);
+        $request = $this->createPassRequest($template_id, $body);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass');
     }
 
     /**
@@ -456,28 +423,9 @@ class PassesApi extends BaseAPI
      */
     public function deletePassAsyncWithHttpInfo($pass)
     {
-        $returnType = '';
         $request = $this->deletePassRequest($pass);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                return [null, $response->getStatusCode(), $response->getHeaders()];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncWithoutResponse($request);
     }
 
     /**
@@ -1026,42 +974,9 @@ class PassesApi extends BaseAPI
      */
     public function getPassByExtIDAsyncWithHttpInfo($external_id)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByExtIDRequest($external_id);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass');
     }
 
     /**
@@ -1314,42 +1229,9 @@ class PassesApi extends BaseAPI
      */
     public function getPassByIDAsyncWithHttpInfo($pass)
     {
-        $returnType = '\WalletPassJP\Model\ResourceResponse';
         $request = $this->getPassByIDRequest($pass);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
-
-                return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass');
     }
 
     /**
@@ -1602,35 +1484,9 @@ class PassesApi extends BaseAPI
      */
     public function getPassGoogleAsyncWithHttpInfo($pass)
     {
-        $returnType = 'string';
         $request = $this->getPassGoogleRequest($pass);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-
-                return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '', 'string');
     }
 
     /**
@@ -1882,35 +1738,7 @@ class PassesApi extends BaseAPI
         $returnType = 'string';
         $request = $this->getPassLinkRequest($pass);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-
-                return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '', 'string');
     }
 
     /**
@@ -2182,38 +2010,7 @@ class PassesApi extends BaseAPI
         $returnType = '\WalletPassJP\Model\CollectionResponse';
         $request = $this->listTemplatePassesRequest($template, $limit, $page);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                $responseBody = $response->getBody();
-                $content = $responseBody->getContents();
-                $content = json_decode($content);
-
-                return [
-                    ObjectSerializer::deserialize(
-                        $content,
-                        $returnType,
-                        [],
-                        '\WalletPassJP\Model\Pass[]'
-                    ),
-                    $response->getStatusCode(),
-                    $response->getHeaders(),
-                ];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncRequest($request, '\WalletPassJP\Model\Pass[]', $returnType);
     }
 
     /**
@@ -2458,28 +2255,9 @@ class PassesApi extends BaseAPI
      */
     public function updatePassAsyncWithHttpInfo($pass)
     {
-        $returnType = '';
         $request = $this->updatePassRequest($pass);
 
-        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
-            function ($response) use ($returnType) {
-                return [null, $response->getStatusCode(), $response->getHeaders()];
-            },
-            function ($exception) {
-                $response = $exception->getResponse();
-                $statusCode = $response->getStatusCode();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $exception->getRequest()->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-        );
+        return $this->sendAsyncWithoutResponse($request);
     }
 
     /**
@@ -2551,6 +2329,452 @@ class PassesApi extends BaseAPI
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // // this endpoint requires Bearer token
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge($defaultHeaders, $headerParams, $headers);
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation redeemPass
+     *
+     * Redeem pass
+     *
+     * @param  string $pass Pass ID (required)
+     * @param  array $body (optional)
+     *
+     * @return void
+     * @throws \InvalidArgumentException
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     */
+    public function redeem($pass, $body = null): void
+    {
+        $this->redeemPassWithHttpInfo($pass, $body);
+    }
+
+    /**
+     * Operation redeemPassWithHttpInfo
+     *
+     * Redeem pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \InvalidArgumentException
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     */
+    protected function redeemPassWithHttpInfo($pass, $body = null)
+    {
+        $returnType = '';
+        $request = $this->redeemPassRequest($pass, $body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse()
+                        ? $e
+                            ->getResponse()
+                            ->getBody()
+                            ->getContents()
+                        : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation redeemPassAsync
+     *
+     * Redeem pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \InvalidArgumentException
+     */
+    protected function redeemPassAsync($pass, $body = null)
+    {
+        return $this->redeemPassAsyncWithHttpInfo($pass, $body)->then(function ($response) {
+            return $response[0];
+        });
+    }
+
+    /**
+     * Operation redeemPassAsyncWithHttpInfo
+     *
+     * Redeem pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \InvalidArgumentException
+     */
+    protected function redeemPassAsyncWithHttpInfo($pass, $body = null)
+    {
+        $request = $this->redeemPassRequest($pass, $body);
+
+        return $this->sendAsyncWithoutResponse($request);
+    }
+
+    /**
+     * @param  string $pass Pass ID (required)
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Psr7\Request
+     * @throws \InvalidArgumentException
+     */
+    protected function redeemPassRequest($pass, $body = null)
+    {
+        if ($pass === null || (is_array($pass) && count($pass) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pass when calling redeemPass'
+            );
+        }
+
+        $resourcePath = '/passes/{pass}/redeem';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($pass !== null) {
+            $resourcePath = str_replace('{pass}', $pass, $resourcePath);
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if (
+                $httpBody instanceof \stdClass &&
+                $headers['Content-Type'] === 'application/json'
+            ) {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        }
+
+        // // this endpoint requires Bearer token
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge($defaultHeaders, $headerParams, $headers);
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation punchPass
+     *
+     * Punch pass
+     *
+     * @param  string $pass Pass ID (required)
+     * @param  array $body (optional)
+     *
+     * @return void
+     * @throws \InvalidArgumentException
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     */
+    public function punch($pass, $body = null): void
+    {
+        $this->punchPassWithHttpInfo($pass, $body);
+    }
+
+    /**
+     * Operation punchPassWithHttpInfo
+     *
+     * Punch pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \InvalidArgumentException
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     */
+    protected function punchPassWithHttpInfo($pass, $body = null)
+    {
+        $returnType = '';
+        $request = $this->punchPassRequest($pass, $body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse()
+                        ? $e
+                            ->getResponse()
+                            ->getBody()
+                            ->getContents()
+                        : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation punchPassAsync
+     *
+     * Punch pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \InvalidArgumentException
+     */
+    protected function punchPassAsync($pass, $body = null)
+    {
+        return $this->punchPassAsyncWithHttpInfo($pass, $body)->then(function ($response) {
+            return $response[0];
+        });
+    }
+
+    /**
+     * Operation punchPassAsyncWithHttpInfo
+     *
+     * Punch pass
+     *
+     * @param  string $pass
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \InvalidArgumentException
+     */
+    protected function punchPassAsyncWithHttpInfo($pass, $body = null)
+    {
+        $request = $this->punchPassRequest($pass, $body);
+
+        return $this->sendAsyncWithoutResponse($request);
+    }
+
+    /**
+     * @param  string $pass Pass ID (required)
+     * @param  array $body (optional)
+     *
+     * @return \GuzzleHttp\Psr7\Request
+     * @throws \InvalidArgumentException
+     */
+    protected function punchPassRequest($pass, $body = null)
+    {
+        if ($pass === null || (is_array($pass) && count($pass) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pass when calling punchPass'
+            );
+        }
+
+        $resourcePath = '/passes/{pass}/punch';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($pass !== null) {
+            $resourcePath = str_replace('{pass}', $pass, $resourcePath);
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if (
+                $httpBody instanceof \stdClass &&
+                $headers['Content-Type'] === 'application/json'
+            ) {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         }
 
