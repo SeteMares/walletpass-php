@@ -770,7 +770,7 @@ class MessagesApi extends BaseAPI
             );
         }
 
-        $resourcePath = '/messages/{message}';
+        $resourcePath = '/passmessages/{message}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
