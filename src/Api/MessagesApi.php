@@ -225,7 +225,7 @@ class MessagesApi extends BaseAPI
      */
     protected function createMessageRequest($body = null)
     {
-        $resourcePath = '/messages';
+        $resourcePath = '/passmessages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -519,7 +519,7 @@ class MessagesApi extends BaseAPI
      */
     protected function listMessagesRequest($limit = '15', $page = '1')
     {
-        $resourcePath = '/messages';
+        $resourcePath = '/passmessages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
