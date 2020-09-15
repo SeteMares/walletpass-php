@@ -46,8 +46,8 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         'barcode' => '\WalletPassJP\Model\BarcodeSettings',
         'expiry_settings' => '\WalletPassJP\Model\TemplateExpirySettings',
         'associated_store_identifier' => 'string',
-        'fields' => '\WalletPassJP\Model\PassField[]',
         'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
+        'fields' => '\WalletPassJP\Model\PassField[]',
         'ios_logo_layout' => 'string',
         'tags' => 'string[]',
     ];
@@ -75,8 +75,8 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         'sharing_status' => null,
         'barcode' => null,
         'expiry_settings' => null,
-        'associated_store_identifier' => null,
         'fields' => null,
+        'associated_store_identifier' => null,
         'google_pay_apps' => null,
         'ios_logo_layout' => null,
         'tags' => null,
@@ -126,8 +126,8 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         'sharing_status' => 'sharing_status',
         'barcode' => 'barcode',
         'expiry_settings' => 'expiry_settings',
-        'associated_store_identifier' => 'associated_store_identifier',
         'fields' => 'fields',
+        'associated_store_identifier' => 'associated_store_identifier',
         'google_pay_apps' => 'google_pay_apps',
         'ios_logo_layout' => 'ios_logo_layout',
         'tags' => 'tags',
@@ -156,8 +156,8 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         'sharing_status' => 'setSharingStatus',
         'barcode' => 'setBarcode',
         'expiry_settings' => 'setExpirySettings',
-        'associated_store_identifier' => 'setAssociatedStoreIdentifier',
         'fields' => 'setFields',
+        'associated_store_identifier' => 'setAssociatedStoreIdentifier',
         'google_pay_apps' => 'setGooglePayApps',
         'ios_logo_layout' => 'setIosLogoLayout',
         'tags' => 'setTags',
@@ -186,8 +186,8 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         'sharing_status' => 'getSharingStatus',
         'barcode' => 'getBarcode',
         'expiry_settings' => 'getExpirySettings',
-        'associated_store_identifier' => 'getAssociatedStoreIdentifier',
         'fields' => 'getFields',
+        'associated_store_identifier' => 'getAssociatedStoreIdentifier',
         'google_pay_apps' => 'getGooglePayApps',
         'ios_logo_layout' => 'getIosLogoLayout',
         'tags' => 'getTags',
@@ -338,18 +338,11 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         $this->container['expiry_settings'] = isset($data['expiry_settings'])
             ? $data['expiry_settings']
             : null;
-        $this->container['associated_store_identifier'] = isset(
-            $data['associated_store_identifier']
-        )
-            ? $data['associated_store_identifier']
-            : null;
-        $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
-        $this->container['google_pay_apps'] = isset($data['google_pay_apps'])
-            ? $data['google_pay_apps']
-            : null;
-        $this->container['ios_logo_layout'] = isset($data['ios_logo_layout'])
-            ? $data['ios_logo_layout']
-            : 'unset';
+        $this->container['fields'] = $data['fields'] ?? null;
+        $this->container['associated_store_identifier'] =
+            $data['associated_store_identifier'] ?? null;
+        $this->container['google_pay_apps'] = $data['google_pay_apps'] ?? null;
+        $this->container['ios_logo_layout'] = $data['ios_logo_layout'] ?? 'unset';
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 

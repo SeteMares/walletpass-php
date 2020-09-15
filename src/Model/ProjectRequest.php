@@ -1,14 +1,4 @@
 <?php
-/**
- * ProjectRequest
- *
- * PHP version 7
- *
- * @category Class
- * @package  WalletPassJP
- * @author   Kinchaku
- */
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
@@ -55,6 +45,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'beacons' => '\WalletPassJP\Model\Beacon[]',
         'locations' => '\WalletPassJP\Model\Location[]',
         'tags' => 'string[]',
+        'associated_store_identifier' => 'string',
+        'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
+        'ios_logo_layout' => 'string',
     ];
 
     /**
@@ -80,6 +73,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'beacons' => null,
         'locations' => null,
         'tags' => null,
+        'associated_store_identifier' => null,
+        'google_pay_apps' => null,
+        'ios_logo_layout' => null,
     ];
 
     /**
@@ -126,6 +122,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'beacons' => 'beacons',
         'locations' => 'locations',
         'tags' => 'tags',
+        'associated_store_identifier' => 'associated_store_identifier',
+        'google_pay_apps' => 'google_pay_apps',
+        'ios_logo_layout' => 'ios_logo_layout',
     ];
 
     /**
@@ -151,6 +150,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'beacons' => 'setBeacons',
         'locations' => 'setLocations',
         'tags' => 'setTags',
+        'associated_store_identifier' => 'setAssociatedStoreIdentifier',
+        'google_pay_apps' => 'setGooglePayApps',
+        'ios_logo_layout' => 'setIosLogoLayout',
     ];
 
     /**
@@ -176,6 +178,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'beacons' => 'getBeacons',
         'locations' => 'getLocations',
         'tags' => 'getTags',
+        'associated_store_identifier' => 'getAssociatedStoreIdentifier',
+        'google_pay_apps' => 'getGooglePayApps',
+        'ios_logo_layout' => 'getIosLogoLayout',
     ];
 
     /**
@@ -224,6 +229,9 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     const TYPE_VOUCHER = 'voucher';
     const TYPE_STAMPCARD = 'stampcard';
     const TYPE_MEMBERSHIP = 'membership';
+    const IOS_LOGO_LAYOUT_SEPARATE = 'separate';
+    const IOS_LOGO_LAYOUT_NONE = 'none';
+    const IOS_LOGO_LAYOUT__UNSET = 'unset';
 
     /**
      * Gets allowable values of the enum
@@ -238,6 +246,19 @@ class ProjectRequest implements ModelInterface, ArrayAccess
             self::TYPE_VOUCHER,
             self::TYPE_STAMPCARD,
             self::TYPE_MEMBERSHIP,
+        ];
+    }
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIosLogoLayoutAllowableValues()
+    {
+        return [
+            self::IOS_LOGO_LAYOUT_SEPARATE,
+            self::IOS_LOGO_LAYOUT_NONE,
+            self::IOS_LOGO_LAYOUT__UNSET,
         ];
     }
 
@@ -256,7 +277,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['external_id'] = isset($data['external_id'])
             ? $data['external_id']
             : null;
@@ -289,6 +310,10 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
         $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['associated_store_identifier'] =
+            $data['associated_store_identifier'] ?? null;
+        $this->container['google_pay_apps'] = $data['google_pay_apps'] ?? null;
+        $this->container['ios_logo_layout'] = $data['ios_logo_layout'] ?? 'unset';
     }
 
     /**
@@ -319,6 +344,17 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         }
         if ($this->container['organization_name'] === null) {
             $invalidProperties[] = "'organization_name' can't be null";
+        }
+
+        $allowedValues = $this->getIosLogoLayoutAllowableValues();
+        if (
+            !is_null($this->container['ios_logo_layout']) &&
+            !in_array($this->container['ios_logo_layout'], $allowedValues, true)
+        ) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'ios_logo_layout', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
         return $invalidProperties;
     }
@@ -750,6 +786,88 @@ class ProjectRequest implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets associated_store_identifier
+     *
+     * @return string
+     */
+    public function getAssociatedStoreIdentifier()
+    {
+        return $this->container['associated_store_identifier'];
+    }
+
+    /**
+     * Sets associated_store_identifier
+     *
+     * @param string $associated_store_identifier iTunes Store item identifier for the associated app.  If the app is not installed, the link opens the App Store and shows the app. If the app is already installed, the link launches the app.
+     *
+     * @return $this
+     */
+    public function setAssociatedStoreIdentifier($associated_store_identifier)
+    {
+        $this->container['associated_store_identifier'] = $associated_store_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets google_pay_apps
+     *
+     * @return \WalletPassJP\Model\TemplateGooglePayApps[]
+     */
+    public function getGooglePayApps()
+    {
+        return $this->container['google_pay_apps'];
+    }
+
+    /**
+     * Sets google_pay_apps
+     *
+     * @param \WalletPassJP\Model\TemplateGooglePayApps[] $google_pay_apps Settings to render an app on the head of a pass. Apps can be Android, iOS or Web
+     *
+     * @return $this
+     */
+    public function setGooglePayApps($google_pay_apps)
+    {
+        $this->container['google_pay_apps'] = $google_pay_apps;
+
+        return $this;
+    }
+
+    /**
+     * Gets ios_logo_layout
+     *
+     * @return string
+     */
+    public function getIosLogoLayout()
+    {
+        return $this->container['ios_logo_layout'];
+    }
+
+    /**
+     * Sets ios_logo_layout
+     *
+     * @param string $ios_logo_layout Apple pass logo settings. - `none` - will omit logo from a pass - `separate` - will use separate Asset `apple_logo` - `unset` - use default logo Asset
+     *
+     * @return $this
+     */
+    public function setIosLogoLayout($ios_logo_layout)
+    {
+        $allowedValues = $this->getIosLogoLayoutAllowableValues();
+        if (!is_null($ios_logo_layout) && !in_array($ios_logo_layout, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'ios_logo_layout', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ios_logo_layout'] = $ios_logo_layout;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
