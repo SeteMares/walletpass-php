@@ -536,7 +536,7 @@ class PassesApi extends BaseAPI
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \SplFileObject
      */
     public function getPassApple($pass)
     {

@@ -1,28 +1,8 @@
 <?php
-/**
- * TemplateRequest
- *
- * PHP version 7
- *
- * @category Class
- * @package  WalletPassJP
- * @author   Kinchaku
- */
-
-/**
- * WalletPass
- *
- * WALLET PASS API enables you to issue mobile wallet passes for Apple Wallet, Google Pay and integrate them into your app or cloud system.   ## Prerequisites  Your passes for Apple Wallet must be cryptographically signed with a certificate from your Apple Developer Account.  To obtain your pass signing certificate follow the following:  1. Access your Apple Developer account. 2. In Certificates, Identifiers & Profiles, select Identifiers. 3. Under Identifiers, select Pass Type IDs. 4. Select the pass type identifier, then click Edit. If there is a certificate listed under Production Certificates, click the Download button next to it. If there are no certificates listed, click the Create Certificate button, then follow the instructions to create a pass signing certificate. 5. You can get CSR from `/certificates/csr` endpoint. 6. Upload obtained certificate to /certificates/upload endpoint.
- *
- * OpenAPI spec version: 1.0
- * Contact: contact@walletpass.jp
- */
-
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * TemplateRequest Class Doc Comment
@@ -36,69 +16,71 @@ class TemplateRequest implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'TemplateRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'external_id' => 'string',
-'pass_type_identifier' => 'string',
-'images' => 'string[]',
-'colors' => '\WalletPassJP\Model\Colors',
-'beacons' => '\WalletPassJP\Model\TemplateRequestBeacons',
-'locations' => '\WalletPassJP\Model\TemplateRequestLocations',
-'links' => '\WalletPassJP\Model\TemplateRequestLinks',
-'grouping_identifier' => 'string',
-'logo_text' => 'string',
-'pass_type' => 'string',
-'name' => 'string',
-'description' => 'string',
-'relevant_date' => '\DateTime',
-'organization_name' => 'string',
-'sharing_status' => 'string',
-'barcode' => '\WalletPassJP\Model\BarcodeSettings',
-'expiry_settings' => '\WalletPassJP\Model\TemplateExpirySettings',
-'associated_store_identifier' => 'string',
-'fields' => '\WalletPassJP\Model\PassField[]',
-'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
-'ios_logo_layout' => 'string',
-'tags' => 'string[]'    ];
+        'pass_type_identifier' => 'string',
+        'images' => 'string[]',
+        'colors' => '\WalletPassJP\Model\Colors',
+        'beacons' => '\WalletPassJP\Model\TemplateRequestBeacons',
+        'locations' => '\WalletPassJP\Model\TemplateRequestLocations',
+        'links' => '\WalletPassJP\Model\TemplateRequestLinks',
+        'grouping_identifier' => 'string',
+        'logo_text' => 'string',
+        'pass_type' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'relevant_date' => '\DateTime',
+        'organization_name' => 'string',
+        'sharing_status' => 'string',
+        'barcode' => '\WalletPassJP\Model\BarcodeSettings',
+        'expiry_settings' => '\WalletPassJP\Model\TemplateExpirySettings',
+        'associated_store_identifier' => 'string',
+        'fields' => '\WalletPassJP\Model\PassField[]',
+        'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
+        'ios_logo_layout' => 'string',
+        'tags' => 'string[]',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'external_id' => null,
-'pass_type_identifier' => null,
-'images' => null,
-'colors' => null,
-'beacons' => null,
-'locations' => null,
-'links' => null,
-'grouping_identifier' => null,
-'logo_text' => null,
-'pass_type' => null,
-'name' => null,
-'description' => null,
-'relevant_date' => 'date-time',
-'organization_name' => null,
-'sharing_status' => null,
-'barcode' => null,
-'expiry_settings' => null,
-'associated_store_identifier' => null,
-'fields' => null,
-'google_pay_apps' => null,
-'ios_logo_layout' => null,
-'tags' => null    ];
+        'pass_type_identifier' => null,
+        'images' => null,
+        'colors' => null,
+        'beacons' => null,
+        'locations' => null,
+        'links' => null,
+        'grouping_identifier' => null,
+        'logo_text' => null,
+        'pass_type' => null,
+        'name' => null,
+        'description' => null,
+        'relevant_date' => 'date-time',
+        'organization_name' => null,
+        'sharing_status' => null,
+        'barcode' => null,
+        'expiry_settings' => null,
+        'associated_store_identifier' => null,
+        'fields' => null,
+        'google_pay_apps' => null,
+        'ios_logo_layout' => null,
+        'tags' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -128,27 +110,28 @@ class TemplateRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'external_id' => 'external_id',
-'pass_type_identifier' => 'pass_type_identifier',
-'images' => 'images',
-'colors' => 'colors',
-'beacons' => 'beacons',
-'locations' => 'locations',
-'links' => 'links',
-'grouping_identifier' => 'grouping_identifier',
-'logo_text' => 'logo_text',
-'pass_type' => 'pass_type',
-'name' => 'name',
-'description' => 'description',
-'relevant_date' => 'relevant_date',
-'organization_name' => 'organization_name',
-'sharing_status' => 'sharing_status',
-'barcode' => 'barcode',
-'expiry_settings' => 'expiry_settings',
-'associated_store_identifier' => 'associated_store_identifier',
-'fields' => 'fields',
-'google_pay_apps' => 'google_pay_apps',
-'ios_logo_layout' => 'ios_logo_layout',
-'tags' => 'tags'    ];
+        'pass_type_identifier' => 'pass_type_identifier',
+        'images' => 'images',
+        'colors' => 'colors',
+        'beacons' => 'beacons',
+        'locations' => 'locations',
+        'links' => 'links',
+        'grouping_identifier' => 'grouping_identifier',
+        'logo_text' => 'logo_text',
+        'pass_type' => 'pass_type',
+        'name' => 'name',
+        'description' => 'description',
+        'relevant_date' => 'relevant_date',
+        'organization_name' => 'organization_name',
+        'sharing_status' => 'sharing_status',
+        'barcode' => 'barcode',
+        'expiry_settings' => 'expiry_settings',
+        'associated_store_identifier' => 'associated_store_identifier',
+        'fields' => 'fields',
+        'google_pay_apps' => 'google_pay_apps',
+        'ios_logo_layout' => 'ios_logo_layout',
+        'tags' => 'tags',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -157,27 +140,28 @@ class TemplateRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'external_id' => 'setExternalId',
-'pass_type_identifier' => 'setPassTypeIdentifier',
-'images' => 'setImages',
-'colors' => 'setColors',
-'beacons' => 'setBeacons',
-'locations' => 'setLocations',
-'links' => 'setLinks',
-'grouping_identifier' => 'setGroupingIdentifier',
-'logo_text' => 'setLogoText',
-'pass_type' => 'setPassType',
-'name' => 'setName',
-'description' => 'setDescription',
-'relevant_date' => 'setRelevantDate',
-'organization_name' => 'setOrganizationName',
-'sharing_status' => 'setSharingStatus',
-'barcode' => 'setBarcode',
-'expiry_settings' => 'setExpirySettings',
-'associated_store_identifier' => 'setAssociatedStoreIdentifier',
-'fields' => 'setFields',
-'google_pay_apps' => 'setGooglePayApps',
-'ios_logo_layout' => 'setIosLogoLayout',
-'tags' => 'setTags'    ];
+        'pass_type_identifier' => 'setPassTypeIdentifier',
+        'images' => 'setImages',
+        'colors' => 'setColors',
+        'beacons' => 'setBeacons',
+        'locations' => 'setLocations',
+        'links' => 'setLinks',
+        'grouping_identifier' => 'setGroupingIdentifier',
+        'logo_text' => 'setLogoText',
+        'pass_type' => 'setPassType',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'relevant_date' => 'setRelevantDate',
+        'organization_name' => 'setOrganizationName',
+        'sharing_status' => 'setSharingStatus',
+        'barcode' => 'setBarcode',
+        'expiry_settings' => 'setExpirySettings',
+        'associated_store_identifier' => 'setAssociatedStoreIdentifier',
+        'fields' => 'setFields',
+        'google_pay_apps' => 'setGooglePayApps',
+        'ios_logo_layout' => 'setIosLogoLayout',
+        'tags' => 'setTags',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -186,27 +170,28 @@ class TemplateRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'external_id' => 'getExternalId',
-'pass_type_identifier' => 'getPassTypeIdentifier',
-'images' => 'getImages',
-'colors' => 'getColors',
-'beacons' => 'getBeacons',
-'locations' => 'getLocations',
-'links' => 'getLinks',
-'grouping_identifier' => 'getGroupingIdentifier',
-'logo_text' => 'getLogoText',
-'pass_type' => 'getPassType',
-'name' => 'getName',
-'description' => 'getDescription',
-'relevant_date' => 'getRelevantDate',
-'organization_name' => 'getOrganizationName',
-'sharing_status' => 'getSharingStatus',
-'barcode' => 'getBarcode',
-'expiry_settings' => 'getExpirySettings',
-'associated_store_identifier' => 'getAssociatedStoreIdentifier',
-'fields' => 'getFields',
-'google_pay_apps' => 'getGooglePayApps',
-'ios_logo_layout' => 'getIosLogoLayout',
-'tags' => 'getTags'    ];
+        'pass_type_identifier' => 'getPassTypeIdentifier',
+        'images' => 'getImages',
+        'colors' => 'getColors',
+        'beacons' => 'getBeacons',
+        'locations' => 'getLocations',
+        'links' => 'getLinks',
+        'grouping_identifier' => 'getGroupingIdentifier',
+        'logo_text' => 'getLogoText',
+        'pass_type' => 'getPassType',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'relevant_date' => 'getRelevantDate',
+        'organization_name' => 'getOrganizationName',
+        'sharing_status' => 'getSharingStatus',
+        'barcode' => 'getBarcode',
+        'expiry_settings' => 'getExpirySettings',
+        'associated_store_identifier' => 'getAssociatedStoreIdentifier',
+        'fields' => 'getFields',
+        'google_pay_apps' => 'getGooglePayApps',
+        'ios_logo_layout' => 'getIosLogoLayout',
+        'tags' => 'getTags',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -250,16 +235,16 @@ class TemplateRequest implements ModelInterface, ArrayAccess
     }
 
     const PASS_TYPE_OFFER = 'offer';
-const PASS_TYPE_EVENTTICKET = 'eventticket';
-const PASS_TYPE_GIFTCARD = 'giftcard';
-const PASS_TYPE_LOYALTY = 'loyalty';
-const PASS_TYPE_GENERIC = 'generic';
-const SHARING_STATUS_MULTIPLE_HOLDERS = 'multipleHolders';
-const SHARING_STATUS_ONE_USER_ALL_DEVICES = 'oneUserAllDevices';
-const SHARING_STATUS_ONE_USER_ONE_DEVICE = 'oneUserOneDevice';
-const IOS_LOGO_LAYOUT_SEPARATE = 'separate';
-const IOS_LOGO_LAYOUT_NONE = 'none';
-const IOS_LOGO_LAYOUT__UNSET = 'unset';
+    const PASS_TYPE_EVENTTICKET = 'eventticket';
+    const PASS_TYPE_GIFTCARD = 'giftcard';
+    const PASS_TYPE_LOYALTY = 'loyalty';
+    const PASS_TYPE_GENERIC = 'generic';
+    const SHARING_STATUS_MULTIPLE_HOLDERS = 'multipleHolders';
+    const SHARING_STATUS_ONE_USER_ALL_DEVICES = 'oneUserAllDevices';
+    const SHARING_STATUS_ONE_USER_ONE_DEVICE = 'oneUserOneDevice';
+    const IOS_LOGO_LAYOUT_SEPARATE = 'separate';
+    const IOS_LOGO_LAYOUT_NONE = 'none';
+    const IOS_LOGO_LAYOUT__UNSET = 'unset';
 
     /**
      * Gets allowable values of the enum
@@ -270,10 +255,11 @@ const IOS_LOGO_LAYOUT__UNSET = 'unset';
     {
         return [
             self::PASS_TYPE_OFFER,
-self::PASS_TYPE_EVENTTICKET,
-self::PASS_TYPE_GIFTCARD,
-self::PASS_TYPE_LOYALTY,
-self::PASS_TYPE_GENERIC,        ];
+            self::PASS_TYPE_EVENTTICKET,
+            self::PASS_TYPE_GIFTCARD,
+            self::PASS_TYPE_LOYALTY,
+            self::PASS_TYPE_GENERIC,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -284,8 +270,9 @@ self::PASS_TYPE_GENERIC,        ];
     {
         return [
             self::SHARING_STATUS_MULTIPLE_HOLDERS,
-self::SHARING_STATUS_ONE_USER_ALL_DEVICES,
-self::SHARING_STATUS_ONE_USER_ONE_DEVICE,        ];
+            self::SHARING_STATUS_ONE_USER_ALL_DEVICES,
+            self::SHARING_STATUS_ONE_USER_ONE_DEVICE,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -296,8 +283,9 @@ self::SHARING_STATUS_ONE_USER_ONE_DEVICE,        ];
     {
         return [
             self::IOS_LOGO_LAYOUT_SEPARATE,
-self::IOS_LOGO_LAYOUT_NONE,
-self::IOS_LOGO_LAYOUT__UNSET,        ];
+            self::IOS_LOGO_LAYOUT_NONE,
+            self::IOS_LOGO_LAYOUT__UNSET,
+        ];
     }
 
     /**
@@ -315,27 +303,53 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
      */
     public function __construct(array $data = null)
     {
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
-        $this->container['pass_type_identifier'] = isset($data['pass_type_identifier']) ? $data['pass_type_identifier'] : null;
+        $this->container['external_id'] = isset($data['external_id'])
+            ? $data['external_id']
+            : null;
+        $this->container['pass_type_identifier'] = isset($data['pass_type_identifier'])
+            ? $data['pass_type_identifier']
+            : null;
         $this->container['images'] = isset($data['images']) ? $data['images'] : null;
         $this->container['colors'] = isset($data['colors']) ? $data['colors'] : null;
         $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
         $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
-        $this->container['grouping_identifier'] = isset($data['grouping_identifier']) ? $data['grouping_identifier'] : null;
+        $this->container['grouping_identifier'] = isset($data['grouping_identifier'])
+            ? $data['grouping_identifier']
+            : null;
         $this->container['logo_text'] = isset($data['logo_text']) ? $data['logo_text'] : null;
-        $this->container['pass_type'] = isset($data['pass_type']) ? $data['pass_type'] : 'generic';
+        $this->container['pass_type'] = isset($data['pass_type'])
+            ? $data['pass_type']
+            : 'generic';
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['relevant_date'] = isset($data['relevant_date']) ? $data['relevant_date'] : null;
-        $this->container['organization_name'] = isset($data['organization_name']) ? $data['organization_name'] : null;
-        $this->container['sharing_status'] = isset($data['sharing_status']) ? $data['sharing_status'] : 'multipleHolders';
+        $this->container['description'] = isset($data['description'])
+            ? $data['description']
+            : null;
+        $this->container['relevant_date'] = isset($data['relevant_date'])
+            ? $data['relevant_date']
+            : null;
+        $this->container['organization_name'] = isset($data['organization_name'])
+            ? $data['organization_name']
+            : null;
+        $this->container['sharing_status'] = isset($data['sharing_status'])
+            ? $data['sharing_status']
+            : 'multipleHolders';
         $this->container['barcode'] = isset($data['barcode']) ? $data['barcode'] : null;
-        $this->container['expiry_settings'] = isset($data['expiry_settings']) ? $data['expiry_settings'] : null;
-        $this->container['associated_store_identifier'] = isset($data['associated_store_identifier']) ? $data['associated_store_identifier'] : null;
+        $this->container['expiry_settings'] = isset($data['expiry_settings'])
+            ? $data['expiry_settings']
+            : null;
+        $this->container['associated_store_identifier'] = isset(
+            $data['associated_store_identifier']
+        )
+            ? $data['associated_store_identifier']
+            : null;
         $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
-        $this->container['google_pay_apps'] = isset($data['google_pay_apps']) ? $data['google_pay_apps'] : null;
-        $this->container['ios_logo_layout'] = isset($data['ios_logo_layout']) ? $data['ios_logo_layout'] : 'unset';
+        $this->container['google_pay_apps'] = isset($data['google_pay_apps'])
+            ? $data['google_pay_apps']
+            : null;
+        $this->container['ios_logo_layout'] = isset($data['ios_logo_layout'])
+            ? $data['ios_logo_layout']
+            : 'unset';
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
@@ -358,7 +372,10 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
             $invalidProperties[] = "'pass_type' can't be null";
         }
         $allowedValues = $this->getPassTypeAllowableValues();
-        if (!is_null($this->container['pass_type']) && !in_array($this->container['pass_type'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['pass_type']) &&
+            !in_array($this->container['pass_type'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'pass_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -369,7 +386,10 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
             $invalidProperties[] = "'organization_name' can't be null";
         }
         $allowedValues = $this->getSharingStatusAllowableValues();
-        if (!is_null($this->container['sharing_status']) && !in_array($this->container['sharing_status'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['sharing_status']) &&
+            !in_array($this->container['sharing_status'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'sharing_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -377,7 +397,10 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
         }
 
         $allowedValues = $this->getIosLogoLayoutAllowableValues();
-        if (!is_null($this->container['ios_logo_layout']) && !in_array($this->container['ios_logo_layout'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['ios_logo_layout']) &&
+            !in_array($this->container['ios_logo_layout'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'ios_logo_layout', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -397,7 +420,6 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets external_id
@@ -1013,7 +1035,8 @@ self::IOS_LOGO_LAYOUT__UNSET,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

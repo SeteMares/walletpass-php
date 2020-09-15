@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use WalletPassJP\ApiException;
 use WalletPassJP\ObjectSerializer;
 use WalletPassJP\Api\Api as BaseAPI;
+use WalletPassJP\Model\MessageRequest;
 
 /**
  * Messages Api
@@ -23,15 +24,15 @@ class MessagesApi extends BaseAPI
      *
      * Create a Message
      *
-     * @param  \WalletPassJP\Model\Body4 $body body (optional)
+     * @param  array $body
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Model\ResourceResponse
+     * @return \WalletPassJP\Model\Message
      */
     public function create($body = null)
     {
-        list($response) = $this->createMessageWithHttpInfo($body);
+        list($response) = $this->createMessageWithHttpInfo(new MessageRequest($body));
         return $response->getData();
     }
 
@@ -40,7 +41,7 @@ class MessagesApi extends BaseAPI
      *
      * Create a Message
      *
-     * @param  \WalletPassJP\Model\Body4 $body (optional)
+     * @param  \WalletPassJP\Model\MessageRequest $body (optional)
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -151,16 +152,18 @@ class MessagesApi extends BaseAPI
      *
      * Create a Message
      *
-     * @param  \WalletPassJP\Model\Body4 $body (optional)
+     * @param  array $body
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createMessageAsync($body = null)
     {
-        return $this->createMessageAsyncWithHttpInfo($body)->then(function ($response) {
-            return $response[0];
-        });
+        return $this->createMessageAsyncWithHttpInfo(new MessageRequest($body))->then(
+            function ($response) {
+                return $response[0];
+            }
+        );
     }
 
     /**
@@ -168,7 +171,7 @@ class MessagesApi extends BaseAPI
      *
      * Create a Message
      *
-     * @param  \WalletPassJP\Model\Body4 $body (optional)
+     * @param  \WalletPassJP\Model\MessageRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -181,17 +184,16 @@ class MessagesApi extends BaseAPI
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
             function ($response) use ($returnType) {
                 $responseBody = $response->getBody();
-                if ($returnType === '\SplFileObject') {
-                    $content = $responseBody; //stream goes to serializer
-                } else {
-                    $content = $responseBody->getContents();
-                    if ($returnType !== 'string') {
-                        $content = json_decode($content);
-                    }
-                }
+                $content = $responseBody->getContents();
+                $content = json_decode($content);
 
                 return [
-                    ObjectSerializer::deserialize($content, $returnType, []),
+                    ObjectSerializer::deserialize(
+                        $content,
+                        $returnType,
+                        [],
+                        '\WalletPassJP\Model\Message'
+                    ),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
@@ -216,7 +218,7 @@ class MessagesApi extends BaseAPI
     /**
      * Create request for operation 'createMessage'
      *
-     * @param  \WalletPassJP\Model\Body4 $body (optional)
+     * @param  \WalletPassJP\Model\MessageRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -308,7 +310,7 @@ class MessagesApi extends BaseAPI
      * @throws \InvalidArgumentException
      * @return \WalletPassJP\Model\CollectionResponse
      */
-    public function list($limit = '15', $page = '1')
+    public function list($limit = 15, $page = 1)
     {
         list($response) = $this->listMessagesWithHttpInfo($limit, $page);
         return $response;

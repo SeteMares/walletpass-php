@@ -1,51 +1,32 @@
 <?php
-/**
- * Body4
- *
- * PHP version 7
- *
- * @category Class
- * @package  WalletPassJP
- * @author   Kinchaku
- */
-
-/**
- * WalletPass
- *
- * WALLET PASS API enables you to issue mobile wallet passes for Apple Wallet, Google Pay and integrate them into your app or cloud system.   ## Prerequisites  Your passes for Apple Wallet must be cryptographically signed with a certificate from your Apple Developer Account.  To obtain your pass signing certificate follow the following:  1. Access your Apple Developer account. 2. In Certificates, Identifiers & Profiles, select Identifiers. 3. Under Identifiers, select Pass Type IDs. 4. Select the pass type identifier, then click Edit. If there is a certificate listed under Production Certificates, click the Download button next to it. If there are no certificates listed, click the Create Certificate button, then follow the instructions to create a pass signing certificate. 5. You can get CSR from `/certificates/csr` endpoint. 6. Upload obtained certificate to /certificates/upload endpoint.
- *
- * OpenAPI spec version: 1.0
- * Contact: contact@walletpass.jp
- */
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
 use WalletPassJP\ObjectSerializer;
 
 /**
- * Body4 Class Doc Comment
+ * MessageRequest Class
  *
  * @category Class
  * @package  WalletPassJP
  * @author   Kinchaku
  */
-class Body4 implements ModelInterface, ArrayAccess
+class MessageRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $swaggerModelName = 'body_4';
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $swaggerModelName = 'MessageRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'template_id' => 'string',
         'header' => 'string',
@@ -56,17 +37,18 @@ class Body4 implements ModelInterface, ArrayAccess
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'template_id' => 'uuid',
-'header' => null,
-'body' => null,
-'scheduled_at' => 'date-time',
-'localized_body' => null,
-'localized_header' => null    ];
+        'header' => null,
+        'body' => null,
+        'scheduled_at' => 'date-time',
+        'localized_body' => null,
+        'localized_header' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -172,8 +154,6 @@ class Body4 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
     /**
      * Associative array for storing property values
      *
@@ -189,12 +169,12 @@ class Body4 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
-        $this->container['header'] = isset($data['header']) ? $data['header'] : null;
-        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
-        $this->container['scheduled_at'] = isset($data['scheduled_at']) ? $data['scheduled_at'] : null;
-        $this->container['localized_body'] = isset($data['localized_body']) ? $data['localized_body'] : null;
-        $this->container['localized_header'] = isset($data['localized_header']) ? $data['localized_header'] : null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['header'] = $data['header'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['scheduled_at'] = $data['scheduled_at'] ?? null;
+        $this->container['localized_body'] = $data['localized_body'] ?? null;
+        $this->container['localized_header'] = $data['localized_header'] ?? null;
     }
 
     /**
@@ -225,7 +205,6 @@ class Body4 implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets template_id
@@ -430,7 +409,8 @@ class Body4 implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT

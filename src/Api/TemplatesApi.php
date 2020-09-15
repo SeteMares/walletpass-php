@@ -282,7 +282,7 @@ class TemplatesApi extends BaseAPI
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Model\ResourceResponse
+     * @return \WalletPassJP\Model\Pass
      */
     public function createPass($template_id, $body)
     {
@@ -553,7 +553,7 @@ class TemplatesApi extends BaseAPI
      *
      * @throws \WalletPassJP\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \WalletPassJP\Model\ResourceResponse
+     * @return \WalletPassJP\Model\Template
      */
     public function create($body)
     {

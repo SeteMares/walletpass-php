@@ -22,7 +22,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $key = 'YOUR_ACCESS_TOKEN';
 
 $apiInstance = new WalletPassJP\Api\MessagesApi($key);
-$body = new \WalletPassJP\Model\Body4(); // \WalletPassJP\Model\Body4 |
+$body = new \WalletPassJP\Model\MessageRequest(); // \WalletPassJP\Model\MessageRequest |
 
 try {
     $result = $apiInstance->create($body);
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\WalletPassJP\Model\Body4**](../Model/Body4.md)|  | [optional]
+ **body** | [**\WalletPassJP\Model\MessageRequest**](../Model/MessageRequest.md)|  | [optional]
 
 ### Return type
 
