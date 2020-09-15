@@ -594,4 +594,216 @@ class MessagesApi extends BaseAPI
             $httpBody
         );
     }
+
+    /**
+     * Operation deleteMessage
+     *
+     * Delete message
+     *
+     * @param  string $message_id Message ID (required)
+     *
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function delete($message_id)
+    {
+        $this->deleteMessageWithHttpInfo($message_id);
+    }
+
+    /**
+     * Operation deleteMessageWithHttpInfo
+     *
+     * Delete message
+     *
+     * @param  string $message_id Message ID (required)
+     *
+     * @throws \WalletPassJP\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    private function deleteMessageWithHttpInfo($message_id)
+    {
+        $returnType = '';
+        $request = $this->deleteMessageRequest($message_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse()
+                        ? $e
+                            ->getResponse()
+                            ->getBody()
+                            ->getContents()
+                        : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        json_decode($e->getResponseBody()),
+                        '\WalletPassJP\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteMessageAsync
+     *
+     * Delete message
+     *
+     * @param  string $message_id Message ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteMessageAsync($message_id)
+    {
+        return $this->deleteMessageAsyncWithHttpInfo($message_id)->then(function ($response) {
+            return $response[0];
+        });
+    }
+
+    /**
+     * Operation deleteMessageAsyncWithHttpInfo
+     *
+     * Delete message
+     *
+     * @param  string $message_id Message ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    private function deleteMessageAsyncWithHttpInfo($message_id)
+    {
+        $returnType = '';
+        $request = $this->deleteMessageRequest($message_id);
+
+        return $this->client->sendAsync($request, $this->createHttpClientOption())->then(
+            function ($response) use ($returnType) {
+                return [null, $response->getStatusCode(), $response->getHeaders()];
+            },
+            function ($exception) {
+                $response = $exception->getResponse();
+                $statusCode = $response->getStatusCode();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $exception->getRequest()->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+        );
+    }
+
+    /**
+     * Create request for operation 'deleteMessage'
+     *
+     * @param  string $message_id Message ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteMessageRequest($message_id)
+    {
+        // verify the required parameter 'message' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling deleteMessage'
+            );
+        }
+
+        $resourcePath = '/messages/{message}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace('{message}', $message_id, $resourcePath);
+        }
+
+        // body params
+        $_tempBody = null;
+        $headers = $this->headerSelector->selectHeaders(['application/json'], []);
+
+        // // this endpoint requires Bearer token
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge($defaultHeaders, $headerParams, $headers);
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
 }
