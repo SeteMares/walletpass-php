@@ -303,41 +303,23 @@ class TemplateRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['external_id'] = isset($data['external_id'])
-            ? $data['external_id']
-            : null;
-        $this->container['pass_type_identifier'] = isset($data['pass_type_identifier'])
-            ? $data['pass_type_identifier']
-            : null;
-        $this->container['images'] = isset($data['images']) ? $data['images'] : null;
-        $this->container['colors'] = isset($data['colors']) ? $data['colors'] : null;
-        $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
-        $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
-        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
-        $this->container['grouping_identifier'] = isset($data['grouping_identifier'])
-            ? $data['grouping_identifier']
-            : null;
-        $this->container['logo_text'] = isset($data['logo_text']) ? $data['logo_text'] : null;
-        $this->container['pass_type'] = isset($data['pass_type'])
-            ? $data['pass_type']
-            : 'generic';
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['description'] = isset($data['description'])
-            ? $data['description']
-            : null;
-        $this->container['relevant_date'] = isset($data['relevant_date'])
-            ? $data['relevant_date']
-            : null;
-        $this->container['organization_name'] = isset($data['organization_name'])
-            ? $data['organization_name']
-            : null;
-        $this->container['sharing_status'] = isset($data['sharing_status'])
-            ? $data['sharing_status']
-            : 'multipleHolders';
-        $this->container['barcode'] = isset($data['barcode']) ? $data['barcode'] : null;
-        $this->container['expiry_settings'] = isset($data['expiry_settings'])
-            ? $data['expiry_settings']
-            : null;
+        $this->container['external_id'] = $data['external_id'] ?? null;
+        $this->container['pass_type_identifier'] = $data['pass_type_identifier'] ?? null;
+        $this->container['images'] = $data['images'] ?? null;
+        $this->container['colors'] = $data['colors'] ?? null;
+        $this->container['beacons'] = $data['beacons'] ?? null;
+        $this->container['locations'] = $data['locations'] ?? null;
+        $this->container['links'] = $data['links'] ?? null;
+        $this->container['grouping_identifier'] = $data['grouping_identifier'] ?? null;
+        $this->container['logo_text'] = $data['logo_text'] ?? null;
+        $this->container['pass_type'] = $data['pass_type'] ?? 'generic';
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['relevant_date'] = $data['relevant_date'] ?? null;
+        $this->container['organization_name'] = $data['organization_name'] ?? null;
+        $this->container['sharing_status'] = $data['sharing_status'] ?? 'multipleHolders';
+        $this->container['barcode'] = $data['barcode'] ?? null;
+        $this->container['expiry_settings'] = $data['expiry_settings'] ?? null;
         $this->container['fields'] = $data['fields'] ?? null;
         $this->container['associated_store_identifier'] =
             $data['associated_store_identifier'] ?? null;

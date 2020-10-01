@@ -48,6 +48,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'associated_store_identifier' => 'string',
         'google_pay_apps' => '\WalletPassJP\Model\TemplateGooglePayApps[]',
         'ios_logo_layout' => 'string',
+        'expiry_settings' => '\WalletPassJP\Model\TemplateExpirySettings',
     ];
 
     /**
@@ -76,6 +77,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'associated_store_identifier' => null,
         'google_pay_apps' => null,
         'ios_logo_layout' => null,
+        'expiry_settings' => null,
     ];
 
     /**
@@ -125,6 +127,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'associated_store_identifier' => 'associated_store_identifier',
         'google_pay_apps' => 'google_pay_apps',
         'ios_logo_layout' => 'ios_logo_layout',
+        'expiry_settings' => 'expiry_settings',
     ];
 
     /**
@@ -153,6 +156,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'associated_store_identifier' => 'setAssociatedStoreIdentifier',
         'google_pay_apps' => 'setGooglePayApps',
         'ios_logo_layout' => 'setIosLogoLayout',
+        'expiry_settings' => 'setExpirySettings',
     ];
 
     /**
@@ -181,6 +185,7 @@ class ProjectRequest implements ModelInterface, ArrayAccess
         'associated_store_identifier' => 'getAssociatedStoreIdentifier',
         'google_pay_apps' => 'getGooglePayApps',
         'ios_logo_layout' => 'getIosLogoLayout',
+        'expiry_settings' => 'getExpirySettings',
     ];
 
     /**
@@ -278,42 +283,27 @@ class ProjectRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['external_id'] = isset($data['external_id'])
-            ? $data['external_id']
-            : null;
-        $this->container['template_id'] = isset($data['template_id'])
-            ? $data['template_id']
-            : null;
-        $this->container['redeemed_template_id'] = isset($data['redeemed_template_id'])
-            ? $data['redeemed_template_id']
-            : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['is_enabled'] = isset($data['is_enabled'])
-            ? $data['is_enabled']
-            : false;
-        $this->container['background_color'] = isset($data['background_color'])
-            ? $data['background_color']
-            : null;
-        $this->container['text_color'] = isset($data['text_color'])
-            ? $data['text_color']
-            : null;
-        $this->container['label_color'] = isset($data['label_color'])
-            ? $data['label_color']
-            : null;
+        $this->container['external_id'] = $data['external_id'] ?? null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['redeemed_template_id'] = $data['redeemed_template_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['is_enabled'] = $data['is_enabled'] ?? false;
+        $this->container['background_color'] = $data['background_color'] ?? null;
+        $this->container['text_color'] = $data['text_color'] ?? null;
+        $this->container['label_color'] = $data['label_color'] ?? null;
         $this->container['settings'] = $data['settings'] ?? null;
         $this->container['barcode'] = $data['barcode'] ?? null;
-        $this->container['images'] = isset($data['images']) ? $data['images'] : null;
-        $this->container['organization_name'] = isset($data['organization_name'])
-            ? $data['organization_name']
-            : null;
-        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
-        $this->container['beacons'] = isset($data['beacons']) ? $data['beacons'] : null;
-        $this->container['locations'] = isset($data['locations']) ? $data['locations'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['images'] = $data['images'] ?? null;
+        $this->container['organization_name'] = $data['organization_name'] ?? null;
+        $this->container['links'] = $data['links'] ?? null;
+        $this->container['beacons'] = $data['beacons'] ?? null;
+        $this->container['locations'] = $data['locations'] ?? null;
+        $this->container['tags'] = $data['tags'] ?? null;
         $this->container['associated_store_identifier'] =
             $data['associated_store_identifier'] ?? null;
         $this->container['google_pay_apps'] = $data['google_pay_apps'] ?? null;
         $this->container['ios_logo_layout'] = $data['ios_logo_layout'] ?? 'unset';
+        $this->container['expiry_settings'] = $data['expiry_settings'] ?? null;
     }
 
     /**
@@ -864,6 +854,30 @@ class ProjectRequest implements ModelInterface, ArrayAccess
             );
         }
         $this->container['ios_logo_layout'] = $ios_logo_layout;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiry_settings
+     *
+     * @return \WalletPassJP\Model\TemplateExpirySettings
+     */
+    public function getExpirySettings()
+    {
+        return $this->container['expiry_settings'];
+    }
+
+    /**
+     * Sets expiry_settings
+     *
+     * @param \WalletPassJP\Model\TemplateExpirySettings $expiry_settings expiry_settings
+     *
+     * @return $this
+     */
+    public function setExpirySettings($expiry_settings)
+    {
+        $this->container['expiry_settings'] = $expiry_settings;
 
         return $this;
     }
