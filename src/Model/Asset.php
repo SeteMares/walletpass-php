@@ -181,7 +181,6 @@ class Asset implements ModelInterface, ArrayAccess
     const TYPE_BACKGROUND = 'background';
     const TYPE_FOOTER = 'footer';
     const TYPE_APPLE_LOGO = 'apple_logo';
-    const TYPE_CONTACT_PICTURE = 'contact_picture';
 
     /**
      * Gets allowable values of the enum
@@ -198,7 +197,6 @@ class Asset implements ModelInterface, ArrayAccess
             self::TYPE_BACKGROUND,
             self::TYPE_FOOTER,
             self::TYPE_APPLE_LOGO,
-            self::TYPE_CONTACT_PICTURE,
         ];
     }
 
