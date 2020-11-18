@@ -43,6 +43,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => 'string',
         'voided' => 'bool',
         'fields' => '\WalletPassJP\Model\PassRequestFields[]',
+        'images' => 'string[]',
     ];
 
     /**
@@ -55,6 +56,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => null,
         'voided' => null,
         'fields' => null,
+        'images' => null,
     ];
 
     /**
@@ -88,6 +90,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => 'sku',
         'voided' => 'voided',
         'fields' => 'fields',
+        'images' => 'images',
     ];
 
     /**
@@ -100,6 +103,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => 'setSku',
         'voided' => 'setVoided',
         'fields' => 'setFields',
+        'images' => 'setImages',
     ];
 
     /**
@@ -112,6 +116,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => 'getSku',
         'voided' => 'getVoided',
         'fields' => 'getFields',
+        'images' => 'getImages',
     ];
 
     /**
@@ -176,6 +181,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
         $this->container['voided'] = isset($data['voided']) ? $data['voided'] : false;
         $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
+        $this->container['images'] = $data['images'] ?? null;
     }
 
     /**
@@ -296,6 +302,31 @@ class PassRequest implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets images
+     *
+     * @return string[]
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param string[] $images Array of Asset IDs, at least logo must be present.
+     *
+     * @return $this
+     */
+    public function setImages($images)
+    {
+        $this->container['images'] = $images;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

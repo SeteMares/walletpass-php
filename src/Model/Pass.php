@@ -70,6 +70,7 @@ class Pass implements ModelInterface, ArrayAccess
         'meta' => '\WalletPassJP\Model\WalletPassMetaInformation',
         'updated_at' => '\DateTime',
         'created_at' => '\DateTime',
+        'images' => '\WalletPassJP\Model\Asset[]',
     ];
 
     /**
@@ -89,6 +90,7 @@ class Pass implements ModelInterface, ArrayAccess
         'meta' => null,
         'updated_at' => 'date-time',
         'created_at' => 'date-time',
+        'images' => null,
     ];
 
     /**
@@ -129,6 +131,7 @@ class Pass implements ModelInterface, ArrayAccess
         'meta' => 'meta',
         'updated_at' => 'updated_at',
         'created_at' => 'created_at',
+        'images' => 'images',
     ];
 
     /**
@@ -148,6 +151,7 @@ class Pass implements ModelInterface, ArrayAccess
         'meta' => 'setMeta',
         'updated_at' => 'setUpdatedAt',
         'created_at' => 'setCreatedAt',
+        'images' => 'setImages',
     ];
 
     /**
@@ -167,6 +171,7 @@ class Pass implements ModelInterface, ArrayAccess
         'meta' => 'getMeta',
         'updated_at' => 'getUpdatedAt',
         'created_at' => 'getCreatedAt',
+        'images' => 'getImages',
     ];
 
     /**
@@ -268,6 +273,7 @@ class Pass implements ModelInterface, ArrayAccess
         $this->container['created_at'] = isset($data['created_at'])
             ? $data['created_at']
             : null;
+        $this->container['images'] = isset($data['images']) ? $data['images'] : null;
     }
 
     /**
@@ -576,6 +582,31 @@ class Pass implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets images
+     *
+     * @return \WalletPassJP\Model\Asset[]
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param \WalletPassJP\Model\Asset[] $images Array of Asset IDs
+     *
+     * @return $this
+     */
+    public function setImages($images)
+    {
+        $this->container['images'] = $images;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
