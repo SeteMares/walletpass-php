@@ -43,6 +43,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'sku' => 'string',
         'voided' => 'bool',
         'fields' => '\WalletPassJP\Model\PassRequestFields[]',
+        'links' => '\WalletPassJP\Model\TemplateRequestLinks',
         'images' => 'string[]',
     ];
 
@@ -57,6 +58,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'voided' => null,
         'fields' => null,
         'images' => null,
+        'links' => null,
     ];
 
     /**
@@ -91,6 +93,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'voided' => 'voided',
         'fields' => 'fields',
         'images' => 'images',
+        'links' => 'links',
     ];
 
     /**
@@ -104,6 +107,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'voided' => 'setVoided',
         'fields' => 'setFields',
         'images' => 'setImages',
+        'links' => 'setLinks',
     ];
 
     /**
@@ -117,6 +121,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'voided' => 'getVoided',
         'fields' => 'getFields',
         'images' => 'getImages',
+        'links' => 'getLinks',
     ];
 
     /**
@@ -182,6 +187,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         $this->container['voided'] = isset($data['voided']) ? $data['voided'] : false;
         $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
         $this->container['images'] = $data['images'] ?? null;
+        $this->container['links'] = $data['links'] ?? null;
     }
 
     /**
@@ -323,6 +329,30 @@ class PassRequest implements ModelInterface, ArrayAccess
     public function setImages($images)
     {
         $this->container['images'] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \WalletPassJP\Model\TemplateRequestLinks
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \WalletPassJP\Model\TemplateRequestLinks $links links
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }

@@ -32,7 +32,7 @@ class TemplatesApi extends BaseAPI
      */
     public function copy($template_id)
     {
-        list($response) = $this->copyTemplateWithHttpInfo($template_id);
+        [$response] = $this->copyTemplateWithHttpInfo($template_id);
         return $response->getData();
     }
 
@@ -286,7 +286,7 @@ class TemplatesApi extends BaseAPI
      */
     public function createPass($template_id, $body)
     {
-        list($response) = $this->createPassWithHttpInfo($template_id, new PassRequest($body));
+        [$response] = $this->createPassWithHttpInfo($template_id, new PassRequest($body));
         return $response->getData();
     }
 
@@ -557,7 +557,7 @@ class TemplatesApi extends BaseAPI
      */
     public function create($body)
     {
-        list($response) = $this->createTemplateWithHttpInfo(new TemplateRequest($body));
+        [$response] = $this->createTemplateWithHttpInfo(new TemplateRequest($body));
         return $response->getData();
     }
 
@@ -1053,7 +1053,7 @@ class TemplatesApi extends BaseAPI
      */
     public function show($template_id)
     {
-        list($response) = $this->getTemplateByIDWithHttpInfo($template_id);
+        [$response] = $this->getTemplateByIDWithHttpInfo($template_id);
         return $response->getData();
     }
 
@@ -1306,7 +1306,7 @@ class TemplatesApi extends BaseAPI
      */
     public function getTemplateFields($template_id)
     {
-        list($response) = $this->getTemplateFieldsWithHttpInfo($template_id);
+        [$response] = $this->getTemplateFieldsWithHttpInfo($template_id);
         return $response;
     }
 
@@ -1566,7 +1566,7 @@ class TemplatesApi extends BaseAPI
      */
     public function listPasses($template_id, $limit = '15', $page = '1')
     {
-        list($response) = $this->listTemplatePassesWithHttpInfo($template_id, $limit, $page);
+        [$response] = $this->listTemplatePassesWithHttpInfo($template_id, $limit, $page);
         return $response;
     }
 
@@ -1842,7 +1842,7 @@ class TemplatesApi extends BaseAPI
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
-        list($response) = $this->listTemplatesWithHttpInfo($limit, $page, $tags);
+        [$response] = $this->listTemplatesWithHttpInfo($limit, $page, $tags);
         return $response;
     }
 
@@ -2113,7 +2113,7 @@ class TemplatesApi extends BaseAPI
      */
     public function update($template_id, $body)
     {
-        list($response) = $this->updateTemplateWithHttpInfo(
+        [$response] = $this->updateTemplateWithHttpInfo(
             $template_id,
             new TemplateRequest($body)
         );
