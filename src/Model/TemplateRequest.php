@@ -324,7 +324,7 @@ class TemplateRequest implements ModelInterface, ArrayAccess
         $this->container['associated_store_identifier'] =
             $data['associated_store_identifier'] ?? null;
         $this->container['google_pay_apps'] = $data['google_pay_apps'] ?? null;
-        $this->container['ios_logo_layout'] = $data['ios_logo_layout'] ?? 'unset';
+        $this->container['ios_logo_layout'] = $data['ios_logo_layout'] ?? null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
