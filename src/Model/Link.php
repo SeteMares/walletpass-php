@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * Link Class Doc Comment
@@ -37,31 +36,33 @@ class Link implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Link';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'value' => 'string',
-'title' => 'string',
-'type' => 'string'    ];
+        'title' => 'string',
+        'type' => 'string',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'value' => null,
-'title' => null,
-'type' => null    ];
+        'title' => null,
+        'type' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -91,8 +92,9 @@ class Link implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'value' => 'value',
-'title' => 'title',
-'type' => 'type'    ];
+        'title' => 'title',
+        'type' => 'type',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,8 +103,9 @@ class Link implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'value' => 'setValue',
-'title' => 'setTitle',
-'type' => 'setType'    ];
+        'title' => 'setTitle',
+        'type' => 'setType',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -111,8 +114,9 @@ class Link implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'value' => 'getValue',
-'title' => 'getTitle',
-'type' => 'getType'    ];
+        'title' => 'getTitle',
+        'type' => 'getType',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -156,10 +160,11 @@ class Link implements ModelInterface, ArrayAccess
     }
 
     const TYPE_WEB = 'web';
-const TYPE_TEL = 'tel';
-const TYPE_EMAIL = 'email';
-const TYPE_LOCATION = 'location';
-const TYPE_CALENDAR = 'calendar';
+    const TYPE_TEL = 'tel';
+    const TYPE_EMAIL = 'email';
+    const TYPE_LOCATION = 'location';
+    const TYPE_CALENDAR = 'calendar';
+    const TYPE_TEXT = 'text';
 
     /**
      * Gets allowable values of the enum
@@ -170,10 +175,12 @@ const TYPE_CALENDAR = 'calendar';
     {
         return [
             self::TYPE_WEB,
-self::TYPE_TEL,
-self::TYPE_EMAIL,
-self::TYPE_LOCATION,
-self::TYPE_CALENDAR,        ];
+            self::TYPE_TEL,
+            self::TYPE_EMAIL,
+            self::TYPE_LOCATION,
+            self::TYPE_CALENDAR,
+            self::TYPE_TEXT,
+        ];
     }
 
     /**
@@ -206,7 +213,10 @@ self::TYPE_CALENDAR,        ];
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['type']) &&
+            !in_array($this->container['type'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -226,7 +236,6 @@ self::TYPE_CALENDAR,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets value
@@ -368,7 +377,8 @@ self::TYPE_CALENDAR,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT
