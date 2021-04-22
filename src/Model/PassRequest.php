@@ -45,6 +45,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'fields' => '\WalletPassJP\Model\PassRequestFields[]',
         'links' => '\WalletPassJP\Model\TemplateRequestLinks',
         'images' => 'string[]',
+        'expires_at' => '\DateTime',
     ];
 
     /**
@@ -59,6 +60,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'fields' => null,
         'images' => null,
         'links' => null,
+        'expires_at' => 'date-time',
     ];
 
     /**
@@ -94,6 +96,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'fields' => 'fields',
         'images' => 'images',
         'links' => 'links',
+        'expires_at' => 'expires_at',
     ];
 
     /**
@@ -108,6 +111,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'fields' => 'setFields',
         'images' => 'setImages',
         'links' => 'setLinks',
+        'expires_at' => 'setExpiresAt',
     ];
 
     /**
@@ -122,6 +126,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         'fields' => 'getFields',
         'images' => 'getImages',
         'links' => 'getLinks',
+        'expires_at' => 'getExpiresAt',
     ];
 
     /**
@@ -188,6 +193,7 @@ class PassRequest implements ModelInterface, ArrayAccess
         $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
         $this->container['images'] = $data['images'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
     /**
@@ -353,6 +359,30 @@ class PassRequest implements ModelInterface, ArrayAccess
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param \DateTime $expires_at expires_at
+     *
+     * @return $this
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
