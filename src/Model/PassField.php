@@ -18,11 +18,10 @@
  * Contact: contact@walletpass.jp
  */
 
-
 namespace WalletPassJP\Model;
 
 use \ArrayAccess;
-use \WalletPassJP\ObjectSerializer;
+use WalletPassJP\ObjectSerializer;
 
 /**
  * PassField Class Doc Comment
@@ -37,49 +36,51 @@ class PassField implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'PassField';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'id' => 'string',
-'template_id' => 'string',
-'label' => 'string',
-'value' => 'string',
-'change_message' => 'string',
-'alignment' => 'string',
-'date_style' => 'string',
-'time_style' => 'string',
-'number_style' => 'string',
-'position_priority' => 'int',
-'apple_position' => 'string',
-'google_position' => 'string'    ];
+        'template_id' => 'string',
+        'label' => 'string',
+        'value' => 'string',
+        'change_message' => 'string',
+        'alignment' => 'string',
+        'date_style' => 'string',
+        'time_style' => 'string',
+        'number_style' => 'string',
+        'position_priority' => 'int',
+        'apple_position' => 'string',
+        'google_position' => 'string',
+    ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-'template_id' => 'uuid',
-'label' => null,
-'value' => null,
-'change_message' => null,
-'alignment' => null,
-'date_style' => null,
-'time_style' => null,
-'number_style' => null,
-'position_priority' => 'int32',
-'apple_position' => null,
-'google_position' => null    ];
+        'template_id' => 'uuid',
+        'label' => null,
+        'value' => null,
+        'change_message' => null,
+        'alignment' => null,
+        'date_style' => null,
+        'time_style' => null,
+        'number_style' => null,
+        'position_priority' => 'int32',
+        'apple_position' => null,
+        'google_position' => null,
+    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -109,17 +110,18 @@ class PassField implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-'template_id' => 'template_id',
-'label' => 'label',
-'value' => 'value',
-'change_message' => 'change_message',
-'alignment' => 'alignment',
-'date_style' => 'date_style',
-'time_style' => 'time_style',
-'number_style' => 'number_style',
-'position_priority' => 'position_priority',
-'apple_position' => 'apple_position',
-'google_position' => 'google_position'    ];
+        'template_id' => 'template_id',
+        'label' => 'label',
+        'value' => 'value',
+        'change_message' => 'change_message',
+        'alignment' => 'alignment',
+        'date_style' => 'date_style',
+        'time_style' => 'time_style',
+        'number_style' => 'number_style',
+        'position_priority' => 'position_priority',
+        'apple_position' => 'apple_position',
+        'google_position' => 'google_position',
+    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -128,17 +130,18 @@ class PassField implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-'template_id' => 'setTemplateId',
-'label' => 'setLabel',
-'value' => 'setValue',
-'change_message' => 'setChangeMessage',
-'alignment' => 'setAlignment',
-'date_style' => 'setDateStyle',
-'time_style' => 'setTimeStyle',
-'number_style' => 'setNumberStyle',
-'position_priority' => 'setPositionPriority',
-'apple_position' => 'setApplePosition',
-'google_position' => 'setGooglePosition'    ];
+        'template_id' => 'setTemplateId',
+        'label' => 'setLabel',
+        'value' => 'setValue',
+        'change_message' => 'setChangeMessage',
+        'alignment' => 'setAlignment',
+        'date_style' => 'setDateStyle',
+        'time_style' => 'setTimeStyle',
+        'number_style' => 'setNumberStyle',
+        'position_priority' => 'setPositionPriority',
+        'apple_position' => 'setApplePosition',
+        'google_position' => 'setGooglePosition',
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -147,17 +150,18 @@ class PassField implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-'template_id' => 'getTemplateId',
-'label' => 'getLabel',
-'value' => 'getValue',
-'change_message' => 'getChangeMessage',
-'alignment' => 'getAlignment',
-'date_style' => 'getDateStyle',
-'time_style' => 'getTimeStyle',
-'number_style' => 'getNumberStyle',
-'position_priority' => 'getPositionPriority',
-'apple_position' => 'getApplePosition',
-'google_position' => 'getGooglePosition'    ];
+        'template_id' => 'getTemplateId',
+        'label' => 'getLabel',
+        'value' => 'getValue',
+        'change_message' => 'getChangeMessage',
+        'alignment' => 'getAlignment',
+        'date_style' => 'getDateStyle',
+        'time_style' => 'getTimeStyle',
+        'number_style' => 'getNumberStyle',
+        'position_priority' => 'getPositionPriority',
+        'apple_position' => 'getApplePosition',
+        'google_position' => 'getGooglePosition',
+    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -201,67 +205,68 @@ class PassField implements ModelInterface, ArrayAccess
     }
 
     const ALIGNMENT_NATURAL = 'natural';
-const ALIGNMENT_LEFT = 'left';
-const ALIGNMENT_RIGHT = 'right';
-const ALIGNMENT_CENTER = 'center';
-const DATE_STYLE_NONE = 'none';
-const DATE_STYLE_SHORT = 'short';
-const DATE_STYLE_MEDIUM = 'medium';
-const DATE_STYLE_LONG = 'long';
-const DATE_STYLE_FULL = 'full';
-const TIME_STYLE_NONE = 'none';
-const TIME_STYLE_SHORT = 'short';
-const TIME_STYLE_MEDIUM = 'medium';
-const TIME_STYLE_LONG = 'long';
-const TIME_STYLE_FULL = 'full';
-const NUMBER_STYLE_NONE = 'none';
-const NUMBER_STYLE_DECIMAL = 'decimal';
-const NUMBER_STYLE_PERCENT = 'percent';
-const NUMBER_STYLE_SPELL = 'spell';
-const NUMBER_STYLE_SCIENTIFIC = 'scientific';
-const APPLE_POSITION_NONE = 'none';
-const APPLE_POSITION_BACK = 'back';
-const APPLE_POSITION_PRIMARY = 'primary';
-const APPLE_POSITION_SECONDARY = 'secondary';
-const APPLE_POSITION_AUX = 'aux';
-const APPLE_POSITION_HEADER = 'header';
-const GOOGLE_POSITION_NONE = 'none';
-const GOOGLE_POSITION_EVENT_NAME = 'event_name';
-const GOOGLE_POSITION_EVENT_VENUE_NAME = 'event_venue_name';
-const GOOGLE_POSITION_EVENT_VENUE_ADDRESS = 'event_venue_address';
-const GOOGLE_POSITION_EVENT_GATE = 'event_gate';
-const GOOGLE_POSITION_EVENT_SECTION = 'event_section';
-const GOOGLE_POSITION_EVENT_ROW = 'event_row';
-const GOOGLE_POSITION_EVENT_SEAT = 'event_seat';
-const GOOGLE_POSITION_EVENT_TICKET_HOLDER = 'event_ticket_holder';
-const GOOGLE_POSITION_EVENT_DOORS_OPEN = 'event_doors_open';
-const GOOGLE_POSITION_EVENT_START = 'event_start';
-const GOOGLE_POSITION_EVENT_END = 'event_end';
-const GOOGLE_POSITION_EVENT_TICKET_TYPE = 'event_ticket_type';
-const GOOGLE_POSITION_EVENT_TICKET_NUMBER = 'event_ticket_number';
-const GOOGLE_POSITION_EVENT_CONFIRMATION_NUMBER = 'event_confirmation_number';
-const GOOGLE_POSITION_EVENT_FACE_VALUE = 'event_face_value';
-const GOOGLE_POSITION_EVENT_FINE_PRINT = 'event_fine_print';
-const GOOGLE_POSITION_GIFT_MERCHANT_NAME = 'gift_merchant_name';
-const GOOGLE_POSITION_GIFT_BALANCE = 'gift_balance';
-const GOOGLE_POSITION_GIFT_CARD_NUMBER = 'gift_card_number';
-const GOOGLE_POSITION_GIFT_BALANCE_UPDATE_TIME = 'gift_balance_update_time';
-const GOOGLE_POSITION_GIFT_PIN = 'gift_pin';
-const GOOGLE_POSITION_GIFT_EVENT_NUMBER = 'gift_event_number';
-const GOOGLE_POSITION_LOYALTY_PROGRAM_NAME = 'loyalty_program_name';
-const GOOGLE_POSITION_LOYALTY_POINTS = 'loyalty_points';
-const GOOGLE_POSITION_LOYALTY_SECONDARY_POINTS = 'loyalty_secondary_points';
-const GOOGLE_POSITION_LOYALTY_ACCOUNT_NAME = 'loyalty_account_name';
-const GOOGLE_POSITION_LOYALTY_ACCOUNT_ID = 'loyalty_account_id';
-const GOOGLE_POSITION_LOYALTY_REWARDS_TIER = 'loyalty_rewards_tier';
-const GOOGLE_POSITION_LOYALTY_SECONDARY_REWARDS_TIER = 'loyalty_secondary_rewards_tier';
-const GOOGLE_POSITION_OFFER_TITLE = 'offer_title';
-const GOOGLE_POSITION_OFFER_PROVIDER = 'offer_provider';
-const GOOGLE_POSITION_OFFER_DETAILS = 'offer_details';
-const GOOGLE_POSITION_OFFER_FINE_PRINT = 'offer_fine_print';
-const GOOGLE_POSITION_OFFER_SHORT_TITLE = 'offer_short_title';
-const GOOGLE_POSITION_TEXT_MODULE = 'text_module';
-const GOOGLE_POSITION_ISSUER_NAME = 'issuer_name';
+    const ALIGNMENT_LEFT = 'left';
+    const ALIGNMENT_RIGHT = 'right';
+    const ALIGNMENT_CENTER = 'center';
+    const DATE_STYLE_NONE = 'none';
+    const DATE_STYLE_SHORT = 'short';
+    const DATE_STYLE_MEDIUM = 'medium';
+    const DATE_STYLE_LONG = 'long';
+    const DATE_STYLE_FULL = 'full';
+    const TIME_STYLE_NONE = 'none';
+    const TIME_STYLE_SHORT = 'short';
+    const TIME_STYLE_MEDIUM = 'medium';
+    const TIME_STYLE_LONG = 'long';
+    const TIME_STYLE_FULL = 'full';
+    const NUMBER_STYLE_NONE = 'none';
+    const NUMBER_STYLE_DECIMAL = 'decimal';
+    const NUMBER_STYLE_PERCENT = 'percent';
+    const NUMBER_STYLE_SPELL = 'spell';
+    const NUMBER_STYLE_SCIENTIFIC = 'scientific';
+    const APPLE_POSITION_NONE = 'none';
+    const APPLE_POSITION_BACK = 'back';
+    const APPLE_POSITION_PRIMARY = 'primary';
+    const APPLE_POSITION_SECONDARY = 'secondary';
+    const APPLE_POSITION_AUX = 'aux';
+    const APPLE_POSITION_HEADER = 'header';
+    const GOOGLE_POSITION_NONE = 'none';
+    const GOOGLE_POSITION_EVENT_NAME = 'event_name';
+    const GOOGLE_POSITION_EVENT_VENUE_NAME = 'event_venue_name';
+    const GOOGLE_POSITION_EVENT_VENUE_ADDRESS = 'event_venue_address';
+    const GOOGLE_POSITION_EVENT_GATE = 'event_gate';
+    const GOOGLE_POSITION_EVENT_SECTION = 'event_section';
+    const GOOGLE_POSITION_EVENT_ROW = 'event_row';
+    const GOOGLE_POSITION_EVENT_SEAT = 'event_seat';
+    const GOOGLE_POSITION_EVENT_TICKET_HOLDER = 'event_ticket_holder';
+    const GOOGLE_POSITION_EVENT_DOORS_OPEN = 'event_doors_open';
+    const GOOGLE_POSITION_EVENT_START = 'event_start';
+    const GOOGLE_POSITION_EVENT_END = 'event_end';
+    const GOOGLE_POSITION_EVENT_TICKET_TYPE = 'event_ticket_type';
+    const GOOGLE_POSITION_EVENT_TICKET_NUMBER = 'event_ticket_number';
+    const GOOGLE_POSITION_EVENT_CONFIRMATION_NUMBER = 'event_confirmation_number';
+    const GOOGLE_POSITION_EVENT_FACE_VALUE = 'event_face_value';
+    const GOOGLE_POSITION_EVENT_FINE_PRINT = 'event_fine_print';
+    const GOOGLE_POSITION_GIFT_MERCHANT_NAME = 'gift_merchant_name';
+    const GOOGLE_POSITION_GIFT_BALANCE = 'gift_balance';
+    const GOOGLE_POSITION_GIFT_CARD_NUMBER = 'gift_card_number';
+    const GOOGLE_POSITION_GIFT_BALANCE_UPDATE_TIME = 'gift_balance_update_time';
+    const GOOGLE_POSITION_GIFT_PIN = 'gift_pin';
+    const GOOGLE_POSITION_GIFT_EVENT_NUMBER = 'gift_event_number';
+    const GOOGLE_POSITION_LOYALTY_PROGRAM_NAME = 'loyalty_program_name';
+    const GOOGLE_POSITION_LOYALTY_POINTS = 'loyalty_points';
+    const GOOGLE_POSITION_LOYALTY_SECONDARY_POINTS = 'loyalty_secondary_points';
+    const GOOGLE_POSITION_LOYALTY_ACCOUNT_NAME = 'loyalty_account_name';
+    const GOOGLE_POSITION_LOYALTY_ACCOUNT_ID = 'loyalty_account_id';
+    const GOOGLE_POSITION_LOYALTY_REWARDS_TIER = 'loyalty_rewards_tier';
+    const GOOGLE_POSITION_LOYALTY_SECONDARY_REWARDS_TIER = 'loyalty_secondary_rewards_tier';
+    const GOOGLE_POSITION_OFFER_TITLE = 'offer_title';
+    const GOOGLE_POSITION_OFFER_PROVIDER = 'offer_provider';
+    const GOOGLE_POSITION_OFFER_DETAILS = 'offer_details';
+    const GOOGLE_POSITION_OFFER_FINE_PRINT = 'offer_fine_print';
+    const GOOGLE_POSITION_OFFER_SHORT_TITLE = 'offer_short_title';
+    const GOOGLE_POSITION_TEXT_MODULE = 'text_module';
+    const GOOGLE_POSITION_LINKS_MODULE = 'links_module';
+    const GOOGLE_POSITION_ISSUER_NAME = 'issuer_name';
 
     /**
      * Gets allowable values of the enum
@@ -272,9 +277,10 @@ const GOOGLE_POSITION_ISSUER_NAME = 'issuer_name';
     {
         return [
             self::ALIGNMENT_NATURAL,
-self::ALIGNMENT_LEFT,
-self::ALIGNMENT_RIGHT,
-self::ALIGNMENT_CENTER,        ];
+            self::ALIGNMENT_LEFT,
+            self::ALIGNMENT_RIGHT,
+            self::ALIGNMENT_CENTER,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -285,10 +291,11 @@ self::ALIGNMENT_CENTER,        ];
     {
         return [
             self::DATE_STYLE_NONE,
-self::DATE_STYLE_SHORT,
-self::DATE_STYLE_MEDIUM,
-self::DATE_STYLE_LONG,
-self::DATE_STYLE_FULL,        ];
+            self::DATE_STYLE_SHORT,
+            self::DATE_STYLE_MEDIUM,
+            self::DATE_STYLE_LONG,
+            self::DATE_STYLE_FULL,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -299,10 +306,11 @@ self::DATE_STYLE_FULL,        ];
     {
         return [
             self::TIME_STYLE_NONE,
-self::TIME_STYLE_SHORT,
-self::TIME_STYLE_MEDIUM,
-self::TIME_STYLE_LONG,
-self::TIME_STYLE_FULL,        ];
+            self::TIME_STYLE_SHORT,
+            self::TIME_STYLE_MEDIUM,
+            self::TIME_STYLE_LONG,
+            self::TIME_STYLE_FULL,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -313,10 +321,11 @@ self::TIME_STYLE_FULL,        ];
     {
         return [
             self::NUMBER_STYLE_NONE,
-self::NUMBER_STYLE_DECIMAL,
-self::NUMBER_STYLE_PERCENT,
-self::NUMBER_STYLE_SPELL,
-self::NUMBER_STYLE_SCIENTIFIC,        ];
+            self::NUMBER_STYLE_DECIMAL,
+            self::NUMBER_STYLE_PERCENT,
+            self::NUMBER_STYLE_SPELL,
+            self::NUMBER_STYLE_SCIENTIFIC,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -327,11 +336,12 @@ self::NUMBER_STYLE_SCIENTIFIC,        ];
     {
         return [
             self::APPLE_POSITION_NONE,
-self::APPLE_POSITION_BACK,
-self::APPLE_POSITION_PRIMARY,
-self::APPLE_POSITION_SECONDARY,
-self::APPLE_POSITION_AUX,
-self::APPLE_POSITION_HEADER,        ];
+            self::APPLE_POSITION_BACK,
+            self::APPLE_POSITION_PRIMARY,
+            self::APPLE_POSITION_SECONDARY,
+            self::APPLE_POSITION_AUX,
+            self::APPLE_POSITION_HEADER,
+        ];
     }
     /**
      * Gets allowable values of the enum
@@ -342,42 +352,44 @@ self::APPLE_POSITION_HEADER,        ];
     {
         return [
             self::GOOGLE_POSITION_NONE,
-self::GOOGLE_POSITION_EVENT_NAME,
-self::GOOGLE_POSITION_EVENT_VENUE_NAME,
-self::GOOGLE_POSITION_EVENT_VENUE_ADDRESS,
-self::GOOGLE_POSITION_EVENT_GATE,
-self::GOOGLE_POSITION_EVENT_SECTION,
-self::GOOGLE_POSITION_EVENT_ROW,
-self::GOOGLE_POSITION_EVENT_SEAT,
-self::GOOGLE_POSITION_EVENT_TICKET_HOLDER,
-self::GOOGLE_POSITION_EVENT_DOORS_OPEN,
-self::GOOGLE_POSITION_EVENT_START,
-self::GOOGLE_POSITION_EVENT_END,
-self::GOOGLE_POSITION_EVENT_TICKET_TYPE,
-self::GOOGLE_POSITION_EVENT_TICKET_NUMBER,
-self::GOOGLE_POSITION_EVENT_CONFIRMATION_NUMBER,
-self::GOOGLE_POSITION_EVENT_FACE_VALUE,
-self::GOOGLE_POSITION_EVENT_FINE_PRINT,
-self::GOOGLE_POSITION_GIFT_MERCHANT_NAME,
-self::GOOGLE_POSITION_GIFT_BALANCE,
-self::GOOGLE_POSITION_GIFT_CARD_NUMBER,
-self::GOOGLE_POSITION_GIFT_BALANCE_UPDATE_TIME,
-self::GOOGLE_POSITION_GIFT_PIN,
-self::GOOGLE_POSITION_GIFT_EVENT_NUMBER,
-self::GOOGLE_POSITION_LOYALTY_PROGRAM_NAME,
-self::GOOGLE_POSITION_LOYALTY_POINTS,
-self::GOOGLE_POSITION_LOYALTY_SECONDARY_POINTS,
-self::GOOGLE_POSITION_LOYALTY_ACCOUNT_NAME,
-self::GOOGLE_POSITION_LOYALTY_ACCOUNT_ID,
-self::GOOGLE_POSITION_LOYALTY_REWARDS_TIER,
-self::GOOGLE_POSITION_LOYALTY_SECONDARY_REWARDS_TIER,
-self::GOOGLE_POSITION_OFFER_TITLE,
-self::GOOGLE_POSITION_OFFER_PROVIDER,
-self::GOOGLE_POSITION_OFFER_DETAILS,
-self::GOOGLE_POSITION_OFFER_FINE_PRINT,
-self::GOOGLE_POSITION_OFFER_SHORT_TITLE,
-self::GOOGLE_POSITION_TEXT_MODULE,
-self::GOOGLE_POSITION_ISSUER_NAME,        ];
+            self::GOOGLE_POSITION_EVENT_NAME,
+            self::GOOGLE_POSITION_EVENT_VENUE_NAME,
+            self::GOOGLE_POSITION_EVENT_VENUE_ADDRESS,
+            self::GOOGLE_POSITION_EVENT_GATE,
+            self::GOOGLE_POSITION_EVENT_SECTION,
+            self::GOOGLE_POSITION_EVENT_ROW,
+            self::GOOGLE_POSITION_EVENT_SEAT,
+            self::GOOGLE_POSITION_EVENT_TICKET_HOLDER,
+            self::GOOGLE_POSITION_EVENT_DOORS_OPEN,
+            self::GOOGLE_POSITION_EVENT_START,
+            self::GOOGLE_POSITION_EVENT_END,
+            self::GOOGLE_POSITION_EVENT_TICKET_TYPE,
+            self::GOOGLE_POSITION_EVENT_TICKET_NUMBER,
+            self::GOOGLE_POSITION_EVENT_CONFIRMATION_NUMBER,
+            self::GOOGLE_POSITION_EVENT_FACE_VALUE,
+            self::GOOGLE_POSITION_EVENT_FINE_PRINT,
+            self::GOOGLE_POSITION_GIFT_MERCHANT_NAME,
+            self::GOOGLE_POSITION_GIFT_BALANCE,
+            self::GOOGLE_POSITION_GIFT_CARD_NUMBER,
+            self::GOOGLE_POSITION_GIFT_BALANCE_UPDATE_TIME,
+            self::GOOGLE_POSITION_GIFT_PIN,
+            self::GOOGLE_POSITION_GIFT_EVENT_NUMBER,
+            self::GOOGLE_POSITION_LOYALTY_PROGRAM_NAME,
+            self::GOOGLE_POSITION_LOYALTY_POINTS,
+            self::GOOGLE_POSITION_LOYALTY_SECONDARY_POINTS,
+            self::GOOGLE_POSITION_LOYALTY_ACCOUNT_NAME,
+            self::GOOGLE_POSITION_LOYALTY_ACCOUNT_ID,
+            self::GOOGLE_POSITION_LOYALTY_REWARDS_TIER,
+            self::GOOGLE_POSITION_LOYALTY_SECONDARY_REWARDS_TIER,
+            self::GOOGLE_POSITION_OFFER_TITLE,
+            self::GOOGLE_POSITION_OFFER_PROVIDER,
+            self::GOOGLE_POSITION_OFFER_DETAILS,
+            self::GOOGLE_POSITION_OFFER_FINE_PRINT,
+            self::GOOGLE_POSITION_OFFER_SHORT_TITLE,
+            self::GOOGLE_POSITION_TEXT_MODULE,
+            self::GOOGLE_POSITION_LINKS_MODULE,
+            self::GOOGLE_POSITION_ISSUER_NAME,
+        ];
     }
 
     /**
@@ -396,17 +408,35 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
+        $this->container['template_id'] = isset($data['template_id'])
+            ? $data['template_id']
+            : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
-        $this->container['change_message'] = isset($data['change_message']) ? $data['change_message'] : null;
-        $this->container['alignment'] = isset($data['alignment']) ? $data['alignment'] : 'natural';
-        $this->container['date_style'] = isset($data['date_style']) ? $data['date_style'] : 'none';
-        $this->container['time_style'] = isset($data['time_style']) ? $data['time_style'] : 'none';
-        $this->container['number_style'] = isset($data['number_style']) ? $data['number_style'] : 'none';
-        $this->container['position_priority'] = isset($data['position_priority']) ? $data['position_priority'] : 0;
-        $this->container['apple_position'] = isset($data['apple_position']) ? $data['apple_position'] : 'none';
-        $this->container['google_position'] = isset($data['google_position']) ? $data['google_position'] : 'none';
+        $this->container['change_message'] = isset($data['change_message'])
+            ? $data['change_message']
+            : null;
+        $this->container['alignment'] = isset($data['alignment'])
+            ? $data['alignment']
+            : 'natural';
+        $this->container['date_style'] = isset($data['date_style'])
+            ? $data['date_style']
+            : 'none';
+        $this->container['time_style'] = isset($data['time_style'])
+            ? $data['time_style']
+            : 'none';
+        $this->container['number_style'] = isset($data['number_style'])
+            ? $data['number_style']
+            : 'none';
+        $this->container['position_priority'] = isset($data['position_priority'])
+            ? $data['position_priority']
+            : 0;
+        $this->container['apple_position'] = isset($data['apple_position'])
+            ? $data['apple_position']
+            : 'none';
+        $this->container['google_position'] = isset($data['google_position'])
+            ? $data['google_position']
+            : 'none';
     }
 
     /**
@@ -425,7 +455,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
             $invalidProperties[] = "'value' can't be null";
         }
         $allowedValues = $this->getAlignmentAllowableValues();
-        if (!is_null($this->container['alignment']) && !in_array($this->container['alignment'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['alignment']) &&
+            !in_array($this->container['alignment'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'alignment', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -433,7 +466,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
         }
 
         $allowedValues = $this->getDateStyleAllowableValues();
-        if (!is_null($this->container['date_style']) && !in_array($this->container['date_style'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['date_style']) &&
+            !in_array($this->container['date_style'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'date_style', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -441,7 +477,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
         }
 
         $allowedValues = $this->getTimeStyleAllowableValues();
-        if (!is_null($this->container['time_style']) && !in_array($this->container['time_style'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['time_style']) &&
+            !in_array($this->container['time_style'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'time_style', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -449,7 +488,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
         }
 
         $allowedValues = $this->getNumberStyleAllowableValues();
-        if (!is_null($this->container['number_style']) && !in_array($this->container['number_style'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['number_style']) &&
+            !in_array($this->container['number_style'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'number_style', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -457,7 +499,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
         }
 
         $allowedValues = $this->getApplePositionAllowableValues();
-        if (!is_null($this->container['apple_position']) && !in_array($this->container['apple_position'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['apple_position']) &&
+            !in_array($this->container['apple_position'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'apple_position', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -465,7 +510,10 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
         }
 
         $allowedValues = $this->getGooglePositionAllowableValues();
-        if (!is_null($this->container['google_position']) && !in_array($this->container['google_position'], $allowedValues, true)) {
+        if (
+            !is_null($this->container['google_position']) &&
+            !in_array($this->container['google_position'], $allowedValues, true)
+        ) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'google_position', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -485,7 +533,6 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -888,7 +935,8 @@ self::GOOGLE_POSITION_ISSUER_NAME,        ];
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+        if (defined('JSON_PRETTY_PRINT')) {
+            // use JSON pretty print
             return json_encode(
                 ObjectSerializer::sanitizeForSerialization($this),
                 JSON_PRETTY_PRINT
