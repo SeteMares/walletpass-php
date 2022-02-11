@@ -241,7 +241,7 @@ class AssetsApi extends BaseAPI
                 $httpBody = \GuzzleHttp\json_encode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -257,7 +257,7 @@ class AssetsApi extends BaseAPI
 
         $headers = array_merge($defaultHeaders, $headerParams, $headers);
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -279,7 +279,7 @@ class AssetsApi extends BaseAPI
      */
     public function show($asset)
     {
-        list($response) = $this->getAssetByIDWithHttpInfo($asset);
+        [$response] = $this->getAssetByIDWithHttpInfo($asset);
         return $response->getData();
     }
 
@@ -525,7 +525,7 @@ class AssetsApi extends BaseAPI
                 $httpBody = \GuzzleHttp\json_encode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -541,7 +541,7 @@ class AssetsApi extends BaseAPI
 
         $headers = array_merge($defaultHeaders, $headerParams, $headers);
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -565,7 +565,7 @@ class AssetsApi extends BaseAPI
      */
     public function list($limit = '15', $page = '1', $tags = null)
     {
-        list($response) = $this->listAssetsWithHttpInfo($limit, $page, $tags);
+        [$response] = $this->listAssetsWithHttpInfo($limit, $page, $tags);
         return $response;
     }
 
@@ -825,7 +825,7 @@ class AssetsApi extends BaseAPI
                 $httpBody = \GuzzleHttp\json_encode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -841,7 +841,7 @@ class AssetsApi extends BaseAPI
 
         $headers = array_merge($defaultHeaders, $headerParams, $headers);
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1091,7 +1091,7 @@ class AssetsApi extends BaseAPI
                 $httpBody = \GuzzleHttp\json_encode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1107,7 +1107,7 @@ class AssetsApi extends BaseAPI
 
         $headers = array_merge($defaultHeaders, $headerParams, $headers);
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1132,7 +1132,7 @@ class AssetsApi extends BaseAPI
      */
     public function upload($file = null, $type = null, $name = null, $tags = null)
     {
-        list($response) = $this->uploadAssetWithHttpInfo($file, $type, $name, $tags);
+        [$response] = $this->uploadAssetWithHttpInfo($file, $type, $name, $tags);
         return $response->getData();
     }
 
@@ -1411,7 +1411,7 @@ class AssetsApi extends BaseAPI
                 $httpBody = \GuzzleHttp\json_encode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1427,7 +1427,7 @@ class AssetsApi extends BaseAPI
 
         $headers = array_merge($defaultHeaders, $headerParams, $headers);
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getEndpoint() . $resourcePath . ($query ? "?{$query}" : ''),
